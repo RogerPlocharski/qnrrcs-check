@@ -1,29 +1,338 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
+import checklistData from "@/data/checklist.json";
+import { Card } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { ShieldCheck, Download, Search, RotateCcw } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Checklist QNRCS — Avaliação de Capacidades de Cibersegurança" },
+      {
+        name: "description",
+        content:
+          "Checklist interativo baseado no Quadro Nacional de Referência para a Cibersegurança (CNCS). Avalie a maturidade da sua organização em Identificar, Proteger, Detetar, Responder e Recuperar.",
+      },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+type Level = { level: string; description: string; evidence: string };
+type Item = {
+  objective: string;
+  category: string;
+  subcategory: string;
+  reference: string;
+  levels: Level[];
+};
+
+type State = Record<
+  string,
+  { checked: Record<string, boolean>; notes: string }
+>;
+
+const STORAGE_KEY = "qnrcs-checklist-v1";
+
+const OBJECTIVE_ORDER = [
+  "IDENTIFICAR",
+  "PROTEGER",
+  "DETETAR",
+  "RESPONDER",
+  "RECUPERAR",
+];
+
+const OBJECTIVE_META: Record<string, { color: string; desc: string }> = {
+  IDENTIFICAR: { color: "bg-chart-1/15 text-chart-1 border-chart-1/30", desc: "Compreender o contexto e gerir o risco" },
+  PROTEGER: { color: "bg-chart-2/15 text-chart-2 border-chart-2/30", desc: "Salvaguardar a entrega dos serviços críticos" },
+  DETETAR: { color: "bg-chart-3/15 text-chart-3 border-chart-3/30", desc: "Identificar eventos de cibersegurança" },
+  RESPONDER: { color: "bg-chart-4/15 text-chart-4 border-chart-4/30", desc: "Agir perante um incidente detetado" },
+  RECUPERAR: { color: "bg-chart-5/15 text-chart-5 border-chart-5/30", desc: "Restaurar capacidades e serviços afetados" },
+};
+
 function Index() {
+  const items = checklistData as Item[];
+  const [state, setState] = useState<State>({});
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) setState(JSON.parse(raw));
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }, [state]);
+
+  const grouped = useMemo(() => {
+    const map = new Map<string, Map<string, Item[]>>();
+    for (const it of items) {
+      const obj = it.objective.replace(/\s+/g, "");
+      if (!map.has(obj)) map.set(obj, new Map());
+      const cats = map.get(obj)!;
+      if (!cats.has(it.category)) cats.set(it.category, []);
+      cats.get(it.category)!.push(it);
+    }
+    return map;
+  }, [items]);
+
+  const filtered = (it: Item) => {
+    if (!query.trim()) return true;
+    const q = query.toLowerCase();
+    return (
+      it.subcategory.toLowerCase().includes(q) ||
+      it.category.toLowerCase().includes(q) ||
+      it.objective.toLowerCase().includes(q)
+    );
+  };
+
+  const stats = useMemo(() => {
+    let total = items.length;
+    let achieved = 0;
+    let levelCounts = { 1: 0, 2: 0, 3: 0 };
+    for (const it of items) {
+      const st = state[it.subcategory];
+      if (!st) continue;
+      const reachedLevels = it.levels
+        .map((l, i) => (st.checked[l.level] ? i + 1 : 0))
+        .filter(Boolean);
+      const max = reachedLevels.length ? Math.max(...reachedLevels) : 0;
+      if (max > 0) {
+        achieved++;
+        levelCounts[max as 1 | 2 | 3]++;
+      }
+    }
+    return { total, achieved, levelCounts };
+  }, [items, state]);
+
+  const toggle = (sub: string, level: string) => {
+    setState((s) => {
+      const cur = s[sub] ?? { checked: {}, notes: "" };
+      return {
+        ...s,
+        [sub]: { ...cur, checked: { ...cur.checked, [level]: !cur.checked[level] } },
+      };
+    });
+  };
+
+  const setNote = (sub: string, notes: string) => {
+    setState((s) => {
+      const cur = s[sub] ?? { checked: {}, notes: "" };
+      return { ...s, [sub]: { ...cur, notes } };
+    });
+  };
+
+  const reset = () => {
+    if (confirm("Tem a certeza? Todos os dados serão apagados.")) setState({});
+  };
+
+  const exportCsv = () => {
+    const rows = [
+      ["Objetivo", "Categoria", "Subcategoria", "Nível 1", "Nível 2", "Nível 3", "Observações"],
+    ];
+    for (const it of items) {
+      const st = state[it.subcategory] ?? { checked: {}, notes: "" };
+      rows.push([
+        it.objective,
+        it.category,
+        it.subcategory,
+        st.checked["1 – Inicial"] ? "Sim" : "",
+        st.checked["2 – Intermédio"] ? "Sim" : "",
+        st.checked["3 – Avançado"] ? "Sim" : "",
+        st.notes ?? "",
+      ]);
+    }
+    const csv = rows
+      .map((r) => r.map((c) => `"${(c ?? "").toString().replace(/"/g, '""')}"`).join(","))
+      .join("\n");
+    const blob = new Blob([`\uFEFF${csv}`], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "checklist-qnrcs.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const progress = stats.total ? (stats.achieved / stats.total) * 100 : 0;
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <header className="border-b bg-card">
+        <div className="mx-auto max-w-6xl px-4 py-8">
+          <div className="flex items-start gap-4">
+            <div className="rounded-xl bg-primary/10 p-3 text-primary">
+              <ShieldCheck className="h-7 w-7" />
+            </div>
+            <div className="flex-1">
+              <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
+                Checklist QNRCS — Avaliação de Capacidades de Cibersegurança
+              </h1>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Quadro Nacional de Referência para a Cibersegurança · Centro Nacional de Cibersegurança
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto]">
+            <div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="font-medium">
+                  Progresso: {stats.achieved} / {stats.total} subcategorias
+                </span>
+                <span className="text-muted-foreground">{progress.toFixed(0)}%</span>
+              </div>
+              <Progress value={progress} className="mt-2" />
+              <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                <Badge variant="outline">Nível 1: {stats.levelCounts[1]}</Badge>
+                <Badge variant="outline">Nível 2: {stats.levelCounts[2]}</Badge>
+                <Badge variant="outline">Nível 3: {stats.levelCounts[3]}</Badge>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <Button variant="outline" size="sm" onClick={exportCsv}>
+                <Download className="mr-2 h-4 w-4" /> Exportar CSV
+              </Button>
+              <Button variant="outline" size="sm" onClick={reset}>
+                <RotateCcw className="mr-2 h-4 w-4" /> Reiniciar
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative mt-4">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              placeholder="Pesquisar subcategoria, categoria ou objetivo…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="pl-9"
+            />
+          </div>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-6xl px-4 py-8 space-y-10">
+        {OBJECTIVE_ORDER.map((objKey) => {
+          const cats = grouped.get(objKey);
+          if (!cats) return null;
+          const meta = OBJECTIVE_META[objKey];
+          return (
+            <section key={objKey}>
+              <div className={`mb-4 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 ${meta.color}`}>
+                <span className="text-sm font-semibold tracking-wide">{objKey}</span>
+                <span className="text-xs opacity-80">{meta.desc}</span>
+              </div>
+              <div className="space-y-4">
+                {Array.from(cats.entries()).map(([catName, subs]) => {
+                  const visible = subs.filter(filtered);
+                  if (!visible.length) return null;
+                  return (
+                    <Card key={catName} className="overflow-hidden">
+                      <div className="border-b bg-muted/40 px-5 py-3">
+                        <h3 className="text-sm font-semibold">{catName}</h3>
+                      </div>
+                      <Accordion type="multiple" className="divide-y">
+                        {visible.map((it) => {
+                          const st = state[it.subcategory] ?? { checked: {}, notes: "" };
+                          const reached = it.levels
+                            .map((l, i) => (st.checked[l.level] ? i + 1 : 0))
+                            .filter(Boolean);
+                          const max = reached.length ? Math.max(...reached) : 0;
+                          return (
+                            <AccordionItem
+                              key={it.subcategory}
+                              value={it.subcategory}
+                              className="border-0"
+                            >
+                              <AccordionTrigger className="px-5 py-3 hover:no-underline">
+                                <div className="flex w-full items-start gap-3 text-left">
+                                  <Badge
+                                    variant={max ? "default" : "outline"}
+                                    className="mt-0.5 shrink-0"
+                                  >
+                                    {max ? `Nível ${max}` : "—"}
+                                  </Badge>
+                                  <span className="text-sm font-medium">
+                                    {it.subcategory}
+                                  </span>
+                                </div>
+                              </AccordionTrigger>
+                              <AccordionContent className="px-5 pb-5">
+                                {it.reference && (
+                                  <p className="mb-3 text-xs text-muted-foreground">
+                                    <span className="font-medium">Referências:</span>{" "}
+                                    {it.reference}
+                                  </p>
+                                )}
+                                <div className="space-y-3">
+                                  {it.levels.map((lvl) => (
+                                    <label
+                                      key={lvl.level}
+                                      className="flex cursor-pointer gap-3 rounded-lg border p-3 hover:bg-accent/50"
+                                    >
+                                      <Checkbox
+                                        checked={!!st.checked[lvl.level]}
+                                        onCheckedChange={() =>
+                                          toggle(it.subcategory, lvl.level)
+                                        }
+                                        className="mt-0.5"
+                                      />
+                                      <div className="flex-1 space-y-2">
+                                        <div className="text-sm font-semibold">
+                                          {lvl.level}
+                                        </div>
+                                        {lvl.description && (
+                                          <div className="whitespace-pre-line text-sm text-muted-foreground">
+                                            {lvl.description}
+                                          </div>
+                                        )}
+                                        {lvl.evidence && (
+                                          <div className="rounded-md bg-muted/60 p-2 text-xs whitespace-pre-line">
+                                            <span className="font-medium">Evidências: </span>
+                                            {lvl.evidence}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </label>
+                                  ))}
+                                </div>
+                                <Textarea
+                                  className="mt-3"
+                                  placeholder="Observações e anexos…"
+                                  value={st.notes}
+                                  onChange={(e) => setNote(it.subcategory, e.target.value)}
+                                />
+                              </AccordionContent>
+                            </AccordionItem>
+                          );
+                        })}
+                      </Accordion>
+                    </Card>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
+      </main>
+
+      <footer className="border-t py-6 text-center text-xs text-muted-foreground">
+        Baseado no Quadro Nacional de Referência para a Cibersegurança (QNRCS) · As respostas são guardadas localmente no seu navegador.
+      </footer>
     </div>
   );
 }
