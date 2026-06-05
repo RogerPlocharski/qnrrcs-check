@@ -1,0 +1,2348 @@
+[
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Gestão de ativos (ID.GA)",
+    "subcategory": "ID.GA-1 – Os dispositivos físicos, redes e sistemas de informação existentes na organização devem ser inventariados",
+    "reference": "CIS CSC 1  COBIT 5 BAI09.01, BAI09.02  ISO/IEC 27001:2013 A.8.1.1, A.8.1.2  NIST SP 800-53 Rev. 4 CM-8, PM-5",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "• Os ativos da organização são registados de forma isolada e pouco sistémica;\n• Existem algumas iniciativas isoladas de identificação dos responsáveis pelos ativos;\n• Alguns setores da organização já conseguem manter o seu inventário, ainda que isoladamente.",
+        "evidence": "• Ficheiros isolados de registo dos ativos com alguma informação sobre os ativos;\n• Alguma identificação de responsáveis por ativos."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "• Os ativos são registados sistematicamente com informação completa e pertinente a cada ativo;\n• Os ativos são identificados individualmente na organização;\n• A cada ativo corresponde a associação de um único responsável;\n• Existe uma política formalmente divulgada de inventário dos ativos.",
+        "evidence": "• Ferramentas/aplicações de gestão integrada de ativos;\n• Políticas de inventário de ativos;\n• Registos de endereços IP, número de inventário, dados do equipamento, etc.;\n• Associação de nome e contacto do colaborador responsável pelo ativo;\n• Classificação dos ativos quanto à sua criticidade."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "• O inventário é monitorizado e acompanhado recorrentemente;\n• A gestão de ativos é integrada com a gestão de alterações;\n• Ocorrem revisões periódicas no inventário dos ativos para atestar a sua efetividade;\n• São propostas e avaliadas melhorias no processo de gestão dos inventários.",
+        "evidence": "• Indicadores e registos de acompanhamento dos inventários;\n• Sistemas de monitorização dos inventários;\n• Sistema de identificação automatizada de novos ativos ou alterações dos ativos existentes;\n• Avaliações e auditorias dos sistemas e processos de inventário de ativos."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Gestão de ativos (ID.GA)",
+    "subcategory": "ID.GA-2 – As aplicações e plataformas de software que suportam os processos dos serviços críticos devem ser inventariadas",
+    "reference": "CIS CSC 2  COBIT 5 BAI09.01, BAI09.02, BAI09.05  ISO/IEC 27001:2013 A.8.1.1, A.8.1.2, A.12.5.1  NIST SP 800-53 Rev. 4 CM-8, PM-5",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•\tOs sistemas da organização são registados de forma isolada e pouco sistémica;\n•\tExistem algumas iniciativas isoladas de identificação dos responsáveis pelos sistemas;\n•\tAlguns setores da organização já conseguem  manter  um   inventário de sistemas utilizados, ainda que isoladamente;\n•\tOs inventários são registados em controlos pouco sistémicos.",
+        "evidence": "•\tFicheiros isolados de registo dos sistemas com alguma informação;\n•\tAlguma identificação de responsáveis pelos sistemas utilizados na organização."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•\tAs aplicações e plataformas são registadas sistematicamente com informação completa e pertinente;\n•\tAs aplicações e plataformas são identificadas individualmente na organização;\n•\tA cada aplicação e plataforma tem-se a associação de um único responsável;\n•\tExiste uma política formalmente divulgada de inventário dos ativos.",
+        "evidence": "•\tFerramentas/aplicações de gestão integrada de sistemas;\n•\tPolíticas de inventário de ativos;\n•\tAssociação de nome e contacto de colaborador responsável pelo sistema;\n•\tClassificação dos sistemas quanto à sua criticidade."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•\tO inventário é monitorizado e acompa- nhado regularmente;\n•\tA gestão de sistemas é integrada com a gestão de alterações;\n•\tOcorrem revisões periódicas no inven- tário de sistemas para atestar a sua efetividade;\n•\tSão propostas e avaliadas melhorias no processo de gestão dos inventários.",
+        "evidence": "•\tIndicadores e registos de acompanha- mento dos inventários;\n•\tSistemas de monitorização dos inven- tários;\n•\tSistema de descoberta automatizada de novos sistemas ou alterações dos ativos existentes;\n•\tAvaliações e auditorias dos sistemas e processos de inventário de sistemas."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Gestão de ativos (ID.GA)",
+    "subcategory": "ID.GA-3 – As redes e fluxos de dados devem ser mapeados",
+    "reference": "CIS CSC 12 COBIT 5 DSS05.02 ISO/IEC 27001:2013 A.13.2.1, A.13.2.2 NIST SP 800-53 Rev. 4 AC-4, CA-3, CA-9, PL-8",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•\tOs ativos de redes de comunicações são identificados;\n•\tExiste uma perceção sobre a topologia de rede.",
+        "evidence": "•\tRegisto dos ativos de redes;\n•\tEsquema da rede com identificação das zonas."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•\tOs ativos de redes de comunicações são identificados e inventariados;\n•\tA topologia de rede é registada com identificação de zonas, endereços IP e identificação de ativos críticos;\n•\tIdentificação do fluxo de comunicação entre os sistemas internos e externos;\n•\tExiste uma política e grupo de procedimentos que definem regras de inventários.",
+        "evidence": "•\tMapa de endereços IP;\n•\tMapa da topologia da rede;\n•\tMapa de fluxo de comunicações;\n•\tProcedimentos que tratem do mapeamento de rede;\n•\tDocumento que identifique o fluxo seguro de dados."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•\tO inventário de rede de comunicação é mantido com ferramentas automáticas de descoberta;\n•\tSão mantidas métricas de acompanhamento dos ativos;\n•\tO inventário é revisto periodicamente para garantir a sua atualização e melhoria contínua nos processos.",
+        "evidence": "•\tUso de ferramenta/aplicações automatizadas de descoberta de ativos de rede;\n•\tIndicadores relacionados com o inventário de rede de comunicação;\n•\tRelatórios de avaliação e acompanhamento dos fluxos de dados."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Gestão de ativos (ID.GA)",
+    "subcategory": "ID.GA-4 – As redes e sistemas de informação externos devem ser identificados e catalogados \nCIS",
+    "reference": "CIS CSC 12 COBIT 5 APO02.02, APO10.04, DSS01.02 ISO/IEC 27001:2013 A.11.2.6 NIST SP 800-53 Rev. 4 AC-20, SA-9",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•\tOs ativos de rede localizados externamente são identificados de maneira ad hoc.",
+        "evidence": "•\tIdentificação dos ativos de rede em ambientes externos."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•\tOs ativos de rede localizados externamente possuem dados completos de identificação;\n•\tExiste um registo georeferencial de onde os equipamentos se encontram;\n•\tExistem equipas dedicadas no acompanhamento e manutenção destes ativos;\n•\tExistem políticas e procedimentos para a segurança destes ativos e da informação que suportam.",
+        "evidence": "•\tRegisto do ativo contendo endereço IP, inventário, tipologia do ativo, responsável, geolocalização, etc.;\n•\tPolítica de segurança para ativos em ambientes externos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•\tOs ativos são monitorizados e geridos remotamente;\n•\tÉ efetuada uma monitorização dos indicadores de performance;\n•\tOs ativos são vistoriados periodicamente para fins preventivos.",
+        "evidence": "•\tInventário automatizado dos ativos de rede em ambientes externos;\n•\tRelatórios de acompanhamento dos indicadores de performance;\n•\tEvidências de vistorias (relatórios, pareceres técnicos, registos de manutenções, etc.)."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Gestão de ativos (ID.GA)",
+    "subcategory": "ID.GA-5 – Os ativos necessários para a prestação de bens e serviços devem ser classificados",
+    "reference": "CIS CSC 13, 14 COBIT 5 APO03.03, APO03.04, APO12.01, BAI04.02, BAI09.02 ISO/IEC 27001:2013 A.8.2.1 NIST SP 800-53 Rev. 4 CP-2, RA-2, SA-14, SC-6",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•\tOs ativos são classificados de forma ad hoc;\n•\tSó alguns dos responsáveis pelos ativos estão identificados.",
+        "evidence": "•\tRegistos possivelmente incompletos com classificação de ativos."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•\tA organização definiu métodos de classificação dos seus ativos por criticidade e valor percebido;\n•\tExiste uma política de classificação dos ativos consoante a sua importância percebida para o negócio;\n•\tOs     responsáveis     pelos     ativos são orientados a classificá-los adequadamente.",
+        "evidence": "•\tPolítica de classificação de ativos;\n•\tFormalização dos procedimentos de classificação;\n•\tBase de corelacionamento entre ativos e responsáveis;\n•\tBase de identificação dos ativos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•\tA classificação dos ativos é revista em períodos regulares;\n•\tO nível da classificação dos ativos influencia na seleção dos controlos de segurança aplicados;\n•\tSão feitas avaliações periódicas aos critérios e controlos de classificação dos ativos.",
+        "evidence": "•\tRegisto atualizado da classificação dos ativos;\n•\tMapa de tipos de controlos de segurança por níveis de classificação dos ativos;\n•\tRelatório de avaliação dos critérios de classificação."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Ambiente da Organização (ID.AO)",
+    "subcategory": "ID.AO-1 – O papel da organização na cadeia logística deve ser identificado e comunicado",
+    "reference": "COBIT 5 APO08.01, APO08.04, APO08.05, APO10.03, APO10.04, APO10.05 ISO/IEC 27001:2013 A.15.1.1, A.15.1.2, A.15.1.3, A.15.2.1, A.15.2.2 NIST SP 800-53 Rev. 4 CP-2, SA-12\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os fornecedores de cada subgrupo da organização encontram-se identificados, ainda que de forma isolada.",
+        "evidence": "•   Registo formal de fornecedores por subgrupo da organização."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   O governo, no relacionamento entre a organização e os seus fornecedores, encontra-se estabelecido e tem o suporte documental necessário;\n•   Existem controlos de restrições (ex-.: colaboradores, anti branqueamento, etc.);\n•   São mantidos registos integrados e de tipificação dos fornecedores em cada âmbito da organização;\n•   Os fornecedores são tipificados consoante a sua criticidade para a organização.",
+        "evidence": "•   Políticas e procedimentos para a relação com fornecedores;\n•   Sistema de cadastro integrado dos fornecedores."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os contratos são revistos em intervalos regulares;\n•   Os fornecedores de serviços críticos para a organização, têm os seus controlos de segurança validados, para atenderem aos requisitos da organização;\n•   A tipificação dos fornecedores é revista e avaliada em intervalos regulares.",
+        "evidence": "•   Relatório da análise e avaliação de riscos na cadeia de fornecedores;\n•   Resultados de auditorias à cadeia crítica de fornecedores da organização."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Ambiente da Organização (ID.AO)",
+    "subcategory": "ID.AO-2 – O posicionamento da organização no seu setor de atividade deve ser identificado e comunicado",
+    "reference": "COBIT 5 APO02.06, APO03.01 ISO/IEC 27001:2013 Clause 4.1 NIST SP 800-53 Rev. 4 PM-8",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A organização tem a sua missão e objetivo definidos e consegue identificar partes interessadas, internas e externas, para o efeito.",
+        "evidence": "•   Contrato ou estatuto de formação da organização;\n•   Relação de fornecedores, parceiros e demais interessados."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A política de segurança da informação faz referência à missão, objetivos da organização e às suas partes interessadas;\n•   A política de segurança da informação está divulgada e é de conhecimento de todas as partes interessadas;\n•   A gestão da organização realizou uma análise de forças, oportunidades, ameaças e fraquezas (SWOT) da sua atividade.",
+        "evidence": "•   Referência à missão e objetivos da organização na política de segurança;\n•   Registos comprovativos da divulgação da política de segurança pelas partes interessadas;\n•   Relatório da análise SWOT da organização."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   As políticas e os relacionamentos com as partes interessadas são revistos em intervalos regulares;\n•   Ocorrem regularmente  ações de sensibilização sobre as políticas de segurança;\n•   A relação dos interessados é revista regularmente pela gestão da organização.",
+        "evidence": "•   Controlo de  ações de sensibilização das partes interessadas quanto às políticas de segurança, missão e objetivo da organização;\n•   Registos de revisão das relações com partes interessadas;\n•   Registo de revisão dos estudos SWOT."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Ambiente da Organização (ID.AO)",
+    "subcategory": "ID.AO-3 – A missão, visão, valores, estratégias e objetivos da organização devem ser definidas e comunicadas",
+    "reference": "COBIT 5 APO02.01, APO02.06, APO03.01 NIST SP 800-53 Rev. 4 PM-11, SA-14",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A organização tem a sua missão, visão, valores e objetivos estratégicos\ndefinidos e consegue identificar partes interessadas, internas e externas, para o efeito.",
+        "evidence": "•   Contrato ou estatuto de formação da organização;\n•   Relação de fornecedores, parceiros e demais interessados.\n•   Plano de negócio ou equivalente que indique as estratégias da organização."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A política de segurança da informação faz referência à missão, visão, objetivos e   valores   da   organização   e   às   suas partes interessadas;\n•   A política de segurança da informação está divulgada e é de conhecimento de todas as partes interessadas.",
+        "evidence": "•   Referência à missão e objetivos da organização na política de segurança da informação;\n•   Registos comprovativos da divulgação da política de segurança de informação pelas partes interessadas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   As políticas e a relação com as partes interessadas são revistas em intervalos regulares;\n•   Ocorrem regularmente ações de sensibilização sobre as políticas de segurança;\n•   O plano de negócio (ou equivalente) é revisto conforme a estratégia da organização;\n•   A relação com os interessados é revista regularmente pela gestão da organização.",
+        "evidence": "•   Controlo de ações de sensibilização das partes interessadas quanto às políticas de segurança, missão e objetivo da organização;\n•   Registos de revisão das relações com as partes interessadas."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Ambiente da Organização (ID.AO)",
+    "subcategory": "ID.AO-4 – Os ativos críticos devem ser identificados e registados",
+    "reference": "COBIT 5 APO10.01, BAI04.02, BAI09.02 ISO/IEC 27001:2013 A.11.2.2, A.11.2.3, A.12.1.3 NIST SP 800-53 Rev. 4 CP-8, PE-9, PE-11, PM-8, SA-14",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  ativos  críticos  são  identificados  de forma ad hoc.",
+        "evidence": "•   Registo possivelmente incompleto dos ativos críticos."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os  ativos  que  suportam  os  processos críticos são identificados em sistema de gestão de ativos consolidado;\n•   É  utilizada  uma  ferramenta/aplicação para  a  gestão  integrada  dos  ativos  da organização;\n•   A   capacidade   produtiva   dos   ativos de  infraestrutura,  redes  e  sistemas  é registada  e  monitorizada  de  modo  a garantir a operação.",
+        "evidence": "•   Registo em ferramenta de gestão dos ativos críticos de infraestrutura, redes e sistemas da organização;\n•   Política de classificação de ativos conforme a sua criticidade;\n•   Monitorização e gestão das capacidades produtivas dos ativos críticos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os registos dos ativos são atualizados dinamicamente conforme as alterações realizadas nos ambientes existentes (p. ex. desenvolvimento, qualidade e produção);\n•   São realizadas manutenções preventivas planeadas, nos ativos críticos de infraestrutura e redes;\n•   São realizadas revisões das capacidades de cada ativo para garantir que atendem às necessidades da organização.",
+        "evidence": "•   Sistema de descoberta automática de ativos;\n•   Registo de manutenções preventivas aos equipamentos de infraestrutura;\n•   Planeamento da redundância e estratégias de recuperação e restauro de desastres."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Ambiente da Organização (ID.AO)",
+    "subcategory": "ID.AO-5 – Os requisitos de resiliência necessários para suportar a prestação de serviços críticos devem ser definidos",
+    "reference": "COBIT 5 BAI03.02, DSS04.02 ISO/IEC 27001:2013 A.11.1.4, A.17.1.1, A.17.1.2, A.17.2.1 NIST SP 800-53 Rev. 4 CP-2, CP-11, SA-13, SA-14",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Existem notas ad hoc sobre os requisitos mínimos para prestação de serviços críticos.",
+        "evidence": "•   Documentação com os requisitos mínimos de infraestrutura para suportar os serviços críticos;\n•   Fornecedores críticos identificados."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existe um plano de continuidade registado e testado com estratégias de recuperação;\n•   A  organização  mantém  contratos  com fornecedores  para  a  manutenção  dos serviços críticos;\n•   A   organização   possui   procedimentos de recuperação da infraestrutura bem definidos.",
+        "evidence": "•   Documentação do Plano de Continuidade de Negócio (PCN) e registo de testes efetivos realizados;\n•   Registo nos contratos com fornecedores críticos de cláusulas de continuidade;\n•   Registo de procedimentos relativos à recuperação das infraestruturas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   O plano de continuidade é revisto regularmente;\n•   Agentes externos em cadeia crítica da organização  são  auditados  quanto  às suas   capacidades   no   atendimento   à resiliência da organização;\n•   A organização mantém um hot site de contingência.",
+        "evidence": "•   Resultados de simulacros em ambientes de produção;\n•   Registos de ações de sensibilização de colaboradores;\n•   Relatórios de auditorias de fornecedores e parceiros para o efeito;\n•   Capacidade de operação imediata no\nhot site."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Governação (ID.GV)",
+    "subcategory": "ID.GV-1 – A política de segurança da informação deve ser definida e comunicada",
+    "reference": "CIS CSC 19 COBIT 5 APO01.03, APO13.01, EDM01.01, EDM01.02 ISO/IEC 27001:2013 A.5.1.1 NIST SP 800-53 Rev. 4 -1 controls from all security control families",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "• Existe uma política de segurança estabelecida e divulgada internamente.",
+        "evidence": "• Documento com a política da informação;\n• Comunicação interna para disseminação da política de informação."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "• Os colaboradores são informados e participam em ações de sensibilização sobre a existência da política e os seus termos.",
+        "evidence": "• Publicação oficial da política de segurança da informação pela gestão de topo;\n• Registo de comprovação de leitura da política pelos colaboradores;\n• Armazenamento da política em local de fácil acesso aos colaboradores."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•  A política de segurança é relacionada com outras políticas ligadas à segurança da informação dentro da organização (p. ex. antifraude, anti- branqueamento de capitais, etc.);\n•  A  política  é  mantida  num  sistema  de Gestão   Eletrónica   de   Documentação (GED)   e   divulgada   pela   intranet   da organização;\n•  A  política  é  revista  com  regularidade mínima anual.",
+        "evidence": "• Acompanhamento de documentos de segurança;\n• Conjunto de políticas de segurança para temas específicos;\n• Sistema eletrónico de registo e armazenamento das políticas."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Governação (ID.GV)",
+    "subcategory": "ID.GV-2 – Os requisitos legais e regulamentares para a cibersegurança devem ser cumpridos",
+    "reference": "CIS CSC 19 COBIT 5 BAI02.01, MEA03.01, MEA03.04 ISO/IEC 27001:2013 A.18.1.1, A.18.1.2, A.18.1.3, A.18.1.4, A.18.1.5 NIST SP 800-53 Rev. 4 -1 controls from all security control families",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  colaboradores  têm  conhecimento informal  das  leis  e  regulamentações aplicáveis.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Identificação de leis e regulamentações aplicáveis  à  organização  nas  políticas de segurança;\n•   Publicação da política relativa à privacidade dos dados.",
+        "evidence": "•   Secção na política de segurança que faz referência a leis e regulamentações pertinentes;\n•   Divulgação e consciencialização sobre a política de privacidade."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Revisão regular de publicações de novos diplomas legais aplicáveis à organização;\n•   Estabelecimento de equipa específica para cumprimento das leis e regulamentações aplicáveis;\n•   Auditorias e comités internos de tratamento dos controlos de privacidade.",
+        "evidence": "•   Registo da execução de procedimento e/ou sistema de monitorização/ clipping das publicações de leis pertinentes;\n•   Criação de equipa de conformidade interna ou contrato com fornecedor externo para o efeito;\n•   Relatórios de auditorias internas e/ou de parceiros, quanto ao cumprimento das leis pertinentes;\n•   Atas de reuniões do comité de conformidade com temas relativos à segurança da informação e controlos de privacidade."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Avaliação de risco (ID.AR)",
+    "subcategory": "ID.AR-1 – As vulnerabilidades dos ativos devem ser identificadas e documentadas",
+    "reference": "CIS CSC 4 COBIT 5 APO12.01, APO12.02, APO12.03, APO12.04, DSS05.01, DSS05.02 ISO/IEC 27001:2013 A.12.6.1, A.18.2.3 NIST SP 800-53 Rev. 4 CA-2, CA-7, CA-8, RA-3, RA-5, SA-5, SA-11, SI-2, SI-4, SI-5",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As vulnerabilidades são identificadas, mas não existe processo formal de tratamento;\n•   Não existe uma equipa dedicada à gestão de vulnerabilidades.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As vulnerabilidades são identificadas e tipificadas nos ativos de informação;\n•   Existe um processo de gestão de vulnerabilidades que monitoriza os ativos, de acordo com as suas vulnerabilidades atuais e novas;\n•   Existe uma equipa dedicada ao acompanhamento de publicações de novas vulnerabilidades.",
+        "evidence": "•   Relatórios de pesquisa de vulnerabilidades;\n•   Classificação das vulnerabilidades por “facilidade de exploração” ou qualquer outro critério definido pela organização."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Existe um processo formal de revisão e análise recorrente das vulnerabilidades identificadas;\n•   As vulnerabilidades são identificadas automaticamente por sistemas\nde pesquisa de vulnerabilidades dedicados;\n•   As vulnerabilidades, em cada ativo de uma cadeia de acesso, são\ncorrelacionadas para reduzir o risco de “escalada”.",
+        "evidence": "•   Relatórios de avaliação e revisão dos processos de análises de vulnerabilidades;\n•   Sistema automatizado de deteção de vulnerabilidades;\n•   Sistema de novos ativos na infraestrutura."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Avaliação de risco (ID.AR)",
+    "subcategory": "ID.AR-2 – A organização deve partilhar informações sobre ameaças de cibersegurança com grupos de interesse da especialidade",
+    "reference": "CIS CSC 4 COBIT 5 BAI08.01 ISO/IEC 27001:2013 A.6.1.4 NIST SP 800-53 Rev. 4 SI-5, PM-15, PM-16",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   São  estabelecidos  contactos  informais com grupos de interesse.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existem canais de comunicação estabelecidos com grupos de interesse, sobre ameaças e temas de segurança da informação;\n•   São identificados responsáveis pela comunicação das vulnerabilidades com os grupos de interesse.",
+        "evidence": "•   Procedimentos de comunicação de vulnerabilidades;\n•   Indicação de responsáveis pela comunicação de vulnerabilidades com os grupos de interesse;\n•   Acesso a grupos e fontes públicas  ou privadas de dados e listas de distribuição sobre vulnerabilidades e correções;\n•   Relação de fontes fiáveis de informações sobre vulnerabilidades pertinentes à organização."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os canais de comunicação são otimizados de forma a\ngarantir controlos e métricas de acompanhamento;\n•   Todas as comunicações que forem possíveis são sistematizadas em processos automáticos;\n•   As comunicações são revistas periodicamente para avaliar a sua assertividade e efetividade.",
+        "evidence": "•   Registos das comunicações feitas e dos resultados obtidos (ex.: vulnerabilidades tratadas, riscos mitigados, etc.);\n•   Sistema de coleta e tratamento de comunicações de vulnerabilidades integrado com os processos de gestão das vulnerabilidades;\n•   Registo de avaliação das comunicações e dos meios utilizados para o efeito."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Avaliação de risco (ID.AR)",
+    "subcategory": "ID.AR-3 – As ameaças internas e externas devem ser identificadas e documentadas na metodologia de gestão do risco",
+    "reference": "CIS CSC 4 COBIT 5 APO12.01, APO12.02, APO12.03, APO12.04 ISO/IEC 27001:2013 Clause 6.1.2 NIST SP 800-53 Rev. 4 RA-3, SI-5, PM-12, PM-16",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Existe  uma  lista  genérica  de  ameaças, sem  mapeamento  ou  documentação na metodologia de gestão do risco.",
+        "evidence": "•   Documento com lista de ameaças."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existe um mapa de ameaças conhecidas, associado a cada tipo de ativo;\n•   Existe uma indicação de tratamento de cada ameaça mapeada.",
+        "evidence": "•   Mapa de ameaças por vulnerabilidade, por ativo;\n•   Estratégias de tratamento dos riscos estabelecidas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   O processo de gestão de riscos encontra-se estabelecido com critérios definidos e os seus resultados e estratégias de tratamento são revistos em intervalos regulares;\n•   O processo de gestão de riscos é avaliado e testado quanto à sua efetividade;\n•   Existe suporte de um sistema de gestão de   riscos   que   permite   uma   melhor eficiência  e  garante  a  integridade  do processo.",
+        "evidence": "•   Registos da análise e avaliação de riscos nos ambientes e ativos da organização;\n•   Registo da participação da gestão de topo nas tomadas de decisão sobre o tratamento dos riscos;\n•   Relatórios de avaliação do processo de gestão de riscos;\n•   Apoio sistémico ao processo e aos\nworkflows de tratamento dos riscos."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Avaliação de risco (ID.AR)",
+    "subcategory": "ID.AR-4 – A gestão do risco deve ser efetuada com base na análise de ameaças, vulnerabilidades, probabilidades e impactos",
+    "reference": "CIS CSC 4 COBIT 5 APO12.02 ISO/IEC 27001:2013 A.12.6.1 NIST SP 800-53 Rev. 4 RA-2, RA-3, PM-16",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Existe  uma  metodologia  de  gestão  do risco estabelecida.",
+        "evidence": "•   Documento com a metodologia de gestão do risco."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os critérios de probabilidade e impacto dos riscos foram formalmente definidos;\n•   As   vulnerabilidades   e   ameaças   são categorizadas conforme os critérios de probabilidade e impacto estabelecidos;\n•   Existe uma perceção de relevância dos ativos para a organização, estabelecida numa escala própria;\n•   As  avaliações  de  risco  são  associadas a  funções  para  o  cálculo,  de  forma  a identificar o nível de risco de cada ativo.",
+        "evidence": "•   Procedimentos que descrevem as metodologias de análise de riscos;\n•   Catálogo das ameaças e vulnerabilidades identificadas na estrutura da organização;\n•   Categorização dos ativos quanto à sua relevância para a organização."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os ativos têm a sua relevância associada ao grau de importância para o negócio ou têm um valor monetário associado;\n•   As avaliações de riscos são suportadas por sistemas específicos para o efeito.",
+        "evidence": "•   Relatórios de avaliação quantitativa de riscos;\n•   Sistema de suporte à avaliação de riscos."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Avaliação de risco (ID.AR)",
+    "subcategory": "ID.AR-5 – A organização deve garantir que as respostas aos riscos são identificadas e priorizadas",
+    "reference": "CIS CSC 4 COBIT 5 APO12.05, APO13.02 ISO/IEC 27001:2013 Clause 6.1.3 NIST SP 800-53 Rev. 4 PM-4, PM-9",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  riscos  são  tratados,  mas  de  forma não sistematizada.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A metodologia de riscos estabelece formalmente estratégias para o tratamento dos riscos identificados, de acordo com o apetite ao risco da organização;\n•   Os riscos são priorizados conforme os critérios de tratamento estabelecidos, de acordo com o nível de exposição percebida e a importância do ativo para a organização.",
+        "evidence": "•   Formalização em documentação interna de riscos sobre a metodologia de tratamento de riscos;\n•   Critérios formais e aceites pela gestão de topo para definição dos critérios de tratamento dos riscos, conforme\na importância dos ativos para a organização."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os riscos são categorizados numa escala de importância para a priorização dos tratamentos;\n•   O tratamento dos riscos tem em conta o custo financeiro e operacional entre\no dano previsto e o custo financeiro e operacional de implementação dos controlos definidos.",
+        "evidence": "•   Revisão periódica das classificações dos riscos e critérios de classificação;\n•   Avaliação operacional e financeira da relação custo-benefício, pela implementação de controlos em ativos, por tipo de risco."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Estratégia de Gestão de Risco (ID.GR)",
+    "subcategory": "ID.GR-1 – A organização deve definir um processo de gestão do risco",
+    "reference": "CIS CSC 4 COBIT 5 APO12.04, APO12.05, APO13.02, BAI02.03, BAI04.02 ISO/IEC 27001:2013 Clause 6.1.3, Clause 8.3, Clause 9.3 NIST SP 800-53 Rev. 4 PM-9",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As estratégias para a gestão de riscos não estão definidas ou não são consistentes em toda a organização.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existem   estratégias   definidas   para   a gestão de riscos e   as estratégias para a gestão de riscos são consistentes em toda a organização;\n•   A gestão de risco tem claramente definidos responsáveis pela gestão do processo e pelo tratamento dos riscos identificados ( gestão do risco);\n•   A gestão de riscos considera o vínculo dos riscos aos ativos e processos produtivos da organização.",
+        "evidence": "•   Política de gestão de riscos;\n•   Exercício de análise e avaliação de riscos transversais à organização;\n•   Nomeação formal através de e-mail ou de descritivo de função do responsável pela  coordenação da gestão de riscos;\n•   Identificação de responsáveis pelo tratamento dos riscos nos resultados das análises;\n•   Mapa dos riscos por ativos e processos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Existe uma cultura de risco na organização, percebida em diversos níveis;\n•   A gestão de riscos é suportada por um sistema dedicado;\n•   Existe   um registo histórico de revisão dos riscos.",
+        "evidence": "•   As estratégias de tolerância, apetite e tratamento dos riscos, a estrutura de governo da gestão de riscos e as dinâmicas de identificação, análise,\navaliação e medição dos riscos devem ser consistentes em toda a organização e identificadas de forma não ambígua entre os colaboradores;\n•   Software ou plataforma de suporte à gestão de riscos em pleno uso;\n•   Registo de avaliações dos riscos identificados e reavaliações de controlos implementados."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Estratégia de Gestão de Risco (ID.GR)",
+    "subcategory": "ID.GR-2 – A organização deve determinar e identificar a sua tolerância ao risco",
+    "reference": "COBIT 5 APO12.06 ISO/IEC 27001:2013 Clause 6.1.3, Clause 8.3 NIST SP 800-53 Rev. 4 PM-9",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A tolerância ao risco é decidida arbitrariamente e/ou de forma  ad hoc.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As estratégias de tratamento de riscos são relacionadas ao nível de risco aceite pela organização;\n•   Os processos de aprovação dos riscos são definidos e aprovados pela gestão de topo.",
+        "evidence": "•       Registo formal na documentação da gestão de riscos: \n- da tolerância ao risco aceite;\n- da estratégia de tratamento de riscos     conforme o nível do risco percebido;\n- dos riscos aceites pela gestão de topo."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Nas revisões das estratégias de riscos, os indicadores de tolerância ao risco são atualizados.",
+        "evidence": "•   Evidências de que as estratégias de riscos são revistas, juntamente com seus indicadores de tolerância."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "Estratégia de Gestão de Risco (ID.GR)",
+    "subcategory": "ID.GR-3 – A organização deve definir a sua estratégia de tratamento do risco",
+    "reference": "COBIT 5 APO12.02 ISO/IEC 27001:2013 Clause 6.1.3, Clause 8.3 NIST SP 800-53 Rev. 4 SA-14, PM-8, PM-9, PM-11",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   O tratamento dos riscos é feito de forma ad hoc e não sistematizada.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   É identificada a estratégia de resposta aos riscos associados aos ativos críticos observados.",
+        "evidence": "•   Existem registos de riscos indicados, pelo menos para uma das quatro estratégias clássicas (negar, mitigar, transferir ou aceitar)."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Orientações e boas práticas de tratamento de riscos no setor de atuação são consideradas para a seleção da estratégia de tratamento.",
+        "evidence": "•   Consideram-se resultados de benchmarks de mercado, regulações e orientações do governo ou do mercado para a seleção da estratégia de tratamento do risco."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "ID.GL – Gestão do Risco da Cadeia Logística",
+    "subcategory": "ID.GL-1 – A organização deve definir, avaliar e gerir processos de gestão do risco da cadeia logística",
+    "reference": "CIS CSC 4 COBIT 5 APO10.01, APO10.04, APO12.04, APO12.05, APO13.02, BAI01.03, BAI02.03, BAI04.02 ISO/IEC 27001:2013 A.15.1.1, A.15.1.2, A.15.1.3, A.15.2.1, A.15.2.2 NIST SP 800-53 Rev. 4 SA-9, SA-12, PM-9",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A cadeia de logística está identificada.",
+        "evidence": "•   Documento com a identificação dos diferentes fornecedores e parceiros da cadeia logística."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A organização aplica a gestão de riscos na sua cadeia logística.",
+        "evidence": "•   A política de gestão de fornecedores indica a necessidade de tratamento da gestão de riscos nas atividades da organização, dos seus responsáveis e uma periodicidade de análise."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os fornecedores e parceiros são categorizados  de acordo com o nível de risco atribuído após avaliação;\n•   A    organização    avalia    regularmente os  controlos  de  segurança  dos  seus fornecedores críticos.",
+        "evidence": "•   Existe um mapa de riscos que indica o risco dos fornecedores;\n•   Existem registos de avaliações de riscos dos fornecedores e dos seus impactos."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "ID.GL – Gestão do Risco da Cadeia Logística",
+    "subcategory": "ID.GL-2 – A organização deve avaliar o risco da cadeia logística de cibersegurança",
+    "reference": "COBIT 5 APO10.01, APO10.02, APO10.04, APO10.05, APO12.01, APO12.02, APO12.03, APO12.04, APO12.05, APO12.06, APO13.02, BAI02.03 ISO/IEC 27001:2013 A.15.2.1, A.15.2.2 NIST SP 800-53 Rev. 4 RA-2, RA-3, SA-12, SA-14, SA-15, PM-9",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  fornecedores  da  organização,  que fazem  parte  da  cadeia  de  logística  de cibersegurança são identificados.",
+        "evidence": "•   Documento com listagem de fornecedores envolvidos na cadeia de logística de cibersegurança."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A política de fornecedores indica controlos específicos para a cadeia logística crítica da organização;\n•   Os fornecedores da organização são classificados quanto à sua criticidade.",
+        "evidence": "•   Os fornecedores são categorizados conforme indicado nos critérios da política de gestão de fornecedores;\n•   Os fornecedores críticos e de cibersegurança são categorizados quanto à  criticidade que têm para o negócio."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Existe capacidade de, proativamente, definir controlos de segurança para novos fornecedores;\n•   A organização encarrega-se que o impacto na cadeia logística seja evitado.",
+        "evidence": "•   A organização possui critérios de classificação proativa de risco dos seus fornecedores;\n•   Formulário de registo de fornecedores integrado com a avaliação de riscos."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "ID.GL – Gestão do Risco da Cadeia Logística",
+    "subcategory": "ID.GL-3 – Os contratos com fornecedores devem respeitar o plano de gestão do risco para a cadeia logística",
+    "reference": "COBIT 5 APO10.01, APO10.02, APO10.03, APO10.04, APO10.05 ISO/IEC 27001:2013 A.15.1.1, A.15.1.2, A.15.1.3 NIST SP 800-53 Rev. 4 SA-9, SA-11, SA-12, PM-9",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Existe um processo formal de contratação de fornecedores.",
+        "evidence": "•   Existem contratos formais com os fornecedores relevantes para a cadeia de logística."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A  organização  garante  que  o  tema  da segurança da informação é incluído nos contratos da cadeia logística;\n•   A política de fornecedores inclui controlos de segurança na cadeia logística.",
+        "evidence": "•   Existem cláusulas sobre confidencialidade e privacidade nos contratos e termos de contratação da organização;\n•   Os parceiros e fornecedores registam a sua tomada de conhecimento e aceitação das políticas de segurança nas relações com a organização."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A organização avalia os controlos de segurança dos seus fornecedores, em intervalos regulares.",
+        "evidence": "•   Indicadores de acompanhamento dos controlos de segurança que dão visibilidade sobre a forma como a cadeia logística atende à gestão de riscos;\n•   Os registos de conhecimento e aceitação das políticas são validados periodicamente."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "ID.GL – Gestão do Risco da Cadeia Logística",
+    "subcategory": "ID.GL-4 – Os fornecedores devem ser periodicamente avaliados",
+    "reference": "COBIT 5 APO10.01, APO10.03, APO10.04, APO10.05, MEA01.01, MEA01.02, MEA01.03, MEA01.04, MEA01.05 ISO/IEC 27001:2013 A.15.2.1, A.15.2.2 NIST SP 800-53 Rev. 4 AU-2, AU-6, AU-12, AU-16, PS-7, SA-9, SA-12",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A avaliação dos fornecedores é feita de forma não sistematizada.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As políticas internas da organização devem prever a possibilidade de os seus fornecedores serem avaliados no âmbito da segurança da informação;\n•   Devem existir planos de auditoria orientados pela perceção do risco, que incluam os fornecedores no âmbito.",
+        "evidence": "•   Referência nas políticas e contratos com fornecedores, sobre a possibilidade de auditorias por parte da organização;\n•   Plano anual de auditoria de segurança da informação com a cadeia de fornecedores no âmbito, listados pelo nível de exposição ao risco."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Mecanismos de acompanhamento e monitorização dos controlos de riscos na cadeia logística;\n•   Evidências de tratamento dos pontos identificados nas auditorias aos fornecedores.",
+        "evidence": "•   Procedimentos e ferramentas de monitorização dos indicadores de segurança na cadeia logística;\n•   Revisões das auditorias realizadas e acompanhamento dos pontos identificados."
+      }
+    ]
+  },
+  {
+    "objective": "IDENTIFICAR",
+    "category": "ID.GL – Gestão do Risco da Cadeia Logística",
+    "subcategory": "ID.GL-5 – O plano de resposta e recuperação de desastre deve ser exercitado com o acompanhamento de fornecedores",
+    "reference": "CIS CSC 19, 20 COBIT 5 DSS04.04 ISO/IEC 27001:2013 A.17.1.3 NIST SP 800-53 Rev. 4 CP-2, CP-4, IR-3, IR-4, IR-6, IR-8, IR-9",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Identificar os fornecedores que suportam os processos críticos da organização.",
+        "evidence": "•   Registos de fornecedores críticos à organização."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os  planos  de  resposta  e  recuperação de  desastres  definidos  consideram  a cadeia de fornecedores.",
+        "evidence": "•   Identificação de dependências a fornecedores externos na cadeia crítica da organização;\n•   Os planos de resposta a incidentes e recuperação de desastres fazem referência aos fornecedores."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Validação dos planos de resposta e recuperação de desastres da\norganização, com a participação ativa de fornecedores críticos envolvidos no âmbito.",
+        "evidence": "•   Tratamento dos resultados de testes de recuperação e resposta a incidentes com o envolvimento dos fornecedores;\n•   Registos de testes realizados nos procedimentos de resposta e recuperação de desastres, com o envolvimento da cadeia de fornecedores críticos."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.GA – Gestão de Identidades, Autenticação e Controlo de Acessos",
+    "subcategory": "PR.GA-1 – O ciclo de vida de gestão de identidades deve ser definido",
+    "reference": "CIS CSC 1, 5, 15, 16 COBIT 5 DSS05.04, DSS06.03 ISO/IEC 27001:2013 A.9.2.1, A.9.2.2, A.9.2.3, A.9.2.4, A.9.2.6, A.9.3.1, A.9.4.2, A.9.4.3 NIST SP 800-53 Rev. 4 AC-1, AC-2, IA-1, IA-2, IA-3, IA-4, IA-5, IA-6, IA-7, IA-8, IA-9, IA-10, IA-11",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A associação de acessos de identidades é feita com base nos acessos atribuídos no passado.",
+        "evidence": "•   Registo da associação de acessos atribuídos a identidades."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existem políticas de gestão de identidades e acessos;\n•   As etapas dos ciclos de acessos são bem definidas e transversais às tecnologias e acessos em geral;\n•   Base única de identidades e regras de acessos.",
+        "evidence": "•   Políticas destinadas à gestão das identidades e dos acessos nos sistemas e acessos em geral;\n•   Os  procedimentos  relativos  à  gestão de acessos são definidos minimamente para   as   etapas   de   emissão,   gestão, verificação e revogação dos acessos;\n•   Existe  um  diretório  centralizado,  pelo qual  as  identidades  e  os  acessos  são geridos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os acessos são estabelecidos e limitados de acordo com perfis funcionais;\n•   Os  acessos  são  revistos  em  intervalos regulares.",
+        "evidence": "•   Os acessos são geridos conforme  o perfil funcional para cada tipo de acesso;\n•   Existem controlos que evitam acessos excessivos sem a justificação pelo descritivo funcional;\n•   Todos os acessos são revistos e reavaliados em intervalos regulares."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.GA – Gestão de Identidades, Autenticação e Controlo de Acessos",
+    "subcategory": "PR.GA-2 – Devem existir controlos de acesso físico às redes e sistemas de informação",
+    "reference": "COBIT 5 DSS01.04, DSS05.05 ISO/IEC 27001:2013 A.11.1.1, A.11.1.2, A.11.1.3, A.11.1.4, A.11.1.5, A.11.1.6, A.11.2.1, A.11.2.3, A.11.2.5, A.11.2.6, A.11.2.7, A.11.2.8 NIST SP 800-53 Rev. 4 PE-2, PE-3, PE-4, PE-5, PE-6, PE-8\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Existem controlos que restringem os acessos físicos às zonas que se pretende proteger;\n•   Os  acessos  são  registados  de  forma  a ser possível a identificação individual.",
+        "evidence": "•   Estão instalados controlos de acessos a áreas físicas, como portas,\ntorniquetes ou qualquer outra barreira semelhante;\n•   Existem registos de entrada e saída dos ambientes físicos."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os  acessos  físicos  são  integrados  com um  sistema  transversal  de  gestão  de identidades e acessos.",
+        "evidence": "•   Os acessos físicos são associados a um sistema integrado de identidades e acessos, pelo que as permissões são geridas de forma centralizada."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os  acessos  de  pessoas  externas  são monitorizados;\n•   Os acessos físicos são avaliados regularmente.",
+        "evidence": "•   Os acessos de pessoas externas são monitorizados e acompanhados por colaboradores;\n•   Pessoas externas  são acompanhadas por um colaborador com autorização de acesso a zonas seguras;\n•   Os registos de acessos físicos são revistos regularmente, de acordo com os perfis de acesso;\n•   Existem registos das avaliações regulares dos procedimentos para acessos físicos."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.GA – Gestão de Identidades, Autenticação e Controlo de Acessos",
+    "subcategory": "PR.GA-3 – A organização deve gerir os seus acessos remotos",
+    "reference": "CIS CSC 12 COBIT 5 APO13.01, DSS01.04, DSS05.03 ISO/IEC 27001:2013 A.6.2.1, A.6.2.2, A.11.2.6, A.13.1.1, A.13.2.1 NIST SP 800-53 Rev. 4 AC-1, AC-17, AC-19, AC-20, SC15\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A organização suporta acessos remotos, mas  não  controla  nem  monitoriza  os acessos.",
+        "evidence": "•   Existem soluções de acesso remoto, como por exemplo VPNs, Citrix e Jumpservers."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existem  políticas  internas  que  tratam de acessos remotos e teletrabalho;\n•   Os acessos remotos são controlados de maneira  centralizada  e  integrada  aos sistemas internos;\n•   Os acessos remotos são controlados por soluções  tecnológicas  que  apliquem  a segurança específica para o efeito.",
+        "evidence": "•   Registo de aceitação da política de acesso remoto através de VPN;\n•   Registo de aceitação da política de teletrabalho pelos colaboradores beneficiados;\n•   Sistema de VPN implementado com uso da criptografia adequada na autenticação e no tráfego."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Bloqueios   proativos   contra   acessos remotos não autorizados;\n•   Autenticação    federada    aos    demais sistemas da organização;\n•   Autenticação   com   multi-fatores   para acessos remotos;\n•   Monitorização dos acessos remotos;\n•   Revisão regular dos acessos e tráfego.",
+        "evidence": "•   Tecnologias de acesso com bloqueio proativo pelas regras de logon interativo, tempo de sessão e/ou origem das ligações;\n•   Integração da autenticação externa aos perfis de acessos definidos internamente;\n•   Utilização de duplo fator de autenticação para acessos remotos;\n•   Registo de monitorização específica dos acessos remotos;\n•   Registo de revisões e revalidações dos acessos remotos."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.GA – Gestão de Identidades, Autenticação e Controlo de Acessos",
+    "subcategory": "PR.GA-4 – A organização deve aplicar na gestão de acessos, os princípios do menor privilégio e da segregação de funções",
+    "reference": "CIS CSC 3, 5, 12, 14, 15, 16, 18 COBIT 5 DSS05.04 ISO/IEC 27001:2013 A.6.1.2, A.9.1.2, A.9.2.3, A.9.4.1, A.9.4.4, A.9.4.5 NIST SP 800-53 Rev. 4 AC-1, AC-2, AC-3, AC-5, AC-6, AC-14, AC-16, AC-24",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   São atribuídos acessos de forma nominal e não são partilhados entre múltiplos colaboradores ou entidades;\n•   Os acessos são concedidos copiando os acessos anteriores de colaboradores com perfis similares.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os acessos são concedidos conforme o perfil funcional;\n•   Perfis de acessos elevados devem ser atribuídos com critérios de restrição;\n•   A política de gestão de acessos prevê o princípio do menor privilégio;\n•   Acessos com elevado privilégio (p. ex. administração de sistemas) são atribuídos tendo em conta a restrição por sequenciais, quórum ou geoespacial (ver QNRCS).",
+        "evidence": "•   Registos de pedidos de acesso por perfil funcional;\n•   Registos de pedidos e aprovações apropriadas para acessos privilegiados."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A definição de funções e níveis de acessos são revistos regularmente;\n•   Os acessos concedidos com privilégios elevados são revistos regularmente;\n•   Os acessos são monitorizados ao pormenor;\n•   Existem controlos complementares para os acessos elevados, tais como férias obrigatórias e job rotation;\n•   Utilizadores com acessos elevados são submetidos a controlos compensatórios.",
+        "evidence": "•   Registos da execução da revisão de acessos;\n•   Listagem de acessos removidos, alterados e criados na última revisão;\n•   Registos correspondentes aos acessos disponíveis;\n•   Alertas de segurança sobre acessos privilegiados;\n•   Incidentes de segurança abertos, referentes ao uso indevido de acessos privilegiados."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.GA – Gestão de Identidades, Autenticação e Controlo de Acessos",
+    "subcategory": "PR.GA-5 – A organização deve proteger a integridade das redes de comunicações",
+    "reference": "CIS CSC 9, 14, 15, 18 COBIT 5 DSS01.05, DSS05.02 ISO/IEC 27001:2013 A.13.1.1, A.13.1.3, A.13.2.1, A.14.1.2, A.14.1.3 NIST SP 800-53 Rev. 4 AC-4, AC-10, SC-7\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As redes internas encontram-se segregadas conforme a sua finalidade.",
+        "evidence": "•   Existem routers, firewalls e demais tecnologias de redes de comunicações, que possibilitem a segmentação da rede;\n•   Impossibilidade de aceder a qualquer sistema a partir de qualquer zona."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A rede tem a sua topologia documentada e regras de acessos definidas;\n•   As regras de acesso são documentadas;\n•   Qualquer alteração nas regras de conexão é registada.",
+        "evidence": "•   Documentação que indique as regras permitidas de conexão entre cada segmento da rede;\n•   Os equipamentos de segurança de redes produzem registos de eventos de operação e de auditoria;\n•   Registos de pedidos de alteração de regras de firewalls ou outros equipamentos para segurança de redes de comunicações."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   São  efetuadas  revisões  das  regras  de conexão;\n•   Monitorização  dos  equipamentos  das redes de comunicações;\n•   As alterações são efetuadas após resultados de validações específicas;\n•   Testes dos controlos gerais de segurança.",
+        "evidence": "•   Os registos de eventos dos equipamentos de redes são monitorizados e acompanhados;\n•   Relatórios de testes de intrusão no âmbito da infraestrutura da rede de comunicação."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.GA – Gestão de Identidades, Autenticação e Controlo de Acessos",
+    "subcategory": "PR.GA-6 – A organização deve verificar a identidade dos colaboradores e vinculá-las às respetivas credenciais",
+    "reference": "CIS CSC, 16 COBIT 5 DSS05.04, DSS05.05, DSS05.07, DSS06.03 ISO/IEC 27001:2013, A.7.1.1, A.9.2.1 NIST SP 800-53 Rev. 4 AC-1, AC-2, AC-3, AC-16, AC-19, AC-24, IA-1, IA-2, IA-4, IA-5, IA-8, PE-2, PS-3\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os colaboradores têm as suas credenciais e identidades registadas e vinculadas.",
+        "evidence": "•   Registo da atribuição de credenciais nominais aos colaboradores."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os   procedimentos   de   validação   das identidades são registados em políticas;\n•   A organização conta com o apoio sistémico na gestão dos acessos e, quando necessário, na validação interativa das credenciais;\n•   Existe um processo de gestão de identidades e acessos estabelecido, com base na identificação dos colaboradores.",
+        "evidence": "•   Documentos com a política e procedimentos que suportam o processo de gestão de identidades e acessos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A gestão de acessos é revista e avaliada com  recorrência  e  os  resultados  são utilizados para a melhoria do processo;\n•   Os antecedentes são igualmente revistos com uma determinada periodicidade.",
+        "evidence": "•   Existem registos de revisão dos procedimentos de concessão de acessos, suportados pela verificação de antecedentes;\n•   Existe uma equipa dedicada a validar e atribuir identidades."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.GA – Gestão de Identidades, Autenticação e Controlo de Acessos",
+    "subcategory": "PR.GA-7 – Devem ser definidos mecanismos de autenticação de utilizadores, dispositivos e outros ativos de sistemas de informação",
+    "reference": "CIS CSC 1, 12, 15, 16 COBIT 5 DSS05.04, DSS05.10, DSS06.10 ISO/IEC 27001:2013 A.9.2.1, A.9.2.4, A.9.3.1, A.9.4.2, A.9.4.3, A.18.1.4 NIST SP 800-53 Rev. 4 AC-7, AC-8, AC-9, AC-11, AC12, AC-14, IA-1, IA-2, IA-3, IA-4, IA-5, IA-8, IA-9, IA-10, IA-11",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os mecanismos de autenticação foram definidos de acordo com os sistemas.",
+        "evidence": "•   Conjunto de soluções de autenticação com palavras-passe, estabelecido consoante o sistema."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existe um sistema de gestão de identidades e acessos estabelecido e que abrange utilizadores, dispositivos e outros ativos de sistemas;\n•   A autenticação é implementada através de grupos funcionais;\n•   Existe uma política de acessos estabelecida.",
+        "evidence": "•   Os acessos são concedidos conforme o registo em sistema de autenticação transversal aos sistemas;\n•   Os acessos são autenticados consoante a identificação e autorização independente de utilizadores e dispositivos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   As autenticações são realizadas de forma integrada e transversal entre sistemas;\n•   As  autenticações  são  reforçadas  para evitar  fraudes  e/ou  falhas  em  pontos únicos de validação.",
+        "evidence": "•   São implementados serviços de autenticação federada entre sistemas diversos;\n•   São observados múltiplos fatores de autenticação em sistemas críticos."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.FC – Formação e Sensibilização",
+    "subcategory": "PR.FC-1 – Os colaboradores devem ter formação em segurança da informação",
+    "reference": "CIS CSC 17, 18 COBIT 5 APO07.03, BAI05.07 ISO/IEC 27001:2013 A.7.2.2, A.12.2.1 NIST SP 800-53 Rev. 4 AT-2, PM-13\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os colaboradores apresentam alguma consciência sobre os temas de segurança da informação e como a organização os trata;\n•   São realizadas intervenções de consciencialização para o tema de segurança da informação.",
+        "evidence": "•   Observação do comportamento dos colaboradores perante a temática da segurança da informação;\n•   Registos de sessões de formação e consciencialização dos colaboradores sobre o tema."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As ações de formação e consciencialização são registadas em planos, procedimentos e metas da organização;\n•   As formações são planeadas consoante a audiência.",
+        "evidence": "•   Formalização de um plano com calendarização de ações de formação estabelecida;\n•   Registo   das   ações   de   formação   às partes interessadas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os resultados das ações de formação e consciencialização são medidos;\n•   Ações periódicas de formação.",
+        "evidence": "•   Registos de avaliação do conhecimento e da absorção das formações e consciencializações;\n•   Utilização de meios de comunicação distintos para a otimização e ampliação das comunicações de segurança da informação."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.FC – Formação e Sensibilização",
+    "subcategory": "PR.FC-2 – Os utilizadores com acesso privilegiado devem compreender quais são os seus papéis e responsabilidades",
+    "reference": "CIS CSC 5, 17, 18 COBIT 5 APO07.02, DSS05.04, DSS06.03 ISO/IEC 27001:2013 A.6.1.1, A.7.2.2 NIST SP 800-53 Rev. 4 AT-3, PM-13\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os utilizadores com acessos privilegiados são informalmente notificados das responsabilidades acrescidas, relativas aos acessos providenciados.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os utilizadores de acessos privilegiados têm formação específica sobre segurança da informação;\n•   Existem procedimentos de registo da aceitação de condições especiais de acessos para os utilizadores de acessos privilegiados.",
+        "evidence": "•   Plano de formação específico para os utilizadores com acessos privilegiados;\n•   Conteúdo programático da formação específica para utilizadores com acessos privilegiados;\n•   Registo das presenças de utilizadores com acessos privilegiados em ações de formação;\n•   Registo do termo de responsabilização sobre a utilização de sistemas com acessos privilegiados."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   São  medidos  os  resultados  das  ações de  formação  e  consciencialização  aos utilizadores com acessos privilegiados;\n•   Garantia  da  atualidade  da  aceitação das   condições   especiais   de   acessos com privilégios elevados;\n•   Ações periódicas de formação.",
+        "evidence": "•   Registos de avaliação do conhecimento e da absorção das formações e consciencializações;\n•   Registo da renovação regular dos termos de responsabilidade sobre os sistemas;\n•   Evidências da recorrência de ações de formação ou consciencialização específicas, com os utilizadores de acessos privilegiados;\n•   Procedimento de ações de consciencialização aquando do encerramento do contrato do colaborador com acessos privilegiados."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.FC – Formação e Sensibilização",
+    "subcategory": "PR.FC-3 – As partes interessadas externas devem compreender quais são os seus papéis e responsabilidades",
+    "reference": "CIS CSC 17 COBIT 5 APO07.03, APO07.06, APO10.04, APO10.05 ISO/IEC 27001:2013 A.6.1.1, A.7.2.1, A.7.2.2 NIST SP 800-53 Rev. 4 PS-7, SA-9, SA-16\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Estabelecimento de requisitos mínimos de segurança da informação para a sua cadeia de clientes e fornecedores.",
+        "evidence": "•   Registo dos requisitos mínimos de segurança, no âmbitos de\nrelacionamento com fornecedores, parceiros e clientes."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Formação   e   sensibilização   sobre   os requisitos de segurança que os clientes, parceiros e fornecedores devem seguir.",
+        "evidence": "•   Registo de formação para os agentes externos;\n•   Material de divulgação dos requisitos de segurança a serem seguidos (p. ex. folhetos, termos em contratos, etc.)."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os  clientes,  parceiros  e  fornecedores têm como dever cumprir os requisitos de segurança definidos;\n•   As   partes   interessadas   externas   são envolvidas  no  processo  de  melhoria contínua.",
+        "evidence": "•   Registos de termos de compromisso com os requisitos de segurança da organização;\n•   Registos de auditorias aos clientes e fornecedores sobre o cumprimento dos requisitos de segurança estipulados."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.FC – Formação e Sensibilização",
+    "subcategory": "PR.FC-4 – A gestão de topo deve compreender as suas funções e responsabilidades",
+    "reference": "CIS CSC 17, 19 COBIT 5 EDM01.01, APO01.02, APO07.03 ISO/IEC 27001:2013 A.6.1.1, A.7.2.2 NIST SP 800-53 Rev. 4 AT-3, PM-13\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A gestão de topo tem as suas funções e responsabilidades definidas de forma informal.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os papéis e responsabilidades da gestão de topo no âmbito da segurança da informação estão estabelecidos.",
+        "evidence": "•   Matriz “RACI” da segurança da informação, onde se inclua a gestão de topo;\n•   Registo de papéis e responsabilidades dos membros da gestão de topo no tema da segurança da informação."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidos o envolvimento e a consciencialização da gestão de topo em temas de segurança da informação.",
+        "evidence": "•   Registo da participação da gestão de topo em ações de consciencialização;\n•   Registo de políticas e documentos de segurança da informação aceites e “endossados” pela gestão de topo."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.SD – Segurança de Dados",
+    "subcategory": "PR.SD-1 – A organização deve proteger os dados armazenados",
+    "reference": "CIS CSC 13, 14 COBIT 5 APO01.06, BAI02.01, BAI06.01, DSS04.07, DSS05.03, DSS06.06 ISO/IEC 27001:2013 A.8.2.3 NIST SP 800-53 Rev. 4 MP-8, SC-12, SC-28",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Estão estabelecidas regras de proteção da confidencialidade, integridade e disponibilidade dos ficheiros, documentos e dados.",
+        "evidence": "•   Políticas de cifras;\n•   Evidências de regras para a salvaguarda de ficheiros, consoante o nível de segurança necessário."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Está estabelecida a classificação da informação consoante a sua sensibilidade e relevância.",
+        "evidence": "•   Política, procedimentos e documentos complementares relativos à classificação da informação;\n•   Evidência de controlos de proteção da informação ajustados à classificação da mesma."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os dados são armazenados consoante os seus níveis de classificação;\n•   Os  dados  offline  (p.  ex.  em  cópias  de segurança)   são   geridos   consoante   a classificação adequada.",
+        "evidence": "•   Gestão de controlos e sistemas criptográficos;\n•   Evidência de armazenamentos adequados consoante o local, tipo de informação armazenada e controlos implementados."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.SD – Segurança de Dados",
+    "subcategory": "PR.SD-2 – A organização deve proteger os dados em circulação",
+    "reference": "CIS CSC 13, 14 COBIT 5 APO01.06, DSS05.02, DSS06.06 ISO/IEC 27001:2013 A.8.2.3, A.13.1.1, A.13.2.1, A.13.2.3, A.14.1.2, A.14.1.3 NIST SP 800-53 Rev. 4 SC-8, SC-11, SC-12\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Existência de perceção de riscos sobre os dados em circulação;\n•   Adoção   de   controlos   genéricos   de proteção de dados em circulação.",
+        "evidence": "•   Evidências de que existe uma perceção de risco sobre alguns tipos de dados mais críticos ao negócio;\n•   Utilização da criptografia em casos comuns (p. ex. sítios de internet, formulários de páginas de internet, bancos de dados, etc.)."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As políticas e os procedimentos que tratem da proteção de dados em circulação são registados formalmente;\n•   Adoção de solução criptográfica específica para cada tecnologia/ ambiente.",
+        "evidence": "•   Políticas e procedimentos que enderecem a proteção de dados em circulação (p. ex. criptografia, classificação da informação, transferência da informação, etc.);\n•   Utilização estruturada de serviços de criptografia para dados em circulação."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É adotada a utilização de tecnologias de cifra dedicadas, consoante a classificação da informação;\n•   São         adotados         os         controlos compensatórios        para        situações adversas.",
+        "evidence": "•   Procedimentos para definição da tecnologia de cifra consoante a classificação da informação;\n•   Registo de análise e avaliação de riscos para os casos adversos (p. ex. controlos compensatórios, registo da aceitação do risco, etc.)."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.SD – Segurança de Dados",
+    "subcategory": "PR.SD-3 – A organização deve gerir formalmente os ativos durante os procedimentos de remoção, transferência e aprovisionamento dos mesmos",
+    "reference": "CIS CSC 1 COBIT 5 BAI09.03 ISO/IEC 27001:2013 A.8.2.3, A.8.3.1, A.8.3.2, A.8.3.3, A.11.2.5, A.11.2.7 NIST SP 800-53 Rev. 4 CM-8, MP-6, PE-16\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Existe o registo informal ou ad hoc dos dados que entram e saem por meio de armazenamento físico;\n•   Os dados em suporte amovível são protegidos de forma não sistematizada.",
+        "evidence": "•   Utilização de software de cifra para componentes amovíveis de forma não padronizada (por exemplo, departamentos diferentes usam ferramentas diferentes)."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existe o registo formal dos controlos de dados que entram e saem por meio de armazenamento físico.",
+        "evidence": "•   Políticas, normas e procedimentos que enderecem o ciclo de vida da informação, armazenada em ativos físicos amovíveis;\n•   Registos de responsáveis atribuídos em dispositivos amovíveis que possam conter dados;\n•   Adoção de software de cifra para componentes amovíveis."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Existe a garantia de que a destruição dos dispositivos amovíveis não exporá dados sigilosos;\n•   É realizada uma revisão periódica dos procedimentos de descarte de dispositivos de armazenamento amovíveis e destruição definitiva de dados.",
+        "evidence": "•   Procedimentos de destruição de dispositivos amovíveis;\n•   Adoção de software para destruição definitiva de dados;\n•   Registo de testes de eficácia dos procedimentos de destruição de dispositivos de armazenamento e de destruição definitiva de dados."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.SD – Segurança de Dados",
+    "subcategory": "PR.SD-4 – A organização deve providenciar a capacidade adequada para garantir a disponibilidade das redes e dos sistemas de informação",
+    "reference": "CIS CSC 1, 2, 13 COBIT 5 APO13.01, BAI04.04 ISO/IEC 27001:2013 A.12.1.3, A.17.2.1 NIST SP 800-53 Rev. 4 AU-4, CP-2, SC-5\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A gestão da capacidade é efetuada sem ter em conta métricas bem definidas;\n•   Não  existe  um  processo  formal  para garantir  a  disponibilidade  das  redes  e dos sistemas de informação.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As capacidades dos sistemas de informação são monitorizadas.",
+        "evidence": "•   Procedimentos e documentos de suporte à gestão de capacidades;\n•   Sistemas de monitorização das capacidades primárias (armazenamento, memória e\nprocessamento e conectividade)."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A partir de indicadores pré- estabelecidos, existe a capacidade de agir pela previsibilidade;\n•   A disponibilidade dos recursos de redes e sistemas é garantida;\n•   Existe uma gestão pró-ativa da capacidade instalada, com base em modelos de previsão fundamentados na utilização passada e crescimento futuro.",
+        "evidence": "•   Alarmística estabelecida para indicadores fora do esperado;\n•   Estabelecer redundâncias dos recursos de redes e sistemas;\n•   Registos das ações de avaliação da gestão de capacidade."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.SD – Segurança de Dados",
+    "subcategory": "PR.SD-5 –A organização deve implementar proteções que evitem exfiltração de informação",
+    "reference": "CIS CSC 13 COBIT 5 APO01.06, DSS05.04, DSS05.07, DSS06.02 ISO/IEC 27001:2013 A.6.1.2, A.7.1.1, A.7.1.2, A.7.3.1, A.8.2.2, A.8.2.3, A.9.1.1, A.9.1.2, A.9.2.3, A.9.4.1, A.9.4.4, A.9.4.5, A.10.1.1, A.11.1.4,A.11.1.5, A.11.2.1, A.13.1.1, A.13.1.3, A.13.2.1, A.13.2.3, A.13.2.4, A.14.1.2, A.14.1.3 NIST SP 800-53 Rev. 4 AC-4, AC-5, AC-6, PE-19, PS-3, PS-6, SC-7, SC-8, SC-13, SC-31, SI-4\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Estão formalizados os procedimentos de salvaguarda da informação contra meios de exfiltração.",
+        "evidence": "•   Implementação de procedimentos  de salvaguarda e prevenção contra exfiltração (p. ex. definição de protocolos e formas de comunicação, restrição de uso de interfaces de extração de informação, etc.)."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os controlos de proteção da informação que  mitigue  o  risco  de  exfiltração  de dados estão implementados;\n•   Adoção de controlos com base em avaliação de risco.",
+        "evidence": "•   Classificação de informação em sistemas de mensagens e troca de emails;\n•   Bloqueios preventivos a sistemas não autorizados de partilha de ficheiros."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Implementação de processos e mecanismos de prevenção contra a perda de informação;\n•   Revisão regular dos controlos contra a exfiltração de informação.",
+        "evidence": "•   Implementação de soluções de Data Loss Protection (DLP);\n•   Registo de auditorias e avaliação dos controlos implementados."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.SD – Segurança de Dados",
+    "subcategory": "PR.SD-6 – A organização deve utilizar mecanismos de verificação para confirmar a integridade de software, firmware e dados",
+    "reference": "CIS CSC 2, 3 COBIT 5 APO01.06, BAI06.01, DSS06.02 ISO/IEC 27001:2013 A.12.2.1, A.12.5.1, A.14.1.2, A.14.1.3, A.14.2.4 NIST SP 800-53 Rev. 4 SC-16, SI-7\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Verificação manual ou não sistematizada da integridade dos sistemas de informação, firmware e dados.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As    ações    que    avaliem    e    atestem a    integridade    dos    sistemas    estão estabelecidas;\n•   É avaliada a integridade de bibliotecas desenvolvidas por terceiros, que sejam utilizadas no desenvolvimento ou operação dos sistemas de informação.",
+        "evidence": "•   Documentos de suporte a processos/ procedimentos de verificação da integridade;\n•   Resultados dos testes estáticos, dinâmicos e interativos de segurança dos sistemas e infraestrutura."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É avaliada de forma transversal e regular a integridade dos sistemas e dados e dependências de bibliotecas desenvolvidas por terceiros.",
+        "evidence": "•   Utilização de algoritmos de verificação de integridade;\n•   Sistema de ferramentas centralizadas de verificação de integridade;\n•   Relatórios de integridade dos diferentes sistemas."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.SD – Segurança de Dados",
+    "subcategory": "PR.SD-7 – Os ambientes de desenvolvimento e de teste devem ser separados de ambientes de produção",
+    "reference": "CIS CSC 18, 20 COBIT 5 BAI03.08, BAI07.04 ISO/IEC 27001:2013 A.12.1.4 NIST SP 800-53 Rev. 4 CM-2\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A segregação de ambientes é efetuada de forma ad hoc e não sistematizada.",
+        "evidence": "•   Registo de alguns sistemas com ambientes de desenvolvimento segregados dos ambientes de produção."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão estabelecidas zonas distintas para desenvolvimento e produção;\n•   Estão estabelecidos normativos internos sobre desenvolvimento seguro.",
+        "evidence": "•   Documentos de suporte ao desenvolvimento seguro de  software;\n•   Registo da segregação de todos os diferentes ambientes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os     ambientes     de     produção     são protegidos de eventos não planeados;\n•   Estão        implementadas        soluções tecnológicas para a proteção dos dados de teste;\n•   É garantido o controlo do acompanhamento da evolução do software em ambiente de produção.",
+        "evidence": "•   Registos de execução dos processos de gestão de alterações e versões;\n•   Soluções para anonimizar dados de produção para fins de testes;\n•   Controlo de versionamento de\nsoftware."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.SD – Segurança de Dados",
+    "subcategory": "PR.SD-8 – A organização deve implementar mecanismos de validação e verificação de integridade do hardware",
+    "reference": "COBIT 5 BAI03.05 ISO/IEC 27001:2013 A.11.2.4 NIST SP 800-53 Rev. 4 SA-10, SI-7\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A integridade do hardware é verificada de forma manual e não sistematizada.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A integridade do hardware é gerida.",
+        "evidence": "•   Registo de contrato de manutenção dos equipamentos pelo fabricante ou fornecedor certificado."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A manutenção preventiva e preditiva é realizada.",
+        "evidence": "•   Registo de plano de manutenção periódica;\n•   Sistemas de monitorização e alarmística para a integridade do hardware."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-1 – Deve ser criada e mantida uma configuração base de redes e sistemas de informação que incorpore os princípios de segurança",
+    "reference": "CIS CSC 3, 9, 11 COBIT 5 BAI10.01, BAI10.02, BAI10.03, BAI10.05 ISO/IEC 27001:2013 A.12.1.2, A.12.5.1, A.12.6.2, A.14.2.2, A.14.2.3, A.14.2.4 NIST SP 800-53 Rev. 4 CM-2, CM-3, CM-4, CM-5, CM-6, CM-7, CM-9, SA-10",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A definição de uma configuração base de redes e sistemas de informação é feita de forma informal e não sistematizada.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existem regras que definem a configuração base de redes e sistemas;\n•   As  configurações  base  para  cada  tipo de  sistema  e/ou  para  cada  finalidade estão estabelecidas.",
+        "evidence": "•   Criar políticas que definam as configurações base;\n•   Estabelecer procedimentos de configurações dos equipamentos conforme requisitos base;\n•   Registo da especificação de configurações base para as tecnologias utilizadas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   As configurações base dos sistemas são monitorizadas;\n•   A     atualização     de     segurança     dos sistemas é garantida;\n•   As regras de configurações base estão integradas em processos contínuos de entrega.",
+        "evidence": "•   Registo de monitorização contra alterações das configurações base dos sistemas;\n•   Sistema de gestão de atualizações de segurança;\n•   Sistema de integração/entrega contínua (CI/CD)."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-2 – Deve ser implementado um ciclo de vida de desenvolvimento seguro de software",
+    "reference": "CIS CSC 18 COBIT 5 APO13.01, BAI03.01, BAI03.02, BAI03.03 ISO/IEC 27001:2013 A.6.1.5, A.14.1.1, A.14.2.1, A.14.2.5 NIST SP 800-53 Rev. 4 PL-8, SA-3, SA-4, SA-8, SA-10, SA11, SA-12, SA-15, SA-17, SI-12, SI-13, SI-14, SI-16, SI-17\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Está definido um conjunto rudimentar de requisitos de segurança mínimos para os projetos de desenvolvimento.",
+        "evidence": "•   Conjunto rudimentar de medidas de segurança a aplicar para projetos de desenvolvimento."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existe     a     definição     exaustiva     dos requisitos  de  segurança  a  seguir  nos projetos de desenvolvimento;\n•   Existem regras internas para o desenvolvimento seguro.",
+        "evidence": "•   Registos de análise de riscos de projetos e indicação de requisitos de segurança;\n•   Conjunto de políticas, procedimentos e requisitos de segurança para o desenvolvimento seguro."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os controlos dinâmicos de segurança nos ciclos de desenvolvimento estão implementados;\n•   O código fonte é monitorizado e gerido de maneira segura.",
+        "evidence": "•   Processos de testes e validações de segurança estabelecidos no ciclo de desenvolvimento;\n•   Uso de ferramentas de integração contínua (CI);\n•   Evidências da gestão de códigos-fonte e controlo de versão."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-3 – Deve ser implementado um processo de gestão de alterações",
+    "reference": "CIS CSC 3, 11 COBIT 5 BAI01.06, BAI06.01 ISO/IEC 27001:2013 A.12.1.2, A.12.5.1, A.12.6.2, A.14.2.2, A.14.2.3, A.14.2.4 NIST SP 800-53 Rev. 4 CM-3, CM-4, SA-10",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Existe um processo informal para a gestão de alterações.",
+        "evidence": "•   Evidências ad hoc de alterações passadas."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão estabelecidas regras internas para a gestão de alterações;\n•   Os processos de avaliação e  aprovação prévia de alterações estão definidos.",
+        "evidence": "•   Cria, documenta e mantém procedimentos de gestão de alterações;\n•   Estabelecer sistema de controlo de versões;\n•   Evidências de análise e avaliação prévia às alterações."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os mecanismos técnicos para acompa- nhar as alterações estão estabelecidos;\n•   É realizada a revisão periódica dos pro- cedimentos e registos de alterações.",
+        "evidence": "•   Adoção de sistema de integração e entrega contínua (CI/CD);\n•   Evidência de avaliação dos registos e procedimentos de alterações, conforme procedimentos e aprovações."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-4 – Devem ser realizadas, mantidas e testadas cópias de segurança dos dados da organização",
+    "reference": "CIS CSC 10 COBIT 5 APO13.01, DSS01.01, DSS04.07 ISO/IEC 27001:2013 A.12.3.1, A.17.1.2, A.17.1.3, A.18.1.3 NIST SP 800-53 Rev. 4 CP-4, CP-6, CP-9",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   São realizadas cópias de segurança de sistemas e ficheiros.",
+        "evidence": "•   Evidência da cópia de segurança de sistemas e ficheiros importantes."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão estabelecidas regras internas formais para a realização das cópias de segurança;\n•   A integridade das cópias de segurança é verificada de forma independente em relação ao ambiente protegido.",
+        "evidence": "•   Documentos de suporte às cópias de segurança (políticas, procedimentos, registos, padrões, etc.);\n•   Armazenar as cópias de segurança em local fisicamente separado do ambiente protegido;\n•   Realizar testes de restauro das cópias de segurança em ambiente isolado."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A confidencialidade, integridade e disponibilidade da informação\narmazenada das cópias de segurança são garantidas;\n•   Os procedimentos realizados para as cópias de segurança são verificados.",
+        "evidence": "•   Utilização de sistemas criptográficos de dados, cuja confidencialidade seja necessária;\n•   Estabelecer ciclos de diferentes  tipos de restauro e uso das cópias de segurança;\n•   Emprego de soluções automatizadas para a validação da integridade das cópias de segurança;\n•   Evidências de avaliação regular dos sistemas, ficheiros e procedimentos de cópias de segurança."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-5 – As políticas e regulamentações associadas à operacionalização dos ambientes físicos dos ativos da organização devem ser seguidas",
+    "reference": "COBIT 5 DSS01.04, DSS05.05 ISO/IEC 27001:2013 A.11.1.4, A.11.2.1, A.11.2.2, A.11.2.3 NIST SP 800-53 Rev. 4 PE-10, PE-12, PE-13, PE-14, PE15, PE-18\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A proteção de infraestruturas é feita de forma não sistematizada (por exemplo, apenas alguns sistemas são protegidos por UPS).",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As infraestruturas estão protegidas contra alterações elétricas que causem danos;\n•   As alterações no ambiente e que possam afetar os sistemas são monitorizadas e detetadas.",
+        "evidence": "•   Aplicação de sistemas de proteção contra variações na corrente elétrica, que possam danificar os sistemas;\n•   Utilização de sensores de fumo, humidade e temperatura."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A prevenção contra alterações elétricas que possam causar danos é feita de forma proativa;\n•   Existem mecanismos que garantem a constância no fornecimento de energia;\n•   A eficácia dos controlos para manter a organização funcional é auditada.",
+        "evidence": "•   Existência de sistemas de gestão automática do fornecimento de eletricidade;\n•   Utilização de fontes alternativas de eletricidade (ex.: geradores);\n•   Registo de testes do plano de continuidade, considerando controlos físicos."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-6 – Os dados devem ser destruídos de acordo com a política definida",
+    "reference": "COBIT 5 BAI09.03, DSS05.06 ISO/IEC 27001:2013 A.8.2.3, A.8.3.1, A.8.3.2, A.11.2.7 NIST SP 800-53 Rev. 4 MP-6",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  dados  são  destruídos  de  forma  ad hoc.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A informação sensível é destruída apropriadamente;\n•   Estão documentados procedimentos de destruição de informação sigilosa.",
+        "evidence": "•   Destruidor de papel;\n•   Procedimentos e políticas que tratem da higienização de ficheiros;\n•   Sistemas de higienização de ficheiros."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É  realizada  a  avaliação  da  eficácia  da destruição  da  informação  em  meio  físico e digital.",
+        "evidence": "•   Registo de revisão dos mecanismos utilizados para a higienização de ficheiros, tanto físicos quanto digitais;\n•   Evidência do comprometimento de parceiros e prestadores de serviços com a higienização de ficheiros compartilhados ou de responsabilidade da organização;\n•   Registo das eliminações realizadas."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-7 – Os processos de proteção devem ser continuamente melhorados",
+    "reference": "COBIT 5 APO11.06, APO12.06, DSS04.05 ISO/IEC 27001:2013 A.16.1.6, Clause 9, Clause 10 NIST SP 800-53 Rev. 4 CA-2, CA-7, CP-2, IR-8, PL-2, PM-6\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os        processos    de    proteção    são efetuados de forma não sistematizada.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão  estabelecidos  procedimentos  e controlos de monitorização e melhoria contínua.",
+        "evidence": "•   Procedimentos de controlo e monitorização."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os procedimentos e controlos são revistos regularmente;\n•   São realizadas auditorias internas recorrentes, aos controlos de segurança.",
+        "evidence": "•   Registos de atualizações dos procedimentos e controlos;\n•   Planeamento de auditoria interna;\n•   Registo de auditorias internas, realizadas no âmbito da segurança da informação;\n•   Planos de ação para tratamento de resultados de auditoria."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-8 – A efetividade das tecnologias de proteção deve ser tida em conta na melhoria dos processos de proteção",
+    "reference": "COBIT 5 BAI08.04, DSS03.04 ISO/IEC 27001:2013 A.16.1.6 NIST SP 800-53 Rev. 4 AC-21, CA-7, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os processos de proteção são melhorados de forma não sistematizada.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A eficácia das tecnologias de proteção é medida e avaliada;\n•   Existe um processo estabelecido de evolução, através de lições aprendidas.",
+        "evidence": "•   Registos de melhorias aos processos de proteção;\n•   KPIs das tecnologias de proteção."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os processos de tratamento de incidentes são revistos regularmente;\n•   As lições aprendidas são comunicadas às partes relevantes.",
+        "evidence": "•   Registo de lições aprendidas com eventos de segurança;\n•   Registo de revisões e/ou auditorias nos processos de tratamento de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-9 – Os planos de resposta a incidentes, continuidade de negócio, a recuperação de incidentes e recuperação de desastres devem ser atualizados",
+    "reference": "CIS CSC 19 COBIT 5 APO12.06, DSS04.03 ISO/IEC 27001:2013 A.16.1.1, A.17.1.1, A.17.1.2, A.17.1.3 NIST SP 800-53 Rev. 4 CP-2, CP-7, CP-12, CP-13, IR-7, IR-8, IR-9, PE-17\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os planos de resposta são atualizados de forma ad hoc.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existem processos, formalmente definidos, para as atividades relativas a resposta a incidentes e garantia da resiliência da organização;\n•   Os planos de resposta são medidos e avaliados quando executados.",
+        "evidence": "•   Registo formal de processos e políticas para a resposta a incidentes;\n•   Registo formal de processos e políticas para a continuidade de negócio;\n•   Estabelecer sessões de consciencialização ou outras  formas de divulgação dos planos de continuidade."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   As estratégias e ações para a resposta a   incidentes   e   para   a   garantia   da continuidade     da     organização     são avaliadas regularmente.",
+        "evidence": "•   Registo de revisão dos planos de continuidade de negócio;\n•   Registo de ações para o tratamento de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-10 – Os planos de resposta e recuperação devem ser testados e exercitados",
+    "reference": "CIS CSC 19, 20 COBIT 5 DSS04.04 ISO/IEC 27001:2013 A.17.1.3 NIST SP 800-53 Rev. 4 CP-4, IR-3, PM-14\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os planos de resposta são exercitados de forma não sistematizada.",
+        "evidence": "•   Registo de exercícios pontuais e isolados."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os     planos     de     continuidade     são registados e testados quanto ao âmbito definido.",
+        "evidence": "•   Registo de exercícios sistematizado (ex.: restauro de ambientes, “table top”, etc.)."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   O plano de continuidade é testado pela sua eficiência em âmbito realista.",
+        "evidence": "•   Registo de simulacros de casos reais em departamentos da organização ou transversais;\n•   Registo de revisão das estratégias de continuidade e garantia da sua atualização."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-11 – A cibersegurança deve ser contemplada nos processos de gestão de recursos humanos",
+    "reference": "CIS CSC 5, 16 COBIT 5 APO07.01, APO07.02, APO07.03, APO07.04, APO07.05 ISO/IEC 27001:2013 A.7.1.1, A.7.1.2, A.7.2.1, A.7.2.2, A.7.2.3, A.7.3.1, A.8.1.4 NIST SP 800-53 Rev. 4 PS-1, PS-2, PS-3, PS-4, PS-5, PS-6, PS-7, PS-8, SA-21\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   O registo dos colaboradores é realizado.",
+        "evidence": "•   Dossier dos colaboradores com dados cadastrais identificativos."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão estabelecidas regras para a seleção, recrutamento e contratação;\n•   Estão estabelecidas regras para a cessação da contratação.",
+        "evidence": "•   Procedimentos e políticas de contratação,  mobilidade e cessação de funções de colaboradores."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Existem       perfis       funcionais       com competências   em   cibersegurança   e segurança    da    informação,    para    as contratações;\n•   As ações para o tratamento do não cumprimento das normas internas de segurança da informação estão definidas.",
+        "evidence": "•   Estabelecimento de perfis funcionais com competências em cibersegurança e segurança da informação;\n•   Ações disciplinares para casos de infração contra a segurança da informação."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.PI – Procedimentos e Processos de Proteção da Informação",
+    "subcategory": "PR.PI-12 – Deve ser definido e implementado um processo de gestão de vulnerabilidades",
+    "reference": "CIS CSC 4, 18, 20 COBIT 5 BAI03.10, DSS05.01, DSS05.02 ISO/IEC 27001:2013 A.12.6.1, A.14.2.3, A.16.1.3, A.18.2.2, A.18.2.3 NIST SP 800-53 Rev. 4 RA-3, RA-5, SI-2\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A    pesquisa    de    vulnerabilidades    é executada em intervalos regulares.",
+        "evidence": "•   Plano de avaliação das vulnerabilidades;\n•   Relatório de ferramentas automáticas de pesquisa de vulnerabilidades."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As  vulnerabilidades  são  identificadas com equipas de tratamento adequadas;\n•   A análise de vulnerabilidades é regular e sistemática;\n•   As vulnerabilidades são exploradas, para atestar o seu nível de risco real.",
+        "evidence": "•   Registo de submissão de vulnerabilidades para serem tratadas por partes interessadas;\n•   Registo de análise de vulnerabilidades, realizado regularmente, e do seu devido tratamento;\n•   Adoção de ferramenta de pesquisa de vulnerabilidades;\n•   Relatório recente (<= 1 ano) de testes de intrusão nos sistemas e infraestrutura."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É avaliado regularmente o processo de análise de vulnerabilidades;\n•   As     partes     interessadas,     externas, são   envolvidas   no   tratamento   das vulnerabilidades;\n•   Estão estabelecidos planos de ação formais para o tratamento das vulnerabilidades.",
+        "evidence": "•   Registo da revisão regular do processo de análise de vulnerabilidades e tratamento de dados;\n•   Tratamento das vulnerabilidades com apoio de fornecedores, parceiros e entidades competentes;\n•   Tratar os resultados dos testes de intrusão com planos de ação."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.MA – Manutenção",
+    "subcategory": "PR.MA-1 – As atividades de manutenção e reparação dos ativos da organização devem ser realizadas e registadas em programas e planos aprovados e controlados",
+    "reference": "COBIT 5 BAI03.10, BAI09.02, BAI09.03, DSS01.05 ISO/IEC 27001:2013 A.11.1.2, A.11.2.4, A.11.2.5, A.11.2.6 NIST SP 800-53 Rev. 4 MA-2, MA-3, MA-5, MA-6",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As atividades de manutenção são realizadas sem seguir um processo formal;\n•   O registo das atividades não é controlado.",
+        "evidence": "•   Registos ocasionais de manutenções efetuadas."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os processos de manutenção são realizados formalmente e envolvem as pessoas adequadas;\n•   Os   colaboradores   têm a formação adequada para realizarem a manutenção dos ativos.",
+        "evidence": "•   Políticas e procedimentos de manutenções;\n•   Evidências da consciencialização e formação de colaboradores para realizar as manutenções necessárias;\n•   Registo de autorizações  de  perfis  de acessos para fins de manutenção."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   As manutenções realizadas por pessoas externas são acompanhadas adequadamente;\n•   O fluxo de trabalho de requisições de manutenção e reparação é automatizado;\n•   Estão     estabelecidos     períodos     de manutenção  preventiva  aos  ativos  da organização.",
+        "evidence": "•   Registo de manutenções preventivas planeadas;\n•   Ferramenta de gestão de pedidos para acompanhar as manutenções;\n•   Implementação de controlo e registo de acesso em áreas seguras."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.MA – Manutenção",
+    "subcategory": "PR.MA-2 – As operações de manutenção remota das redes devem ser revistas, aprovadas, executadas e registadas",
+    "reference": "CIS CSC 3, 5 COBIT 5 DSS05.04 ISO/IEC 27001:2013 A.11.2.4, A.15.1.1, A.15.2.1 NIST SP 800-53 Rev. 4 MA-4\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As manutenções remotas são realizadas sem um processo formal de aprovação.",
+        "evidence": "•   Registos ocasionais de manutenções remotas."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As manutenções remotas são realizadas conforme aprovação;\n•   Estão estabelecidos meios seguros para a manutenção remota ser realizada.",
+        "evidence": "•   Registo dos fluxos de avaliação e aprovação das manutenções remotas, conforme procedimentos definidos;\n•   Infraestrutura de conexão e autenticação forte com agentes externos para as manutenções."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os controlos de acompanhamento do fluxo de solicitações e aprovações para as manutenções remotas estão automatizados;\n•   Estão estabelecidas métricas de acompanhamento e garantia das manutenções;\n•   Existe  a  garantia  de  que  a  conexão é   encerrada   sempre   que   não   for necessária à sua manutenção.",
+        "evidence": "•   Uso de sistema de gestão de workflow para pedidos e fluxos de aprovação das manutenções;\n•   Contratos, SLAs e demais registos que atestem a garantia das manutenções;\n•   Registos tecnológicos que indiquem a terminação das conexões sempre que não for necessário estarem ativas."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.TP – Tecnologia de Proteção",
+    "subcategory": "PR.TP-1 – Os registos de auditoria e de histórico devem ser documentados, implementados e revistos de acordo com as políticas",
+    "reference": "CIS CSC 1, 3, 5, 6, 14, 15, 16 COBIT 5 APO11.04, BAI03.05, DSS05.04, DSS05.07, MEA02.01 ISO/IEC 27001:2013 A.12.4.1, A.12.4.2, A.12.4.3, A.12.4.4, A.12.7.1 NIST SP 800-53 Rev. 4 AU Family\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  registos  de  auditoria  não  seguem um processo de gestão formal.",
+        "evidence": "•   Existência ocasional de registos de auditoria."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão estabelecidos critérios formais para a auditoria de sistemas;\n•   Os registos de eventos para auditorias são geridos de maneira sistémica;\n•   Os formatos e taxonomias de registos estão definidos.",
+        "evidence": "•   Políticas e normas relativas à coleta e análise de registos de eventos;\n•   Execução de procedimentos documentados sobre a coleta e tratamento dos registos de eventos para a análise;\n•   Utilização de sistema de coleta, tratamento e análise dos registos de eventos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A integridade dos registos de eventos para fins de auditorias deve ser garantida;\n•   Os  registos  de  auditorias  transversais aos    sistemas    da    organização    são geridos centralmente.",
+        "evidence": "•   Existência de controlos técnicos de integridade dos registos, tais como validação por função hash,\nsincronização dos relógios e garantia do timestamping.\n•   Armazenamento, tratamento e correlação de registos de eventos em sistema centralizado de análise para fins de auditorias."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.TP – Tecnologia de Proteção",
+    "subcategory": "PR.TP-2 – Os suportes de dados amovíveis devem ser protegidos e a sua utilização deve ser restrita, de acordo com a política definida",
+    "reference": "CIS CSC 8, 13 COBIT 5 APO13.01, DSS05.02, DSS05.06 ISO/IEC 27001:2013 A.8.2.1, A.8.2.2, A.8.2.3, A.8.3.1, A.8.3.3, A.11.2.9 NIST SP 800-53 Rev. 4 MP-2, MP-3, MP-4, MP-5, MP-7, MP-8\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Existe   uma   implementação   básica   e ad  hoc  de  medidas  de  proteção  aos suportes de dados amovíveis.",
+        "evidence": "•   Bitlocker ativo em discos amovíveis;\n•   Políticas de domínio aplicadas para restrição de acesso a discos amovíveis."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão   estabelecidas   regras   de   uso e    boas    práticas    sobre    dispositivos amovíveis;\n•   É feita a promoção de ações de sensibilização dos utilizadores sobre os riscos associados aos dispositivos amovíveis;\n•   Estão       estabelecidos       mecanismos técnicos para a proteção de dados em dispositivos amovíveis.",
+        "evidence": "•   Registar políticas, padrões, normas e boas práticas sobre a utilização de dispositivos amovíveis;\n•   Ações de sensibilização sobre a utilização aceitável de  dispositivos amovíveis;\n•   Utilização de soluções criptográficas para dispositivos amovíveis."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A utilização de dispositivos amovíveis é bloqueada;\n•   É garantida a higienização dos dispositivos amovíveis no momento da sua destruição.",
+        "evidence": "•   Emprego de bloqueios físicos ou lógicos para o uso de dispositivos amovíveis de armazenamento;\n•   Restrição a pessoal autorizado;\n•   Procedimentos de descarte seguro de dispositivos amovíveis;\n•   Utilização de sistemas de destruição segura de dados em dispositivos amovíveis."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.TP – Tecnologia de Proteção",
+    "subcategory": "PR.TP-3 – O princípio da minimização de funcionalidades deve ser incorporado na configuração de sistemas de modo a fornecer apenas os recursos essenciais",
+    "reference": "CIS CSC 3, 11, 14 COBIT 5 DSS05.02, DSS05.05, DSS06.06 ISO/IEC 27001:2013 A.9.1.2 NIST SP 800-53 Rev. 4 AC-3, CM-7",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  sistemas  são  configurados  com  os recursos   necessários   de   forma   não sistematizada.",
+        "evidence": "•   Registos ocasionais e isolados de sistemas configurados apenas com as funcionalidades mínimas necessárias."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os acessos concedidos são os mínimos necessários;\n•   São estabelecidas funcionalidades mínimas para cada necessidade de operação.",
+        "evidence": "•   Integração com gestão de identidades e acessos;\n•   Registo formal de políticas e padrões de configurações de recursos mínimos por defeito."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os  requisitos  mínimos  são  revistos  e atualizados periodicamente;\n•   Os  acessos  são  condizentes  com  as necessidades mínimas para as funções.",
+        "evidence": "•   Registo de revisões periódicas aos padrões e procedimentos de configurações de sistemas;\n•   Registo da revisão dos acessos concedidos;\n•   Revisão das definições de perfis funcionais por necessidades de acessos."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.TP – Tecnologia de Proteção",
+    "subcategory": "PR.TP-4 – As redes de comunicações e de controlo devem ser protegidas",
+    "reference": "CIS CSC 8, 12, 15 COBIT 5 DSS05.02, APO13.01 ISO/IEC 27001:2013 A.13.1.1, A.13.2.1, A.14.1.3 NIST SP 800-53 Rev. 4 AC-4, AC-17, AC-18, CP-8, SC-7, SC-19, SC-20, SC-21, SC-22, SC-23, SC-24, SC-25, SC-29, SC-32, SC-36, SC-37, SC-38, SC-39, SC-40, SC-41, SC-43\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As  zonas  de  rede  são  segregadas  de forma não sistematizada;\n•   A tecnologia de encriptação é aplicada de forma ad hoc.",
+        "evidence": "•   Registo de sistemas protegidos com SSL/TLS;\n•   Impossibilidade de chegar a qualquer ponto da rede a partir dos postos de trabalho dos colaboradores."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As   zonas   de   rede   são   segmentadas conforme a finalidade;\n•   São utilizadas soluções tecnológicas de filtro de fluxo de dados.",
+        "evidence": "•   Diagrama de redes a indicar a segmentação por zonas;\n•   Utilização de IDS/IPS, firewalls, proxies, WAFs e outras soluções tecnológicas para filtro e bloqueio de dados em transmissão."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   São revistas periodicamente as configurações dos sistemas de  filtro das conexões;\n•   As alterações na rede obedecem a processos de validação sistematizados.",
+        "evidence": "•   Registo de revisões regulares das definições e dos sistemas de segurança definidos (IDS/IPS, firewalls, proxies, WAFs, etc.);\n•   Registo de processos da gestão da alteração."
+      }
+    ]
+  },
+  {
+    "objective": "PROTEGER",
+    "category": "PR.TP – Tecnologia de Proteção",
+    "subcategory": "PR.TP-5 – Devem ser implementados mecanismos para cumprir os requisitos de resiliência em situações adversas",
+    "reference": "COBIT 5 BAI04.01, BAI04.02, BAI04.03, BAI04.04, BAI04.05, DSS01.05 ISO/IEC 27001:2013 A.17.1.2, A.17.2.1 NIST SP 800-53 Rev. 4 CP-7, CP-8, CP-11, CP-13, PL-8, SA-14, SC-6\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A    incorporação    de    resiliência    nos sistemas  e  redes  de  comunicações  é aplicada de forma não sistematizada.",
+        "evidence": "•   Redundância ocasional e isolada de sistemas ou equipamentos de rede de comunicações."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os sistemas críticos são resilientes;\n•   Os sistemas são protegidos contra a sobrecarga de acessos.",
+        "evidence": "•   Redundância dos sistemas críticos;\n•   Adoção de soluções de balanceamento de carga."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A resiliência das infraestruturas às situações adversas é gerida;\n•   Existe   a   garantia   de   que   eventos inesperados  não  causam  negação  de serviço das operações.",
+        "evidence": "•   Garantir a alta disponibilidade dos sistemas críticos;\n•   Documentos de suporte ao plano de continuidade de negócios."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.AE – Anomalias e Eventos",
+    "subcategory": "DE.AE-1 – A organização deve definir e gerir um modelo de referência de operações de rede e fluxos de dados esperados para utilizadores e sistemas",
+    "reference": "CIS CSC 1, 4, 6, 12, 13, 15, 16 COBIT 5 DSS03.01 ISO/IEC 27001:2013 A.12.1.1, A.12.1.2, A.13.1.1, A.13.1.2 NIST SP 800-53 Rev. 4 AC-4, CA-3, CM-2, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Não aplicável.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As   alterações   nas   infraestruturas   e fluxos de comunicação são detetadas;\n•   Os colaboradores são capazes de tratar e  detetar  alterações  nos  modelos  de referência estabelecidos;\n•   Estão     estabelecidos     modelos     de referência para equipamentos e fluxos de dados.",
+        "evidence": "•   Utilização de tecnologias de filtro e deteção de requisições anómalas (ex.: firewall, proxy, IDS/IPS);\n•   Registo de formação/consciencialização dos colaboradores no tema de deteção de anomalias e eventos de segurança;\n•   Registo  de  padrões  e  procedimentos padrão  para  modelos  de  referências internas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É feita, periodicamente, a revisão dos modelos de referência.",
+        "evidence": "•   Registos de alterações conforme descrito nos procedimentos internos da gestão de alteração."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.AE – Anomalias e Eventos",
+    "subcategory": "DE.AE-2 – Os eventos detetados devem ser analisados por forma a se identificarem os alvos e os métodos de ataque",
+    "reference": "CIS CSC 3, 6, 13, 15 COBIT 5 DSS05.07 ISO/IEC 27001:2013 A.12.4.1, A.16.1.1, A.16.1.4 NIST SP 800-53 Rev. 4 AU-6, CA-7, IR-4, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   É realizada uma análise ad hoc dos eventos, sem procedimento de tratamento formalizado e implementado.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As  tentativas  de  ataques  e  incidentes de segurança são detetadas;\n•   Está estabelecido o tratamento apropriado de incidentes de segurança;\n•   É  realizada  a  comunicação  apropriada de incidentes com as partes interessadas.",
+        "evidence": "•   Registo de incidentes de segurança, originados pela deteção e monitorização de eventos;\n•   Registo   de   incidentes   de   segurança, de  forma  suficiente  à  sua  análise  e tratamento;\n•   Registo  de  incidentes  a  informar  as partes interessadas relevantes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É realizada a identificação de incidentes de segurança, através da análise dos eventos coletados\ntransversalmente nas infraestruturas;\n•   Está estabelecida a resposta apropriada a incidentes detetados.",
+        "evidence": "•   Implementação de um sistema de correlação de eventos;\n•   Registos de incidentes reportados com o devido tratamento."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.AE – Anomalias e Eventos",
+    "subcategory": "DE.AE-3 – Os eventos devem ser coletados e correlacionados a partir de várias fontes e sensores",
+    "reference": "CIS CSC 1, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16 COBIT 5 BAI08.02 ISO/IEC 27001:2013 A.12.4.1, A.16.1.7 NIST SP 800-53 Rev. 4 AU-6, CA-7, IR-4, IR-5, IR-8, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os eventos são coletados centralmente;\n•   Existe  correlação  ad  hoc  com  fontes não sistematizadas.",
+        "evidence": "•   Registo   de   eventos   coletados   num sistema central."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os eventos de segurança são geridos e analisados;\n•   São  considerados  eventos  de  diversas fontes internas e externas.",
+        "evidence": "•   Políticas e procedimento de gestão e correlação de eventos de segurança;\n•   Registo   de   fontes   de   conhecimento utilizadas para as análises dos eventos;\n•   Utilização de sistema de correlação de eventos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Existe melhoria contínua dos controlos, a partir do tratamento de eventos anteriores;\n•   Estão estabelecidos mecanismos de controlo de um evento de segurança nas suas infraestruturas.",
+        "evidence": "•   Utilização de registos e tratamentos anteriores como lições aprendidas;\n•   Existência da honeypots geridos nas estruturas da organização."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.AE – Anomalias e Eventos",
+    "subcategory": "DE.AE-4 – O impacto dos eventos deve ser classificado",
+    "reference": "CIS CSC 4, 6 COBIT 5 APO12.06, DSS03.01 ISO/IEC 27001:2013 A.16.1.4 NIST SP 800-53 Rev. 4 CP-2, IR-4, RA-3, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os      eventos      de      segurança      são classificados  conforme  o  seu  impacto percebido.",
+        "evidence": "•   Registo dos eventos categorizados."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Está   estabelecido   um   processo   de gestão de eventos;\n•   Os  efeitos  do  impacto  de  um  evento são aferidos.",
+        "evidence": "•   Documentos de apoio ao processo de gestão de eventos;\n•   Metodologias de avaliação do impacto de um evento."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A gestão de incidentes é acionada a partir da gestão de eventos.",
+        "evidence": "•   Registos que interliguem eventos detetados a registos na gestão de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.AE – Anomalias e Eventos",
+    "subcategory": "DE.AE-5 – Devem ser definidos os limites de alerta para incidentes",
+    "reference": "CIS CSC 6, 19 COBIT 5 APO12.06, DSS03.01 ISO/IEC 27001:2013 A.16.1.4 NIST SP 800-53 Rev. 4 IR-4, IR-5, IR-8\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  incidentes  são  abertos  sem  limite formal   definido   para   o   número   de eventos relacionados.",
+        "evidence": "•   Registos ocasionais de incidentes de segurança, sem consistência no número de eventos necessários à constituição formal de incidente."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Está   estabelecido   um   processo   de gestão de eventos;\n•   Está    estabelecida    a    definição    de incidentes  de  segurança  no  contexto da organização.",
+        "evidence": "•   Documentos de apoio ao processo de gestão de eventos;\n•   Registo  da  taxonomia  de  incidentes  e das suas prioridades no tratamento."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os incidentes são analisados e avaliados com base no risco percebido;\n•   O tratamento de incidentes é realizado conforme o seu nível de complexidade e impacto.",
+        "evidence": "•   Ferramentas de correlação de eventos;\n•   Limites a serem considerados para a determinação de um incidente,\nainda que sendo resultado de eventos isolados;\n•   Critérios de elevação/decréscimo de eventos em uma escala."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.MC – Monitorização Contínua de Segurança",
+    "subcategory": "DE.MC-1 – As redes e sistemas de informação devem ser monitorizados para detetar potenciais incidentes",
+    "reference": "CIS CSC 1, 7, 8, 12, 13, 15, 16 COBIT 5 DSS01.03, DSS03.05, DSS05.07 NIST SP 800-53 Rev. 4 AC-2, AU-12, CA-7, CM-3, SC-5, SC-7, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A  monitorização  é  realizada  sem  um sistema automático de deteção ou com deteção manual.",
+        "evidence": "•   Registos ocasionais de deteções manuais."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   É realizada a monitorização e proteção face    a    comportamentos    anómalos na  rede,  que  possam  representar  um incidente.",
+        "evidence": "•   Implementação de sistemas de monitorização e proteção da rede (ex.: WAF, IDS/IPS, etc.)."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É realizada a associação de eventos de segurança de origens distintas;\n•   Os acessos a ativos conhecidos são restringidos;\n•   A gestão de incidentes é suportada por uma equipa dedicada.",
+        "evidence": "•   Implementação de sistema de gestão e correlação e eventos;\n•   Regras de acesso às infraestruturas e sistemas apenas para dispositivos cadastrados e registados;\n•   Existência na organização de uma equipa dedicada à gestão de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.MC – Monitorização Contínua de Segurança",
+    "subcategory": "DE.MC-2 – O ambiente físico deve ser monitorizado para se detetar potenciais incidentes de segurança",
+    "reference": "COBIT 5 DSS01.04, DSS01.05 ISO/IEC 27001:2013 A.11.1.1, A.11.1.2 NIST SP 800-53 Rev. 4 CA-7, PE-3, PE-6, PE-20",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os acessos físicos são monitorizados;\n•   A deteção de incidentes de intrusão física é manual;\n•   São produzidos registos de auditoria de acessos físicos.",
+        "evidence": "•   Registos ocasionais de deteção de incidentes de segurança física."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão estabelecidos controlos de monitorização de áreas seguras;\n•   É gerada alarmística para tentativas de acessos não autorizados.",
+        "evidence": "•   Suporte da gestão de acessos para segurança física;\n•   Instalação de sistemas de CCTV;\n•   Suporte de sistemas de monitorização para alarmísticas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os acessos físicos são revistos em intervalos regulares.",
+        "evidence": "•   Registos de auditorias nos controlos de acesso e monitorização dos ambientes físicos;\n•   Pontos de auditorias e eventos registados são correlacionados na gestão de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.MC – Monitorização Contínua de Segurança",
+    "subcategory": "DE.MC-3 – A atividade dos colaboradores deve ser monitorizada para se detetar potenciais incidentes",
+    "reference": "CIS CSC 5, 7, 14, 16 COBIT 5 DSS05.07 ISO/IEC 27001:2013 A.12.4.1, A.12.4.3 NIST SP 800-53 Rev. 4 AC-2, AU-12, AU-13, CA-7, CM10, CM-11",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A atividade dos colaboradores é monitorizada;\n•   Os incidentes são detetados manualmente.",
+        "evidence": "•   Registos ocasionais de incidentes originados na deteção manual, baseados no comportamento digital dos colaboradores."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os eventos de segurança levam em conta as ações dos colaboradores;\n•   Estão estabelecidos padrões fiáveis de monitorização de colaboradores.",
+        "evidence": "•   Suporte dos registos de eventos que identificam o responsável;\n•   Formalizar padrões e métricas que sirvam de referencial para a monitorização das atividades dos colaboradores;\n•   Sistema  central  de  armazenamento  e gestão de eventos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os eventos dispersos são analisados em contexto;\n•   Existe a capacidade de antecipar incidentes de segurança a partir da análise de tendências.",
+        "evidence": "•   Utilização da correlação de eventos para a monitorização e registo de incidentes;\n•   Alertas preditivos."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.MC – Monitorização Contínua de Segurança",
+    "subcategory": "DE.MC-4 – A organização deve identificar e implementar mecanismos para deteção de código malicioso",
+    "reference": "CIS CSC 4, 7, 8, 12 COBIT 5 DSS05.01 ISO/IEC 27001:2013 A.12.2.1 NIST SP 800-53 Rev. 4 SI-3, SI-8",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A   deteção   da   presença   de   código malicioso na infraestrutura é reativa.",
+        "evidence": "•   Implementar  ferramentas  de  antivírus nas estações de trabalho e servidores."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão  estabelecidas  regras  formais  de avaliação de códigos maliciosos;\n•   As       verificações       periódicas       de códigos     maliciosos     são     realizadas periodicamente.",
+        "evidence": "•   Apoio de políticas de antivírus;\n•   Sistemas de antivírus configurados para pesquisas periódicas e recorrentes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidos procedimentos de resposta integrada a incidentes;\n•   A eficiência dos sistemas de antivírus é avaliada;\n•   É realizada a análise técnica de ameaças.",
+        "evidence": "•   Integração do sistema de antivírus com o sistema central de gestão de eventos de segurança;\n•   Integração do sistema de análise comportamental com o sistema central de gestão de eventos de segurança;\n•   Realizar auditorias aos sistemas de antivírus;\n•   Registo   de   atividades   de   análise   de código;\n•   Registo de atividades de análise forense;\n•   Registo  de  atividades  para  engenharia reversa de código malicioso."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.MC – Monitorização Contínua de Segurança",
+    "subcategory": "DE.MC-5 – A utilização de aplicações não autorizadas em dispositivos móveis deve ser detetada",
+    "reference": "CIS CSC 7, 8 COBIT 5 DSS05.01 ISO/IEC 27001:2013 A.12.5.1, A.12.6.2 NIST SP 800-53 Rev. 4 SC-18, SI-4, SC-44",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As  aplicações  em  dispositivos  móveis da organização são monitorizadas;\n•   A deteção de aplicações não autorizadas é manual.",
+        "evidence": "•   Registo   ocasional   de   incidentes   de segurança,   com   origem   na   deteção manual de aplicações não autorizadas."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão definidas as aplicações permitidas nas redes e sistemas;\n•   O  comprometimento  do  colaborador em      não      utilizar      sistemas      não autorizados é garantido.",
+        "evidence": "•   Estabelecimento de whitelists e/ou\nblacklists de aplicações e sistemas;\n•   Termo      de      responsabilidade      dos utilizadores   sobre   a   utilização   dos equipamentos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A gestão do parque de dispositivos móveis é feita de forma centralizada;\n•   O sistema de gestão de dispositivos móveis está integrado com o sistema de gestão de eventos de segurança;\n•   Existe a capacidade de correlacionar  os eventos de segurança com dispositi- vos móveis;\n•   A gestão de ativos é realizada de forma integrada.",
+        "evidence": "•   Gestão dos sistemas de forma a ser capaz de monitorizar aplicações instaladas nos equipamentos;\n•   Instalação de sistema central de gestão de dispositivos móveis;\n•   Registos de incidentes de segurança, com origem na deteção automática de aplicações não autorizadas."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.MC – Monitorização Contínua de Segurança",
+    "subcategory": "DE.MC-6 – As atividades dos prestadores de serviços externos devem ser monitorizadas para deteção de incidentes",
+    "reference": "COBIT 5 APO07.06, APO10.05 ISO/IEC 27001:2013 A.14.2.7, A.15.2.1 NIST SP 800-53 Rev. 4 CA-7, PS-7, SA-4, SA-9, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As    atividades    dos    prestadores    de serviços externos são monitorizadas;\n•   A  deteção  de  incidentes  é  manual  e não sistematizada.",
+        "evidence": "•   Registos  ocasionais  de  incidentes  de segurança,  com  origem  em  atividades suspeitas, por prestadores de serviços externos, detetadas manualmente."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os   pedidos   de   acesso   remoto   são identificados e avaliados;\n•   Estão estabelecidas formalmente regras de acesso remoto para prestadores de serviços externos.",
+        "evidence": "•   Adoção de sistemas de deteção e prevenção de intrusões;\n•   Suporte de políticas, normas e procedimentos para a interação com prestadores de serviços externos;\n•   Gestão de acessos dos prestadores de serviços externos."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É realizada a avaliação dos eventos relativos aos acessos externos;\n•   Os acessos e permissões concedidas a prestadores de serviços externos são avaliados regularmente.",
+        "evidence": "•   Integração com sistemas de correlação de eventos;\n•   Suporte de atividades de auditoria de segurança na revisão e avaliação dos acessos de prestadores de serviços externos;\n•   Registos de incidentes de segurança, com origem em atividades suspeitas detetadas automaticamente, por pres- tadores de serviços externos."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.MC – Monitorização Contínua de Segurança",
+    "subcategory": "DE.MC-7 – Deve ser efetuada a monitorização de acessos não autorizados de colaboradores, conexões, dispositivos e software",
+    "reference": "CIS CSC 1, 2, 3, 5, 9, 12, 13, 15, 16 COBIT 5 DSS05.02, DSS05.05 ISO/IEC 27001:2013 A.12.4.1, A.14.2.7, A.15.2.1 NIST SP 800-53 Rev. 4 AU-12, CA-7, CM-3, CM-8, PE-3, PE-6, PE-20, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  acessos  são  monitorizados  e  analisados manualmente.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os pedidos de acesso às infraestruturas e servidores são monitorizados;\n•   Os dados dispersos são recolhidos e centralizados para análise de anomalias.",
+        "evidence": "•   Implementação de sistemas de deteção e prevenção de intrusões;\n•   Registos   de   eventos   de   acesso   aos servidores e sistemas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os eventos de acesso e incidentes relacionados são tratados.",
+        "evidence": "•   Sistema de correlação de eventos;\n•   Relatórios de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.MC – Monitorização Contínua de Segurança",
+    "subcategory": "DE.MC-8 – Devem ser efetuados rastreamentos de vulnerabilidades",
+    "reference": "CIS CSC 4, 20 COBIT 5 BAI03.10, DSS05.01 ISO/IEC 27001:2013 A.12.6.1 NIST SP 800-53 Rev. 4 RA-5",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A pesquisa por vulnerabilidades nos sistemas e redes de comunicação é feita pontualmente.",
+        "evidence": "•   Relatórios ocasionais de vulnerabilidades."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As vulnerabilidades identificadas nos sistemas e redes de comunicação são analisadas regularmente.",
+        "evidence": "•   Estabelecer um plano de análise de vulnerabilidades;\n•   Implementar uma ferramenta de análise de vulnerabilidades;\n•   Registos de suporte à análise e avaliação das vulnerabilidades."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A análise de vulnerabilidades está integrada com outros processos da organização;\n•   As vulnerabilidades identificadas são geridas.",
+        "evidence": "•   Integrar a análise de vulnerabilidades com processos de testes e análises de segurança em sistemas e aplicações;\n•   Registo de planos de ação para o tratamento das vulnerabilidades."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.PD – Processos de Deteção",
+    "subcategory": "DE.PD-1 – Devem ser definidos os papéis e responsabilidades na deteção de eventos anómalos",
+    "reference": "CIS CSC 19 COBIT 5 APO01.02, DSS05.01, DSS06.03 ISO/IEC 27001:2013 A.6.1.1, A.7.2.2 NIST SP 800-53 Rev. 4 CA-2, CA-7, PM-14",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As  responsabilidades  na  deteção  de eventos são definidas informalmente.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os  responsáveis  pelo  tratamento  de eventos anómalos são identificados;\n•   Os    colaboradores    são    esclarecidos sobre a deteção de eventos anómalos.",
+        "evidence": "•   Comunicados, nomeações ou qualquer outro elemento de suporte na identificação do responsável pelo tratamento dos eventos anómalos;\n•   Material de apoio e de registo das sessões de consciencialização."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidas as responsabilidades no processo de deteção de eventos anómalos;\n•   Os agentes externos envolvidos estão comprometidos na deteção de eventos anómalos.",
+        "evidence": "•   Documentação de suporte ao estabelecimento de responsabilidades (ex.: RACI, definições de perfis funcionais, etc.);\n•   Acordos de prestação de serviços que apresentam termos sobre a responsabilização na deteção de eventos anómalos."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.PD – Processos de Deteção",
+    "subcategory": "DE.PD-2 – As atividades de deteção devem cumprir com todos os requisitos aplicáveis",
+    "reference": "COBIT 5 DSS06.01, MEA03.03, MEA03.04 ISO/IEC 27001:2013 A.18.1.4, A.18.2.2, A.18.2.3 NIST SP 800-53 Rev. 4 AC-25, CA-2, CA-7, SA-18, SI-4, PM-14",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As  atividades  de  deteção  seguem  um processo ad hoc.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os     incidentes     são     detetados     e identificados    a    partir    dos    eventos registados;\n•   Os   responsáveis   por   atividades   de deteção são identificados.",
+        "evidence": "•   Relatórios ou indicadores de utilização de sistema de correlação de eventos;\n•   Matriz RASIC dos envolvidos nas atividades de deteção."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidas ações de validação dos controlos;\n•   A integridade dos dados coletados é garantida por aplicação de controlos.",
+        "evidence": "•   Registos de suporte a auditorias internas;\n•   Utilização de soluções de hashing na assinatura de registos."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.PD – Processos de Deteção",
+    "subcategory": "DE.PD-3 – Os processos de deteção devem ser testados",
+    "reference": "COBIT 5 APO13.02, DSS05.02 ISO/IEC 27001:2013 A.14.2.8 NIST SP 800-53 Rev. 4 CA-2, CA-7, PE-3, SI-3, SI-4, PM-14",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os processos de deteção são medidos de forma ad hoc.",
+        "evidence": "•   Registos ocasionais de testes aos serviços de deteção."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existe   um   processo   sistemático   de analise aos processos de deteção;\n•   Os processos de deteção são medidos regularmente.",
+        "evidence": "•   Planos de teste para os processos de deteção;\n•   Resultados da análise aos processos de deteção."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A integridade e fiabilidade dos processos de deteção é avaliada.",
+        "evidence": "•   Resultados de testes de integridade aos processos de deteção;\n•   Resultados e análise da fiabilidade dos processos de deteção;\n•   Aplicação de metodologias de melhoria contínua."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.PD – Processos de Deteção",
+    "subcategory": "DE.PD-4 – Informações sobre deteções de eventos devem ser comunicadas",
+    "reference": "CIS CSC 19 COBIT 5 APO08.04, APO12.06, DSS02.05 ISO/IEC 27001:2013 A.16.1.2, A.16.1.3 NIST SP 800-53 Rev. 4 AU-6, CA-2, CA-7, RA-5, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os eventos de segurança são reportados internamente e de forma informal.",
+        "evidence": "•   Relatórios ou emails ocasionais de deteções de eventos e respetivas comunicações internas."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Está estabelecido internamente um canal de comunicação adequado;\n•   Os incidentes detetados são registados adequadamente.",
+        "evidence": "•   Documentos de suporte à gestão de incidentes;\n•   Registo   de   eventos   detetados   que resultam em incidentes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Está definida a gestão centralizada e otimizada da deteção dos incidentes.",
+        "evidence": "•   Estabelecer uma plataforma centralizada de resposta a incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "DETETAR",
+    "category": "DE.PD – Processos de Deteção",
+    "subcategory": "DE.PD-5 – Os processos de deteção devem ser objeto de melhoria contínua",
+    "reference": "COBIT 5 APO11.06, APO12.06, DSS04.05 ISO/IEC 27001:2013 A.16.1.6 NIST SP 800-53 Rev. 4, CA-2, CA-7, PL-2, RA-5, SI-4, PM-14",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os processos de deteção são melhorados de forma não sistematizada.",
+        "evidence": "•   Atualizações isoladas dos processos de deteção."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existem mecanismos de medição e avaliação dos processos de deteção.",
+        "evidence": "•   Resultados da avaliação dos processos de deteção quanto à eficiência."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os resultados da avaliação são usados para informar o processo de melhoria;\n•   Os processos de deteção são melhorados regularmente.",
+        "evidence": "•   Registo de tratamento dos planos de ação de melhorias."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.PR – Planeamento da Resposta",
+    "subcategory": "RS.PR-1 – O plano de resposta deve ser executado durante ou após a ocorrência de um incidente",
+    "reference": "CIS CSC 19 COBIT 5 APO12.06, BAI01.10 ISO/IEC 27001:2013 A.16.1.5 NIST SP 800-53 Rev. 4 CP-2, CP-10, IR-4, IR-8",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   São implementados procedimentos ad hoc de resposta a incidentes, de forma reativa.",
+        "evidence": "•   Registos   de   execução   de   atividades relacionadas com resposta a incidentes."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os  processos  de  reposta  a  incidentes são  sistematizados  e  incluem  as  fases de    contenção    e    erradicação,    bem como   a   identificação   dos   diversos responsáveis e o escalonamento.",
+        "evidence": "•   Documentos de suporte ao tratamento de incidentes (ex.: políticas, procedimentos, padrões, etc.)."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É garantida a integridade das evidências analisadas;\n•   A resposta a incidentes é dada conforme o nível de escalonamento.",
+        "evidence": "•   Registos de validação de integridade das evidências;\n•   Documentos com os critérios de escalonamento de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.CO – Comunicações",
+    "subcategory": "RS.CO-1 – Na resposta a um incidente, os colaboradores devem conhecer os seus papéis e a ordem de execução de atividades",
+    "reference": "CIS CSC 19 COBIT 5 EDM03.02, APO01.02, APO12.03 ISO/IEC 27001:2013 A.6.1.1, A.7.2.2, A.16.1.1 NIST SP 800-53 Rev. 4 CP-2, CP-3, IR-3, IR-8\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Deve  existir  o  conhecimento  informal e não estruturado das funções de cada interveniente da organização.",
+        "evidence": "•   Conhecimento   informal   evidenciado (p. ex. por realização de entrevistas aos colaboradores)."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os  colaboradores  têm  conhecimento sobre  os         procedimentos         e responsabilidades;\n•   Estão estabelecidos os guiões de resposta a incidentes.",
+        "evidence": "•   Documentos de suporte à resposta a incidentes;\n•   Registo das sessões de formação em segurança e respostas a incidentes;\n•   Estabelecer guiões de tratamento e resposta a incidentes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Deve existir envolvimento das partes externas relevantes na resposta a incidentes.",
+        "evidence": "•   Mapa das partes externas relevantes;\n•   Estabelecimento dos papéis e responsabilidades."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.CO – Comunicações",
+    "subcategory": "RS.CO-2 – Os incidentes devem ser reportados de acordo com critérios estabelecidos",
+    "reference": "CIS CSC 19 COBIT 5 DSS01.03 ISO/IEC 27001:2013 A.6.1.3, A.16.1.2 NIST SP 800-53 Rev. 4 AU-6, IR-6, IR-8\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Deve existir o conhecimento informal e não estruturado dos canais de reporte dos incidentes.",
+        "evidence": "•   Conhecimento   informal   evidenciado (p. ex. por realização de entrevistas aos colaboradores)."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A capacidade de reporte de incidentes deve estar garantida;\n•   Estão estabelecidos critérios de reporte de incidentes.",
+        "evidence": "•   Definição dos canais de reporte de incidentes;\n•   Documentos de suporte na orientação de como reportar incidentes;\n•   Registo de divulgação dos critérios de reporte de incidentes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidos critérios para envolver as partes interessadas externas no tratamento dos incidentes;\n•   O reporte de incidentes é realizado de maneira integrada.",
+        "evidence": "•   Registo de reporte de incidentes, envolvendo equipas externas;\n•   Plataforma de resposta a incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.CO – Comunicações",
+    "subcategory": "RS.CO-3 – As informações devem ser partilhadas de acordo com o plano de resposta",
+    "reference": "CIS CSC 19 COBIT 5 DSS03.04 ISO/IEC 27001:2013 A.16.1.2, Clause 7.4, Clause 16.1.2 NIST SP 800-53 Rev. 4 CA-2, CA-7, CP-2, IR-4, IR-8, PE-6, RA-5, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A identificação das partes interessadas para a comunicação de incidentes é informal e não estruturada.",
+        "evidence": "•   Registo das partes interessadas, internas e externas, na comunicação de incidentes."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   A  comunicação  de  um  incidente  é  do conhecimento de todos os envolvidos.",
+        "evidence": "•   Plano de comunicação de incidentes;\n•   Registos de formação e consciencialização sobre a partilha de informação no plano de resposta a incidentes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidos canais seguros de comunicação de incidentes;\n•   As partes externas interessadas no tratamento dos incidentes estão envolvidas na resposta.",
+        "evidence": "•   Procedimentos de comunicação de incidentes documentados através de canais seguros;\n•   Registo de comunicação às partes externas interessadas."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.CO – Comunicações",
+    "subcategory": "RS.CO-4 – A coordenação com as partes interessadas deve ocorrer conforme os planos de resposta",
+    "reference": "CIS CSC 19 COBIT 5 DSS03.04 ISO/IEC 27001:2013 Clause 7.4 NIST SP 800-53 Rev. 4 CP-2, IR-4, IR-8",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Não aplicável.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existe coordenação com      partes externas interessadas.",
+        "evidence": "•   Identificação das partes interessadas externas;\n•   Documentos de apoio ao plano de comunicação de incidentes com partes externas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidos níveis de responsabilização na resposta a incidentes;\n•   A comunicação de incidentes é avaliada.",
+        "evidence": "•   Registo da definição de responsabilidades no âmbito da resposta a incidentes;\n•   Análise e avaliação dos registos de comunicação quanto aos critérios estabelecidos."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.CO – Comunicações",
+    "subcategory": "RS.CO-5 – Deve ocorrer partilha voluntária de informação com partes interessadas externas",
+    "reference": "CIS CSC 19 COBIT 5 BAI08.04 ISO/IEC 27001:2013 A.6.1.4 NIST SP 800-53 Rev. 4 SI-5, PM-15",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Mesmo  que  de  forma  informal  e  não estruturada,  a  informação  relacionada com     um     incidente     é     partilhada voluntariamente.",
+        "evidence": "•   Observação de comunicação informal através de entrevista aos colaboradores."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   As partes interessadas externas relevantes são identificadas.",
+        "evidence": "•   Registo atualizado de parceiros, fornecedores e demais partes externas relevantes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Está estabelecido um plano de comunicação coerente com as necessidades da organização.",
+        "evidence": "•   Documentos de apoio do plano de comunicação voluntária de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.AN – Análise",
+    "subcategory": "RS.AN-1 – As notificações dos sistemas de deteção devem ser investigadas",
+    "reference": "CIS CSC 4, 6, 8, 19 COBIT 5 DSS02.04, DSS02.07 ISO/IEC 27001:2013 A.12.4.1, A.12.4.3, A.16.1.5 NIST SP 800-53 Rev. 4 AU-6, CA-7, IR-4, IR-5, PE-6, SI-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   O  registo  de  notificações  de  eventos elevados  a  incidentes  existe,  mesmo que não estruturado;\n•   Existem  orientações  sobre  a  ativação da gestão de incidentes.",
+        "evidence": "•   Registos das orientações para a ativação da gestão de incidentes;\n•   Registos de notificações elevadas a incidentes."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão estabelecidas práticas de acompanhamento aos eventos detetados;\n•   Existe    um    plano    de    resposta    a incidentes e é cumprido.",
+        "evidence": "•   Evidências do tratamento dos eventos identificados como incidentes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   As notificações dos sistemas são avaliadas transversalmente.",
+        "evidence": "•   Implementar uma plataforma de gestão e correlação de eventos."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.AN – Análise",
+    "subcategory": "RS.AN-2 – O impacto do incidente deve ser avaliado",
+    "reference": "COBIT 5 DSS02.02 ISO/IEC 27001:2013 A.16.1.4, A.16.1.6 NIST SP 800-53 Rev. 4 CP-2, IR-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   O impacto dos incidentes é avaliado, de forma informal e não estruturada.",
+        "evidence": "•   Observação  da  avaliação  do  impacto, por entrevista aos colaboradores."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os incidentes de segurança são categorizados pelo nível de impacto percebido.",
+        "evidence": "•   Definição de padrões para categorias de incidentes;\n•   Taxonomia de impacto de incidentes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   O risco dos incidentes é avaliado;\n•   Estão estabelecidas métricas relativas às respostas e tratamento de incidentes.",
+        "evidence": "•   Registos da avaliação de riscos de incidentes;\n•   Documentação de apoio ao processo de gestão e correlação de eventos;\n•   Métricas relativas a tempos de resposta, resolução, níveis de alertas e prioridades de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.AN – Análise",
+    "subcategory": "RS.AN-3 – Devem ser realizadas análises forenses",
+    "reference": "COBIT 5 APO12.06, DSS03.02, DSS05.07 ISO/IEC 27001:2013 A.16.1.7 NIST SP 800-53 Rev. 4 AU-7, IR-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Não aplicável.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão definidos procedimentos de identificação, coleta e aquisição de registos e informação;\n•   Estão   definidos   procedimentos   para a  captura  dos  dados  no  seu  formato original, para análise forense.",
+        "evidence": "•   Documentos de suporte aos processos de coleta de dados e garantia da cadeia de custódia;\n•   Formação   dos   colaboradores   sobre procedimentos de análise forense."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   É garantida a integridade e cadeia de custódia das evidências recolhidas;\n•   Existem    meios    específicos    para    a realização de análises forenses.",
+        "evidence": "•   Adoção de software de captura de dados para fins forenses;\n•   Sistema de integração da coleta de dados forenses com a gestão e correlação de eventos."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.AN – Análise",
+    "subcategory": "RS.AN-4 – Os incidentes devem ser categorizados de acordo com o plano de resposta",
+    "reference": "CIS CSC 19 COBIT 5 DSS02.02 ISO/IEC 27001:2013 A.16.1.4 NIST SP 800-53 Rev. 4 CP-2, IR-4, IR-5, IR-8",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A    categorização    dos    incidentes    é definida  de  formal  informal  e  pouco estruturada.",
+        "evidence": "•   Observação da categorização dos incidentes, obtida por entrevista a colaboradores."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Está  estabelecida  uma  taxonomia  de categorização de incidentes;\n•   A    categorização    do    incidente    está presente no momento da resposta.",
+        "evidence": "•   Documentação de apoio na taxonomia de categorização de incidentes;\n•   Inclusão da categorização de incidentes nos planos de resposta."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidas metodologias de tratamento para cada tipo de incidente detetado.",
+        "evidence": "•   Documentos de suporte ao tratamento de incidentes;\n•   Registo das categorizações de incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.AN – Análise",
+    "subcategory": "RS.AN-5 – A organização deve definir processos para receber, analisar e responder a vulnerabilidades provenientes de fontes internas e externas",
+    "reference": "CIS CSC 4, 19 COBIT 5 EDM03.02, DSS05.07 NIST SP 800-53 Rev. 4 SI-5, PM-15",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A submissão de vulnerabilidades é realizada através de processos ad hoc.",
+        "evidence": "•   Observação de submissão de vulnerabilidades por entrevista a colaboradores."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existem   múltiplos   mecanismos   para que a organização seja informada sobre vulnerabilidades,  quer  seja  de  forma interna ou externa;\n•   Estão estabelecidos processos de tratamento às vulnerabilidades sobre as quais a organização é informada.",
+        "evidence": "•   Documento de suporte ao processo de gestão de vulnerabilidades;\n•   Formas de se informar sobre vulnerabilidades estabelecidas e divulgadas;\n•   Registo de receção das comunicações das vulnerabilidades;\n•   Critérios de classificação das vulnerabilidades, de forma a direcionar um tratamento adequado."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   As vulnerabilidades registadas são analisadas e avaliadas sistematicamente.",
+        "evidence": "•   Documentos de suporte aos procedimentos de análise e avaliação de vulnerabilidades;\n•   Registos do controlo e acompanhamento das análises das vulnerabilidades identificadas."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.MI – Mitigação",
+    "subcategory": "RS.MI-1 – Os incidentes devem ser contidos",
+    "reference": "CIS CSC 19 COBIT 5 APO12.06 ISO/IEC 27001:2013 A.12.2.1, A.16.1.5 NIST SP 800-53 Rev. 4 IR-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A resposta aos incidentes de segurança é realizada de forma não sistematizada.",
+        "evidence": "•   Registo  de  resposta  no  tratamento  de incidentes."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão estabelecidos processos de resposta aos incidentes.",
+        "evidence": "•   Procedimentos de resposta a incidentes de segurança;\n•   Documentos de suporte ao tratamento de incidentes;\n•   Elaboração de recomendações de tratamentos de incidentes."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   As causas para a origem de incidentes são analisadas e avaliadas.",
+        "evidence": "•   Registos de investigação e análises forenses sobre as causas dos incidentes;\n•   Indicação de melhorias para a mitigação dos incidentes conhecidos."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.MI – Mitigação",
+    "subcategory": "RS.MI-2 – Os incidentes devem ser mitigado",
+    "reference": "CIS CSC 4, 19 COBIT 5 APO12.06 ISO/IEC 27001:2013 A.12.2.1, A.16.1.5 NIST SP 800-53 Rev. 4 IR-4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   O tratamento dos incidentes é efetuado de forma reativa e não estruturada.",
+        "evidence": "•   Ações de contenção imediata de incidentes (p. ex. bloqueio de contas, interrupção de acessos, etc.)."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão   estabelecidas   práticas   para   a redução do impacto dos incidentes;\n•   Os procedimentos sobre o tratamento de incidentes são documentados.",
+        "evidence": "•   Disponibilização de infraestrutura alternativa;\n•   Separação da rede em zonas protegidas por firewalls, etc.;\n•   Documentos  de  suporte  à  mitigação dos  incidentes  (p.  ex.  procedimentos, padrões, etc.)."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os incidentes são erradicados;\n•   É feita uma análise do tratamento dos incidentes   para   efeitos   de   melhoria contínua.",
+        "evidence": "•   Remoção de ameaças nas infraestruturas;\n•   Uso   ou   melhoria   dos   sistemas   de proteção (p. ex. antivírus);\n•   Repositório de incidentes anteriores com os respetivos planos de ação corretivos."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.MI – Mitigação",
+    "subcategory": "RS.MI-3 – As novas vulnerabilidades identificadas devem ser mitigadas ou documentadas como riscos aceites",
+    "reference": "CIS CSC 4 COBIT 5 APO12.06 ISO/IEC 27001:2013 A.12.6.1 NIST SP 800-53 Rev. 4 CA-7, RA-3, RA-5",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   O  tratamento  das  vulnerabilidades  é avaliado de forma não estruturada.",
+        "evidence": "•   Observação da avaliação das vulnerabilidades, por entrevista aos colaboradores."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Está estabelecido um processo de gestão de vulnerabilidades;\n•   As vulnerabilidades são mitigadas de acordo com critérios definidos.",
+        "evidence": "•   Registo de execução do processo de gestão das vulnerabilidades."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   O processo de análise de risco das vulnerabilidades é definido;\n•   A aceitação das vulnerabilidades, onde seja aplicável, é formalizada.",
+        "evidence": "•   Resultados das análises de risco;\n•   Registo da aceitação das vulnerabilidades."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.ME – Melhorias",
+    "subcategory": "RS.ME-1 – Os planos de resposta a incidentes devem incorporar as lições aprendidas",
+    "reference": "COBIT 5 BAI01.13 ISO/IEC 27001:2013 A.16.1.6, Clause 10 NIST SP 800-53 Rev. 4 CP-2, IR-4, IR-8",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Não aplicável.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Não aplicável.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Os procedimentos de resposta a incidentes são melhorados através da análise de lições aprendidas.",
+        "evidence": "•   Documentos de suporte ao plano de resposta a incidentes;\n•   Registos de reuniões e demais interações, no contexto da melhoria contínua;\n•   Registo do tratamento de vulnerabilidades resultantes de incidentes ocorridos."
+      }
+    ]
+  },
+  {
+    "objective": "RESPONDER",
+    "category": "RS.ME – Melhorias",
+    "subcategory": "RS.ME-2 – As estratégias de resposta a incidentes devem ser atualizadas",
+    "reference": "COBIT 5 BAI01.13, DSS04.08 ISO/IEC 27001:2013 A.16.1.6, Clause 10 NIST SP 800-53 Rev. 4 CP-2, IR-4, IR-8",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Não aplicável.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Os  procedimentos são atualizados periodicamente, mas não se limitando às tecnologias e sistemas utilizados.",
+        "evidence": "•   Registo de atualização de procedimentos para a reposta a incidentes, num determinado período de análise."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidos processos de melhoria contínua dos planos de resposta a incidentes;\n•   Os planos de resposta a incidentes são avaliados.",
+        "evidence": "•   Registo dos testes de validação dos procedimentos de resposta a incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "RECUPERAR",
+    "category": "RC.PR – Plano de Recuperação",
+    "subcategory": "RC.PR-1 – A organização deve seguir um plano de recuperação durante ou após um incidente",
+    "reference": "CIS CSC 10 COBIT 5 APO12.06, DSS02.05, DSS03.04 ISO/IEC 27001:2013 A.16.1.5 NIST SP 800-53 Rev. 4 CP-10, IR-4, IR-8",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   As  cópias  de  segurança  são  realizadas de forma ad hoc.",
+        "evidence": "•   Relatórios  de  execução  de  cópias  de segurança e restauro."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão       estabelecidos       regras       e procedimentos para a recuperação de incidentes;\n•   Está estabelecido um processo de gestão de cópias de segurança.",
+        "evidence": "•   Registo documental de procedimentos, políticas e padrões dedicados ao tema da recuperação de incidentes;\n•   Relatórios de utilização de plataforma de cópias de segurança e restauro."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   São implementadas ações preditivas para dar respostas adequadas;\n•   Existe uma equipa dedicada ao tratamento e monitorização de ameaças, planeamento e resposta a incidentes (ex.: CSIRT).",
+        "evidence": "•   Registo de recuperação de incidentes;\n•   Registos de constituição, com descrição de funções dos elementos da equipa de resposta a incidentes."
+      }
+    ]
+  },
+  {
+    "objective": "RECUPERAR",
+    "category": "RC.ME – Melhorias",
+    "subcategory": "RC.ME-1 – Os planos de recuperação devem incorporar as lições aprendidas",
+    "reference": "COBIT 5 APO12.06, BAI05.07, DSS04.08 ISO/IEC 27001:2013 A.16.1.6, Clause 10 NIST SP 800-53 Rev. 4 CP-2, IR-4, IR-8\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Não aplicável.",
+        "evidence": "•   Não aplicável."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Existem   e   são   avaliadas      métricas relativas aos planos de recuperação;\n•   As fragilidades nos planos anteriores são identificadas.",
+        "evidence": "•   Registos dos indicadores e resultados analíticos de avaliação de resultados de ações, relativas aos planos de recuperação."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   São identificadas as oportunidades de melhoria que possam ser implementadas;\n•   Os planos de recuperação são atualizados com as melhorias encontradas.",
+        "evidence": "•   Documentos com atualização dos planos;\n•   Documentos de suporte à execução das análises."
+      }
+    ]
+  },
+  {
+    "objective": "RECUPERAR",
+    "category": "RC.ME – Melhorias",
+    "subcategory": "RC.ME-2 – As estratégias de recuperação devem ser continuamente revistas e atualizadas",
+    "reference": "COBIT 5 APO12.06, BAI07.08 ISO/IEC 27001:2013 A.16.1.6, Clause 10 NIST SP 800-53 Rev. 4 CP-2, IR-4, IR-8\n",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   Os  procedimentos  ad  hoc,  de  análise da  operação  da  organização,  incluem pontos     de     discussão     relativos     à recuperação de incidentes.",
+        "evidence": "•   Registos de discussão dos procedimentos ad hoc de recuperação (p. ex. atas ou notas de reuniões)."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Estão estabelecidos procedimentos de revisão e atualização da documentação e     dos     processos     pertinentes     à recuperação;\n•   As equipas afetas à recuperação de incidentes são geridas.",
+        "evidence": "•   Registo de atualização dos procedimentos e atualização dos métodos empregues como estratégias de recuperação;\n•   Registo   de   formação   ou   atualização das   equipas   internas   e/ou   externas envolvidas."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Estão estabelecidos procedimentos de revisão periódica das estratégias de recuperação, por parte da gestão de topo.",
+        "evidence": "•   Registo de revisão de estratégias de recuperação e estratégias complementares (p. ex. gestão de\nincidentes, plano de continuidade de negócio, gestão das vulnerabilidades, etc.)."
+      }
+    ]
+  },
+  {
+    "objective": "RECUPERAR",
+    "category": "RC.CO – Comunicações",
+    "subcategory": "RC.CO-1 – A organização deve implementar um plano de comunicação",
+    "reference": "COBIT 5 EDM03.02 ISO/IEC 27001:2013 A.6.1.4, Clause 7.4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A comunicação às partes interessadas sobre eventos de segurança é reativa.\n•   A comunicação é efetuada, mesmo que de forma pouco estruturada e dispersa.",
+        "evidence": "•   Registos  de  comunicações  realizadas conforme as ocorrências."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Está     estabelecido     um     plano     de comunicação      sobre      eventos      de segurança;\n•   As partes interessadas relevantes estão identificadas.",
+        "evidence": "•   Documento de suporte ao plano de comunicação;\n•   Registo de partes interessadas conforme o tema a ser comunicado."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   A comunicação é efetuada através de ações de consciencialização e de forma proativa.",
+        "evidence": "•   Plano de comunicações periódicas sobre segurança da informação, para as diversas audiências no âmbito;\n•   Registos de comunicações."
+      }
+    ]
+  },
+  {
+    "objective": "RECUPERAR",
+    "category": "RC.CO – Comunicações",
+    "subcategory": "RC.CO-2 – As atividades de recuperação devem ser comunicadas às partes interessadas, internas e externas, bem como às equipas executivas e de gestão",
+    "reference": "COBIT 5 MEA03.02 ISO/IEC 27001:2013 Clause 7.4",
+    "levels": [
+      {
+        "level": "1 – Inicial",
+        "description": "•   A  comunicação  é  efetuada  de  forma reativa e não estruturada.",
+        "evidence": "•   Registos das comunicações efetuadas."
+      },
+      {
+        "level": "2 – Intermédio",
+        "description": "•   Está     estabelecido     um     plano     de comunicação      consoante      o      seu propósito;\n•   Para cada objetivo a ser comunicado, é efetuada a identificação de audiência adequada e respetivo plano de comunicação.",
+        "evidence": "•   Plano de comunicação com o detalhe do objetivo a ser comunicado e identificação de audiência."
+      },
+      {
+        "level": "3 – Avançado",
+        "description": "•   Está estabelecida uma estratégia de comunicação adequada para as equipas executivas e de gestão;\n•   Os processos de aprovação das comunicações estão definidos.",
+        "evidence": "•   Registos de comunicações para equipas executivas e de gestão;\n•   Registos dos processos de aprovação das comunicações;\n•   Avaliação da mensagem para cada audiência."
+      }
+    ]
+  }
+]
