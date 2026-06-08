@@ -207,6 +207,142 @@ function Index() {
     URL.revokeObjectURL(url);
   };
 
+  const generateReport = (kind: "executive" | "technical") => {
+    const date = new Date().toLocaleDateString("pt-PT", { day: "2-digit", month: "long", year: "numeric" });
+    const LEVEL_COLORS = ["#e5e7eb", "#f59e0b", "#3b82f6", "#10b981"];
+    const pct = stats.total ? (stats.achieved / stats.total) * 100 : 0;
+
+    const objBlocks = objectiveStats.map((o) => {
+      const segs = [o.n1, o.n2, o.n3]
+        .map((v, i) => v ? `<div style="width:${(v / o.total) * 100}%;background:${LEVEL_COLORS[i + 1]}"></div>` : "")
+        .join("");
+      return `
+        <div class="obj-row">
+          <div class="obj-head"><strong>${o.objective}</strong><span>${o.avg.toFixed(2)} / 3 · ${o.total} subcategorias</span></div>
+          <div class="bar">${segs}</div>
+        </div>`;
+    }).join("");
+
+    // Pie SVG
+    const totalPie = stats.total;
+    let cum = 0;
+    const pieSegs = [
+      { v: stats.levelCounts[0], c: LEVEL_COLORS[0], l: "Sem avaliação" },
+      { v: stats.levelCounts[1], c: LEVEL_COLORS[1], l: "Nível 1" },
+      { v: stats.levelCounts[2], c: LEVEL_COLORS[2], l: "Nível 2" },
+      { v: stats.levelCounts[3], c: LEVEL_COLORS[3], l: "Nível 3" },
+    ];
+    const pieSvg = pieSegs.filter(s => s.v > 0).map((s) => {
+      const start = (cum / totalPie) * 2 * Math.PI;
+      cum += s.v;
+      const end = (cum / totalPie) * 2 * Math.PI;
+      const x1 = 100 + 80 * Math.sin(start), y1 = 100 - 80 * Math.cos(start);
+      const x2 = 100 + 80 * Math.sin(end), y2 = 100 - 80 * Math.cos(end);
+      const large = end - start > Math.PI ? 1 : 0;
+      return `<path d="M100,100 L${x1},${y1} A80,80 0 ${large} 1 ${x2},${y2} Z" fill="${s.c}"/>`;
+    }).join("");
+    const legend = pieSegs.map(s => `<div class="leg"><span style="background:${s.c}"></span>${s.l}: <strong>${s.v}</strong></div>`).join("");
+
+    const css = `
+      *{box-sizing:border-box;margin:0;padding:0}
+      body{font-family:system-ui,-apple-system,sans-serif;color:#1f2937;padding:32px;max-width:900px;margin:auto;line-height:1.5}
+      h1{font-size:24px;margin-bottom:4px;color:#0f172a}
+      h2{font-size:18px;margin:24px 0 12px;color:#0f172a;border-bottom:2px solid #e5e7eb;padding-bottom:6px}
+      h3{font-size:14px;margin:16px 0 8px;color:#374151}
+      .sub{color:#6b7280;font-size:13px;margin-bottom:24px}
+      .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+      .kpi{border:1px solid #e5e7eb;border-radius:8px;padding:12px;background:#f9fafb}
+      .kpi .l{font-size:11px;color:#6b7280;text-transform:uppercase}
+      .kpi .v{font-size:28px;font-weight:700;margin-top:4px}
+      .progress{height:12px;background:#e5e7eb;border-radius:6px;overflow:hidden;margin:8px 0 4px}
+      .progress>div{height:100%;background:linear-gradient(90deg,#3b82f6,#10b981)}
+      .obj-row{margin-bottom:14px}
+      .obj-head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+      .obj-head span{color:#6b7280}
+      .bar{display:flex;height:10px;background:#f3f4f6;border-radius:5px;overflow:hidden}
+      .pie-wrap{display:flex;gap:24px;align-items:center;margin:12px 0}
+      .leg{font-size:13px;display:flex;align-items:center;gap:8px;margin:4px 0}
+      .leg span{display:inline-block;width:12px;height:12px;border-radius:2px}
+      table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+      th,td{border:1px solid #e5e7eb;padding:6px 8px;text-align:left;vertical-align:top}
+      th{background:#f3f4f6;font-weight:600}
+      .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;color:#fff}
+      .cat{background:#f9fafb;font-weight:600}
+      .notes{font-style:italic;color:#4b5563;font-size:11px}
+      .footer{margin-top:32px;text-align:center;color:#9ca3af;font-size:11px;border-top:1px solid #e5e7eb;padding-top:12px}
+      @media print {body{padding:16px} .no-print{display:none} h2{page-break-after:avoid} tr{page-break-inside:avoid}}
+      .toolbar{position:fixed;top:12px;right:12px;display:flex;gap:8px}
+      .toolbar button{padding:8px 14px;border:1px solid #d1d5db;background:#fff;border-radius:6px;cursor:pointer;font-size:13px}
+      .toolbar button.primary{background:#0f172a;color:#fff;border-color:#0f172a}
+    `;
+
+    const header = `
+      <div class="toolbar no-print">
+        <button onclick="window.print()" class="primary">Imprimir / PDF</button>
+        <button onclick="window.close()">Fechar</button>
+      </div>
+      <h1>${kind === "executive" ? "Relatório Executivo" : "Relatório Técnico"} — QNRCS</h1>
+      <div class="sub">Quadro Nacional de Referência para a Cibersegurança · ${date}</div>
+      <div class="kpis">
+        <div class="kpi"><div class="l">Subcategorias</div><div class="v">${stats.total}</div></div>
+        <div class="kpi"><div class="l">Avaliadas</div><div class="v">${stats.achieved}</div></div>
+        <div class="kpi"><div class="l">Cobertura</div><div class="v">${pct.toFixed(0)}%</div></div>
+        <div class="kpi"><div class="l">Maturidade média</div><div class="v">${(objectiveStats.reduce((a, b) => a + b.avg, 0) / objectiveStats.length).toFixed(2)}</div></div>
+      </div>
+      <div class="progress"><div style="width:${pct}%"></div></div>
+    `;
+
+    let body = "";
+    if (kind === "executive") {
+      body = `
+        <h2>Distribuição global por nível</h2>
+        <div class="pie-wrap">
+          <svg viewBox="0 0 200 200" width="200" height="200">${pieSvg}<circle cx="100" cy="100" r="40" fill="#fff"/></svg>
+          <div>${legend}</div>
+        </div>
+        <h2>Maturidade por objetivo</h2>
+        ${objBlocks}
+        <h2>Síntese</h2>
+        <table>
+          <thead><tr><th>Objetivo</th><th>Total</th><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Sem aval.</th><th>Maturidade</th></tr></thead>
+          <tbody>
+            ${objectiveStats.map(o => `<tr><td><strong>${o.objective}</strong></td><td>${o.total}</td><td>${o.n1}</td><td>${o.n2}</td><td>${o.n3}</td><td>${o.n0}</td><td>${o.avg.toFixed(2)} / 3</td></tr>`).join("")}
+          </tbody>
+        </table>
+      `;
+    } else {
+      const sections = OBJECTIVE_ORDER.map((objKey) => {
+        const cats = grouped.get(objKey);
+        if (!cats) return "";
+        const catBlocks = Array.from(cats.entries()).map(([catName, subs]) => {
+          const rows = subs.map((it) => {
+            const st = state[it.subcategory] ?? { checked: {}, notes: "" };
+            const max = maxReached(it, st);
+            const badge = max ? `<span class="badge" style="background:${LEVEL_COLORS[max]}">Nível ${max}</span>` : `<span class="badge" style="background:#9ca3af">Não avaliado</span>`;
+            const lvls = it.levels.map((l) => {
+              const checked = st.checked[l.level] ? "✓" : "✗";
+              return `<div><strong>${checked} ${l.level}</strong>${l.description ? `<div style="color:#4b5563">${l.description.replace(/\n/g, "<br>")}</div>` : ""}${l.evidence ? `<div class="notes"><em>Evidências:</em> ${l.evidence.replace(/\n/g, "<br>")}</div>` : ""}</div>`;
+            }).join("<hr style='border:0;border-top:1px dashed #e5e7eb;margin:6px 0'>");
+            return `
+              <tr><td colspan="2">${badge} <strong>${it.subcategory}</strong>${it.reference ? `<div class="notes">Refs: ${it.reference}</div>` : ""}</td></tr>
+              <tr><td style="width:55%">${lvls}</td><td>${st.notes ? `<strong>Observações:</strong><br>${st.notes.replace(/\n/g, "<br>")}` : "<em style='color:#9ca3af'>Sem observações</em>"}</td></tr>
+            `;
+          }).join("");
+          return `<table><thead><tr><th colspan="2" class="cat">${catName}</th></tr></thead><tbody>${rows}</tbody></table><br>`;
+        }).join("");
+        return `<h2>${objKey}</h2>${catBlocks}`;
+      }).join("");
+      body = `<h2>Resumo por objetivo</h2>${objBlocks}${sections}`;
+    }
+
+    const html = `<!doctype html><html lang="pt"><head><meta charset="utf-8"><title>${kind === "executive" ? "Relatório Executivo" : "Relatório Técnico"} QNRCS</title><style>${css}</style></head><body>${header}${body}<div class="footer">Gerado automaticamente · Checklist QNRCS</div></body></html>`;
+
+    const w = window.open("", "_blank");
+    if (!w) return alert("Permita pop-ups para gerar o relatório.");
+    w.document.write(html);
+    w.document.close();
+  };
+
   const progress = stats.total ? (stats.achieved / stats.total) * 100 : 0;
 
   const pieData = [
