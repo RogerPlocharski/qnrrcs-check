@@ -115,17 +115,30 @@ function Index() {
   const items = checklistData as Item[];
   const [state, setState] = useState<State>({});
   const [query, setQuery] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [assessmentDate, setAssessmentDate] = useState(() => new Date().toISOString().slice(0, 10));
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) setState(JSON.parse(raw));
+      const meta = localStorage.getItem(META_KEY);
+      if (meta) {
+        const m = JSON.parse(meta);
+        if (m.organization) setOrganization(m.organization);
+        if (m.assessmentDate) setAssessmentDate(m.assessmentDate);
+      }
     } catch {}
   }, []);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state]);
+
+  useEffect(() => {
+    localStorage.setItem(META_KEY, JSON.stringify({ organization, assessmentDate }));
+  }, [organization, assessmentDate]);
 
   const grouped = useMemo(() => {
     const map = new Map<string, Map<string, Item[]>>();
