@@ -71,6 +71,9 @@ type Item = {
 type State = Record<string, { checked: Record<string, boolean>; notes: string }>;
 
 const STORAGE_KEY = "qnrcs-checklist-v1";
+const META_KEY = "qnrcs-meta-v1";
+const PROJECT_VERSION = "1.0";
+const FRAMEWORK = "QNRCS";
 
 const OBJECTIVE_ORDER = ["IDENTIFICAR", "PROTEGER", "DETETAR", "RESPONDER", "RECUPERAR"];
 
