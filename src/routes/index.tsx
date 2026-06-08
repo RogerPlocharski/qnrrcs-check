@@ -15,8 +15,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ShieldCheck, Download, Search, RotateCcw, ListChecks, BarChart3, FileText, Presentation } from "lucide-react";
+import { ShieldCheck, Download, Search, RotateCcw, ListChecks, BarChart3, FileText, Presentation, Upload, FileJson, FileSpreadsheet, ChevronDown } from "lucide-react";
 import { SupportDialog } from "@/components/SupportDialog";
+import { Label } from "@/components/ui/label";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
+import { useRef } from "react";
 import {
   Bar,
   BarChart,
