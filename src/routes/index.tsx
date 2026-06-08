@@ -26,7 +26,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
-import { useRef } from "react";
+
 import {
   Bar,
   BarChart,
