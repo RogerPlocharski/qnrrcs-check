@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import checklistData from "@/data/checklist.json";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -15,8 +15,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ShieldCheck, Download, Search, RotateCcw, ListChecks, BarChart3, FileText, Presentation } from "lucide-react";
+import { ShieldCheck, Download, Search, RotateCcw, ListChecks, BarChart3, FileText, Presentation, Upload, FileJson, FileSpreadsheet, ChevronDown } from "lucide-react";
 import { SupportDialog } from "@/components/SupportDialog";
+import { Label } from "@/components/ui/label";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
+
 import {
   Bar,
   BarChart,
@@ -61,6 +71,9 @@ type Item = {
 type State = Record<string, { checked: Record<string, boolean>; notes: string }>;
 
 const STORAGE_KEY = "qnrcs-checklist-v1";
+const META_KEY = "qnrcs-meta-v1";
+const PROJECT_VERSION = "1.0";
+const FRAMEWORK = "QNRCS";
 
 const OBJECTIVE_ORDER = ["IDENTIFICAR", "PROTEGER", "DETETAR", "RESPONDER", "RECUPERAR"];
 
@@ -102,17 +115,30 @@ function Index() {
   const items = checklistData as Item[];
   const [state, setState] = useState<State>({});
   const [query, setQuery] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [assessmentDate, setAssessmentDate] = useState(() => new Date().toISOString().slice(0, 10));
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) setState(JSON.parse(raw));
+      const meta = localStorage.getItem(META_KEY);
+      if (meta) {
+        const m = JSON.parse(meta);
+        if (m.organization) setOrganization(m.organization);
+        if (m.assessmentDate) setAssessmentDate(m.assessmentDate);
+      }
     } catch {}
   }, []);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state]);
+
+  useEffect(() => {
+    localStorage.setItem(META_KEY, JSON.stringify({ organization, assessmentDate }));
+  }, [organization, assessmentDate]);
 
   const grouped = useMemo(() => {
     const map = new Map<string, Map<string, Item[]>>();
@@ -206,6 +232,86 @@ function Index() {
     a.download = "checklist-qnrcs.csv";
     a.click();
     URL.revokeObjectURL(url);
+  };
+
+  const exportJson = () => {
+    const pct = stats.total ? (stats.achieved / stats.total) * 100 : 0;
+    const avgMaturity = objectiveStats.length
+      ? objectiveStats.reduce((a, b) => a + b.avg, 0) / objectiveStats.length
+      : 0;
+    const payload = {
+      version: PROJECT_VERSION,
+      framework: FRAMEWORK,
+      exportDate: new Date().toISOString().slice(0, 10),
+      organization: organization || "",
+      assessmentDate,
+      assessmentData: {
+        responses: state,
+        summary: {
+          total: stats.total,
+          achieved: stats.achieved,
+          conformityPct: Number(pct.toFixed(2)),
+          avgMaturity: Number(avgMaturity.toFixed(2)),
+          levelCounts: stats.levelCounts,
+          objectiveStats,
+        },
+        settings: {
+          objectiveOrder: OBJECTIVE_ORDER,
+        },
+      },
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const safeOrg = (organization || "projeto").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `qnrcs-${safeOrg}-${assessmentDate}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const importJson = () => fileInputRef.current?.click();
+
+  const handleFileImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const data = JSON.parse(text);
+
+      if (!data || typeof data !== "object") throw new Error("Ficheiro inválido.");
+      if (data.framework && data.framework !== FRAMEWORK) {
+        throw new Error(`Framework incompatível: ${data.framework}. Esperado: ${FRAMEWORK}.`);
+      }
+      if (!data.version) throw new Error("Ficheiro sem versão. Estrutura desconhecida.");
+
+      // Future-version migration hook
+      let responses: State | undefined;
+      if (data.assessmentData?.responses && typeof data.assessmentData.responses === "object") {
+        responses = data.assessmentData.responses as State;
+      } else if (data.responses && typeof data.responses === "object") {
+        // legacy fallback
+        responses = data.responses as State;
+      }
+      if (!responses) throw new Error("Ficheiro sem respostas válidas.");
+
+      // Basic shape validation
+      for (const [k, v] of Object.entries(responses)) {
+        if (!v || typeof v !== "object" || typeof (v as any).checked !== "object") {
+          throw new Error(`Entrada inválida para "${k}".`);
+        }
+      }
+
+      setState(responses);
+      if (typeof data.organization === "string") setOrganization(data.organization);
+      if (typeof data.assessmentDate === "string") setAssessmentDate(data.assessmentDate);
+
+      alert(`Projeto importado com sucesso (versão ${data.version}).`);
+    } catch (err) {
+      console.error(err);
+      alert(`Não foi possível importar o ficheiro:\n${err instanceof Error ? err.message : "Formato inválido."}`);
+    }
   };
 
   const generateReport = (kind: "executive" | "technical") => {
@@ -394,18 +500,65 @@ function Index() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <Button variant="default" size="sm" onClick={() => generateReport("executive")}>
-                <Presentation className="mr-2 h-4 w-4" /> Relatório Executivo
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="default" size="sm">
+                    <Download className="mr-2 h-4 w-4" /> Exportar
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>Dados</DropdownMenuLabel>
+                  <DropdownMenuItem onClick={exportCsv}>
+                    <FileSpreadsheet className="mr-2 h-4 w-4" /> Exportar CSV
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={exportJson}>
+                    <FileJson className="mr-2 h-4 w-4" /> Exportar Projeto JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuLabel>Relatórios</DropdownMenuLabel>
+                  <DropdownMenuItem onClick={() => generateReport("executive")}>
+                    <Presentation className="mr-2 h-4 w-4" /> Relatório Executivo PDF
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => generateReport("technical")}>
+                    <FileText className="mr-2 h-4 w-4" /> Relatório Técnico PDF
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button variant="outline" size="sm" onClick={importJson}>
+                <Upload className="mr-2 h-4 w-4" /> Importar Projeto
               </Button>
-              <Button variant="secondary" size="sm" onClick={() => generateReport("technical")}>
-                <FileText className="mr-2 h-4 w-4" /> Relatório Técnico
-              </Button>
-              <Button variant="outline" size="sm" onClick={exportCsv}>
-                <Download className="mr-2 h-4 w-4" /> CSV
-              </Button>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="application/json,.json"
+                className="hidden"
+                onChange={handleFileImport}
+              />
               <Button variant="outline" size="sm" onClick={reset}>
                 <RotateCcw className="mr-2 h-4 w-4" /> Reiniciar
               </Button>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="org" className="text-xs">Organização</Label>
+              <Input
+                id="org"
+                placeholder="Nome da organização"
+                value={organization}
+                onChange={(e) => setOrganization(e.target.value)}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="adate" className="text-xs">Data da avaliação</Label>
+              <Input
+                id="adate"
+                type="date"
+                value={assessmentDate}
+                onChange={(e) => setAssessmentDate(e.target.value)}
+              />
             </div>
           </div>
         </div>
