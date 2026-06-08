@@ -278,7 +278,7 @@ function Index() {
 
     const header = `
       <div class="toolbar no-print">
-        <button onclick="window.print()" class="primary">Imprimir / PDF</button>
+        <button onclick="window.print()" class="primary">Imprimir</button>
         <button onclick="window.close()">Fechar</button>
       </div>
       <h1>${kind === "executive" ? "Relatório Executivo" : "Relatório Técnico"} — QNRCS</h1>
