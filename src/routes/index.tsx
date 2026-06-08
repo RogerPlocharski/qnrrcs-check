@@ -16,6 +16,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ShieldCheck, Download, Search, RotateCcw, ListChecks, BarChart3, FileText, Presentation } from "lucide-react";
+import { SupportDialog } from "@/components/SupportDialog";
 import {
   Bar,
   BarChart,
