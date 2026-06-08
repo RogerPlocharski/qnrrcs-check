@@ -256,8 +256,14 @@ function Index() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
+              <Button variant="default" size="sm" onClick={() => generateReport("executive")}>
+                <Presentation className="mr-2 h-4 w-4" /> Relatório Executivo
+              </Button>
+              <Button variant="secondary" size="sm" onClick={() => generateReport("technical")}>
+                <FileText className="mr-2 h-4 w-4" /> Relatório Técnico
+              </Button>
               <Button variant="outline" size="sm" onClick={exportCsv}>
-                <Download className="mr-2 h-4 w-4" /> Exportar CSV
+                <Download className="mr-2 h-4 w-4" /> CSV
               </Button>
               <Button variant="outline" size="sm" onClick={reset}>
                 <RotateCcw className="mr-2 h-4 w-4" /> Reiniciar
