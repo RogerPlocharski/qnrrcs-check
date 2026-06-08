@@ -500,18 +500,65 @@ function Index() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <Button variant="default" size="sm" onClick={() => generateReport("executive")}>
-                <Presentation className="mr-2 h-4 w-4" /> Relatório Executivo
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="default" size="sm">
+                    <Download className="mr-2 h-4 w-4" /> Exportar
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>Dados</DropdownMenuLabel>
+                  <DropdownMenuItem onClick={exportCsv}>
+                    <FileSpreadsheet className="mr-2 h-4 w-4" /> Exportar CSV
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={exportJson}>
+                    <FileJson className="mr-2 h-4 w-4" /> Exportar Projeto JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuLabel>Relatórios</DropdownMenuLabel>
+                  <DropdownMenuItem onClick={() => generateReport("executive")}>
+                    <Presentation className="mr-2 h-4 w-4" /> Relatório Executivo PDF
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => generateReport("technical")}>
+                    <FileText className="mr-2 h-4 w-4" /> Relatório Técnico PDF
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button variant="outline" size="sm" onClick={importJson}>
+                <Upload className="mr-2 h-4 w-4" /> Importar Projeto
               </Button>
-              <Button variant="secondary" size="sm" onClick={() => generateReport("technical")}>
-                <FileText className="mr-2 h-4 w-4" /> Relatório Técnico
-              </Button>
-              <Button variant="outline" size="sm" onClick={exportCsv}>
-                <Download className="mr-2 h-4 w-4" /> CSV
-              </Button>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="application/json,.json"
+                className="hidden"
+                onChange={handleFileImport}
+              />
               <Button variant="outline" size="sm" onClick={reset}>
                 <RotateCcw className="mr-2 h-4 w-4" /> Reiniciar
               </Button>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="org" className="text-xs">Organização</Label>
+              <Input
+                id="org"
+                placeholder="Nome da organização"
+                value={organization}
+                onChange={(e) => setOrganization(e.target.value)}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="adate" className="text-xs">Data da avaliação</Label>
+              <Input
+                id="adate"
+                type="date"
+                value={assessmentDate}
+                onChange={(e) => setAssessmentDate(e.target.value)}
+              />
             </div>
           </div>
         </div>
