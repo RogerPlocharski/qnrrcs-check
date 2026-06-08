@@ -274,7 +274,7 @@ function Index() {
       </header>
 
       <main className="mx-auto max-w-6xl px-4 py-8">
-        <Tabs defaultValue="checklist" className="w-full">
+        <Tabs defaultValue="dashboard" className="w-full">
           <TabsList className="mb-6">
             <TabsTrigger value="checklist">
               <ListChecks className="mr-2 h-4 w-4" /> Checklist
