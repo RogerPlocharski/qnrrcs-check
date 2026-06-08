@@ -368,6 +368,7 @@ function Index() {
                 Quadro Nacional de Referência para a Cibersegurança · Centro Nacional de Cibersegurança
               </p>
             </div>
+            <SupportDialog />
           </div>
 
           <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto]">
