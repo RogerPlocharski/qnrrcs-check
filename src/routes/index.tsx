@@ -16,6 +16,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ShieldCheck, Download, Search, RotateCcw, ListChecks, BarChart3, FileText, Presentation } from "lucide-react";
+import { SupportDialog } from "@/components/SupportDialog";
 import {
   Bar,
   BarChart,
@@ -278,7 +279,7 @@ function Index() {
 
     const header = `
       <div class="toolbar no-print">
-        <button onclick="window.print()" class="primary">Imprimir / PDF</button>
+        <button onclick="window.print()" class="primary">Imprimir</button>
         <button onclick="window.close()">Fechar</button>
       </div>
       <h1>${kind === "executive" ? "Relatório Executivo" : "Relatório Técnico"} — QNRCS</h1>
@@ -368,6 +369,7 @@ function Index() {
                 Quadro Nacional de Referência para a Cibersegurança · Centro Nacional de Cibersegurança
               </p>
             </div>
+            <SupportDialog />
           </div>
 
           <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto]">
@@ -412,11 +414,11 @@ function Index() {
       <main className="mx-auto max-w-6xl px-4 py-8">
         <Tabs defaultValue="dashboard" className="w-full">
           <TabsList className="mb-6">
-            <TabsTrigger value="checklist">
-              <ListChecks className="mr-2 h-4 w-4" /> Checklist
-            </TabsTrigger>
             <TabsTrigger value="dashboard">
               <BarChart3 className="mr-2 h-4 w-4" /> Dashboard
+            </TabsTrigger>
+            <TabsTrigger value="checklist">
+              <ListChecks className="mr-2 h-4 w-4" /> Checklist
             </TabsTrigger>
           </TabsList>
 
