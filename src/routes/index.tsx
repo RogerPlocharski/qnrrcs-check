@@ -412,11 +412,11 @@ function Index() {
       <main className="mx-auto max-w-6xl px-4 py-8">
         <Tabs defaultValue="dashboard" className="w-full">
           <TabsList className="mb-6">
-            <TabsTrigger value="checklist">
-              <ListChecks className="mr-2 h-4 w-4" /> Checklist
-            </TabsTrigger>
             <TabsTrigger value="dashboard">
               <BarChart3 className="mr-2 h-4 w-4" /> Dashboard
+            </TabsTrigger>
+            <TabsTrigger value="checklist">
+              <ListChecks className="mr-2 h-4 w-4" /> Checklist
             </TabsTrigger>
           </TabsList>
 
