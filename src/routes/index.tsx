@@ -105,10 +105,14 @@ const LEVEL_STYLES: Record<string, { card: string; badge: string; dot: string }>
 
 const LEVEL_FILL = ["var(--level-0)", "var(--level-1)", "var(--level-2)", "var(--level-3)"];
 
-function maxReached(item: Item, st: { checked: Record<string, boolean> } | undefined) {
-  if (!st) return 0;
+function maxReached(item: Item, st: { checked: Record<string, boolean>; none?: boolean } | undefined) {
+  if (!st || st.none) return 0;
   const reached = item.levels.map((l, i) => (st.checked[l.level] ? i + 1 : 0)).filter(Boolean);
   return reached.length ? Math.max(...reached) : 0;
+}
+
+function isNone(st: { none?: boolean } | undefined) {
+  return !!st?.none;
 }
 
 function Index() {
