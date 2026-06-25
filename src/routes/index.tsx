@@ -856,17 +856,19 @@ function Index() {
                       <div className="mb-1 flex items-center justify-between text-sm">
                         <span className="font-medium">{o.objective}</span>
                         <span className="text-muted-foreground">
-                          {o.avg.toFixed(2)} / 3 · {o.total} subcategorias
+                          {o.avg.toFixed(2)} / 3 · {o.total} subcategorias{o.nNone ? ` · ${o.nNone} não tem` : ""}
                         </span>
                       </div>
                       <div className="flex h-3 overflow-hidden rounded-full bg-muted">
-                        {[o.n1, o.n2, o.n3].map((v, i) => (
+                        {[
+                          { v: o.nNone, c: "#ef4444" },
+                          { v: o.n1, c: "var(--level-1)" },
+                          { v: o.n2, c: "var(--level-2)" },
+                          { v: o.n3, c: "var(--level-3)" },
+                        ].map((seg, i) => (
                           <div
                             key={i}
-                            style={{
-                              width: `${(v / o.total) * 100}%`,
-                              background: LEVEL_FILL[i + 1],
-                            }}
+                            style={{ width: `${(seg.v / o.total) * 100}%`, background: seg.c }}
                           />
                         ))}
                       </div>
