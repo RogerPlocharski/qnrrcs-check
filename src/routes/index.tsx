@@ -447,9 +447,9 @@ function Index() {
         ${objBlocks}
         <h2>Síntese</h2>
         <table>
-          <thead><tr><th>Objetivo</th><th>Total</th><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Sem aval.</th><th>Maturidade</th></tr></thead>
+          <thead><tr><th>Objetivo</th><th>Total</th><th>Não tem</th><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Sem aval.</th><th>Maturidade</th></tr></thead>
           <tbody>
-            ${objectiveStats.map(o => `<tr><td><strong>${o.objective}</strong></td><td>${o.total}</td><td>${o.n1}</td><td>${o.n2}</td><td>${o.n3}</td><td>${o.n0}</td><td>${o.avg.toFixed(2)} / 3</td></tr>`).join("")}
+            ${objectiveStats.map(o => `<tr><td><strong>${o.objective}</strong></td><td>${o.total}</td><td style="color:#ef4444;font-weight:600">${o.nNone}</td><td>${o.n1}</td><td>${o.n2}</td><td>${o.n3}</td><td>${o.n0}</td><td>${o.avg.toFixed(2)} / 3</td></tr>`).join("")}
           </tbody>
         </table>
       `;
@@ -461,7 +461,11 @@ function Index() {
           const rows = subs.map((it) => {
             const st = state[it.subcategory] ?? { checked: {}, notes: "" };
             const max = maxReached(it, st);
-            const badge = max ? `<span class="badge" style="background:${LEVEL_COLORS[max]}">Nível ${max}</span>` : `<span class="badge" style="background:#9ca3af">Não avaliado</span>`;
+            const badge = st.none
+              ? `<span class="badge" style="background:#ef4444">Não tem</span>`
+              : max
+                ? `<span class="badge" style="background:${LEVEL_COLORS[max]}">Nível ${max}</span>`
+                : `<span class="badge" style="background:#9ca3af">Não avaliado</span>`;
             const lvls = it.levels.map((l) => {
               const checked = st.checked[l.level] ? "✓" : "✗";
               return `<div><strong>${checked} ${l.level}</strong>${l.description ? `<div style="color:#4b5563">${l.description.replace(/\n/g, "<br>")}</div>` : ""}${l.evidence ? `<div class="notes"><em>Evidências:</em> ${l.evidence.replace(/\n/g, "<br>")}</div>` : ""}</div>`;
