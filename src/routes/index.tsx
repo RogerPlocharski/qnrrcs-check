@@ -168,13 +168,19 @@ function Index() {
 
   const stats = useMemo(() => {
     let achieved = 0;
+    let none = 0;
     const levelCounts = { 0: 0, 1: 0, 2: 0, 3: 0 };
     for (const it of items) {
-      const m = maxReached(it, state[it.subcategory]);
+      const st = state[it.subcategory];
+      if (isNone(st)) {
+        none++;
+        continue;
+      }
+      const m = maxReached(it, st);
       levelCounts[m as 0 | 1 | 2 | 3]++;
       if (m > 0) achieved++;
     }
-    return { total: items.length, achieved, levelCounts };
+    return { total: items.length, achieved, none, levelCounts };
   }, [items, state]);
 
   const objectiveStats = useMemo(() => {
@@ -182,17 +188,24 @@ function Index() {
       const cats = grouped.get(obj);
       const list: Item[] = [];
       if (cats) cats.forEach((arr) => list.push(...arr));
-      const counts = { n0: 0, n1: 0, n2: 0, n3: 0 };
+      const counts = { n0: 0, n1: 0, n2: 0, n3: 0, nNone: 0 };
       let sum = 0;
+      let evaluated = 0;
       for (const it of list) {
-        const m = maxReached(it, state[it.subcategory]);
+        const st = state[it.subcategory];
+        if (isNone(st)) {
+          counts.nNone++;
+          continue;
+        }
+        const m = maxReached(it, st);
         sum += m;
-        counts[`n${m}` as keyof typeof counts]++;
+        evaluated++;
+        counts[`n${m}` as "n0" | "n1" | "n2" | "n3"]++;
       }
       return {
         objective: obj,
         total: list.length,
-        avg: list.length ? sum / list.length : 0,
+        avg: evaluated ? sum / evaluated : 0,
         ...counts,
       };
     });
