@@ -68,7 +68,7 @@ type Item = {
   levels: Level[];
 };
 
-type State = Record<string, { checked: Record<string, boolean>; notes: string }>;
+type State = Record<string, { checked: Record<string, boolean>; notes: string; none?: boolean }>;
 
 const STORAGE_KEY = "qnrcs-checklist-v1";
 const META_KEY = "qnrcs-meta-v1";
@@ -103,12 +103,16 @@ const LEVEL_STYLES: Record<string, { card: string; badge: string; dot: string }>
   },
 };
 
-const LEVEL_FILL = ["var(--level-0)", "var(--level-1)", "var(--level-2)", "var(--level-3)"];
 
-function maxReached(item: Item, st: { checked: Record<string, boolean> } | undefined) {
-  if (!st) return 0;
+
+function maxReached(item: Item, st: { checked: Record<string, boolean>; none?: boolean } | undefined) {
+  if (!st || st.none) return 0;
   const reached = item.levels.map((l, i) => (st.checked[l.level] ? i + 1 : 0)).filter(Boolean);
   return reached.length ? Math.max(...reached) : 0;
+}
+
+function isNone(st: { none?: boolean } | undefined) {
+  return !!st?.none;
 }
 
 function Index() {
@@ -164,13 +168,19 @@ function Index() {
 
   const stats = useMemo(() => {
     let achieved = 0;
+    let none = 0;
     const levelCounts = { 0: 0, 1: 0, 2: 0, 3: 0 };
     for (const it of items) {
-      const m = maxReached(it, state[it.subcategory]);
+      const st = state[it.subcategory];
+      if (isNone(st)) {
+        none++;
+        continue;
+      }
+      const m = maxReached(it, st);
       levelCounts[m as 0 | 1 | 2 | 3]++;
       if (m > 0) achieved++;
     }
-    return { total: items.length, achieved, levelCounts };
+    return { total: items.length, achieved, none, levelCounts };
   }, [items, state]);
 
   const objectiveStats = useMemo(() => {
@@ -178,17 +188,24 @@ function Index() {
       const cats = grouped.get(obj);
       const list: Item[] = [];
       if (cats) cats.forEach((arr) => list.push(...arr));
-      const counts = { n0: 0, n1: 0, n2: 0, n3: 0 };
+      const counts = { n0: 0, n1: 0, n2: 0, n3: 0, nNone: 0 };
       let sum = 0;
+      let evaluated = 0;
       for (const it of list) {
-        const m = maxReached(it, state[it.subcategory]);
+        const st = state[it.subcategory];
+        if (isNone(st)) {
+          counts.nNone++;
+          continue;
+        }
+        const m = maxReached(it, st);
         sum += m;
-        counts[`n${m}` as keyof typeof counts]++;
+        evaluated++;
+        counts[`n${m}` as "n0" | "n1" | "n2" | "n3"]++;
       }
       return {
         objective: obj,
         total: list.length,
-        avg: list.length ? sum / list.length : 0,
+        avg: evaluated ? sum / evaluated : 0,
         ...counts,
       };
     });
@@ -197,7 +214,17 @@ function Index() {
   const toggle = (sub: string, level: string) =>
     setState((s) => {
       const cur = s[sub] ?? { checked: {}, notes: "" };
-      return { ...s, [sub]: { ...cur, checked: { ...cur.checked, [level]: !cur.checked[level] } } };
+      return {
+        ...s,
+        [sub]: { ...cur, none: false, checked: { ...cur.checked, [level]: !cur.checked[level] } },
+      };
+    });
+
+  const toggleNone = (sub: string) =>
+    setState((s) => {
+      const cur = s[sub] ?? { checked: {}, notes: "" };
+      const next = !cur.none;
+      return { ...s, [sub]: { ...cur, none: next, checked: next ? {} : cur.checked } };
     });
 
   const setNote = (sub: string, notes: string) =>
@@ -211,13 +238,14 @@ function Index() {
   };
 
   const exportCsv = () => {
-    const rows = [["Objetivo", "Categoria", "Subcategoria", "Nível 1", "Nível 2", "Nível 3", "Observações"]];
+    const rows = [["Objetivo", "Categoria", "Subcategoria", "Não tem", "Nível 1", "Nível 2", "Nível 3", "Observações"]];
     for (const it of items) {
       const st = state[it.subcategory] ?? { checked: {}, notes: "" };
       rows.push([
         it.objective,
         it.category,
         it.subcategory,
+        st.none ? "Sim" : "",
         st.checked["1 – Inicial"] ? "Sim" : "",
         st.checked["2 – Intermédio"] ? "Sim" : "",
         st.checked["3 – Avançado"] ? "Sim" : "",
@@ -319,13 +347,20 @@ function Index() {
     const LEVEL_COLORS = ["#e5e7eb", "#f59e0b", "#3b82f6", "#10b981"];
     const pct = stats.total ? (stats.achieved / stats.total) * 100 : 0;
 
+    const NONE_COLOR = "#ef4444";
+
     const objBlocks = objectiveStats.map((o) => {
-      const segs = [o.n1, o.n2, o.n3]
-        .map((v, i) => v ? `<div style="width:${(v / o.total) * 100}%;background:${LEVEL_COLORS[i + 1]}"></div>` : "")
+      const segs = [
+        { v: o.nNone, c: NONE_COLOR },
+        { v: o.n1, c: LEVEL_COLORS[1] },
+        { v: o.n2, c: LEVEL_COLORS[2] },
+        { v: o.n3, c: LEVEL_COLORS[3] },
+      ]
+        .map((s) => (s.v ? `<div style="width:${(s.v / o.total) * 100}%;background:${s.c}"></div>` : ""))
         .join("");
       return `
         <div class="obj-row">
-          <div class="obj-head"><strong>${o.objective}</strong><span>${o.avg.toFixed(2)} / 3 · ${o.total} subcategorias</span></div>
+          <div class="obj-head"><strong>${o.objective}</strong><span>${o.avg.toFixed(2)} / 3 · ${o.total} subcategorias${o.nNone ? ` · ${o.nNone} não tem` : ""}</span></div>
           <div class="bar">${segs}</div>
         </div>`;
     }).join("");
@@ -334,6 +369,7 @@ function Index() {
     const totalPie = stats.total;
     let cum = 0;
     const pieSegs = [
+      { v: stats.none, c: NONE_COLOR, l: "Não tem" },
       { v: stats.levelCounts[0], c: LEVEL_COLORS[0], l: "Sem avaliação" },
       { v: stats.levelCounts[1], c: LEVEL_COLORS[1], l: "Nível 1" },
       { v: stats.levelCounts[2], c: LEVEL_COLORS[2], l: "Nível 2" },
@@ -411,9 +447,9 @@ function Index() {
         ${objBlocks}
         <h2>Síntese</h2>
         <table>
-          <thead><tr><th>Objetivo</th><th>Total</th><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Sem aval.</th><th>Maturidade</th></tr></thead>
+          <thead><tr><th>Objetivo</th><th>Total</th><th>Não tem</th><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Sem aval.</th><th>Maturidade</th></tr></thead>
           <tbody>
-            ${objectiveStats.map(o => `<tr><td><strong>${o.objective}</strong></td><td>${o.total}</td><td>${o.n1}</td><td>${o.n2}</td><td>${o.n3}</td><td>${o.n0}</td><td>${o.avg.toFixed(2)} / 3</td></tr>`).join("")}
+            ${objectiveStats.map(o => `<tr><td><strong>${o.objective}</strong></td><td>${o.total}</td><td style="color:#ef4444;font-weight:600">${o.nNone}</td><td>${o.n1}</td><td>${o.n2}</td><td>${o.n3}</td><td>${o.n0}</td><td>${o.avg.toFixed(2)} / 3</td></tr>`).join("")}
           </tbody>
         </table>
       `;
@@ -425,7 +461,11 @@ function Index() {
           const rows = subs.map((it) => {
             const st = state[it.subcategory] ?? { checked: {}, notes: "" };
             const max = maxReached(it, st);
-            const badge = max ? `<span class="badge" style="background:${LEVEL_COLORS[max]}">Nível ${max}</span>` : `<span class="badge" style="background:#9ca3af">Não avaliado</span>`;
+            const badge = st.none
+              ? `<span class="badge" style="background:#ef4444">Não tem</span>`
+              : max
+                ? `<span class="badge" style="background:${LEVEL_COLORS[max]}">Nível ${max}</span>`
+                : `<span class="badge" style="background:#9ca3af">Não avaliado</span>`;
             const lvls = it.levels.map((l) => {
               const checked = st.checked[l.level] ? "✓" : "✗";
               return `<div><strong>${checked} ${l.level}</strong>${l.description ? `<div style="color:#4b5563">${l.description.replace(/\n/g, "<br>")}</div>` : ""}${l.evidence ? `<div class="notes"><em>Evidências:</em> ${l.evidence.replace(/\n/g, "<br>")}</div>` : ""}</div>`;
@@ -453,6 +493,7 @@ function Index() {
   const progress = stats.total ? (stats.achieved / stats.total) * 100 : 0;
 
   const pieData = [
+    { name: "Não tem", value: stats.none, color: "#ef4444" },
     { name: "Sem avaliação", value: stats.levelCounts[0], color: "var(--level-0)" },
     { name: "Nível 1 — Inicial", value: stats.levelCounts[1], color: "var(--level-1)" },
     { name: "Nível 2 — Intermédio", value: stats.levelCounts[2], color: "var(--level-2)" },
@@ -488,6 +529,9 @@ function Index() {
               </div>
               <Progress value={progress} className="mt-2" />
               <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-destructive/15 px-2.5 py-1">
+                  <span className="h-2 w-2 rounded-full bg-destructive" /> Não tem: {stats.none}
+                </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-level-1/15 px-2.5 py-1">
                   <span className="h-2 w-2 rounded-full bg-level-1" /> Nível 1: {stats.levelCounts[1]}
                 </span>
@@ -609,8 +653,10 @@ function Index() {
                             {visible.map((it) => {
                               const st = state[it.subcategory] ?? { checked: {}, notes: "" };
                               const max = maxReached(it, st);
-                              const badgeStyle =
-                                max === 0
+                              const none = isNone(st);
+                              const badgeStyle = none
+                                ? "bg-destructive text-destructive-foreground border-transparent"
+                                : max === 0
                                   ? "bg-level-0 text-level-0-foreground border-transparent"
                                   : LEVEL_STYLES[it.levels[max - 1].level].badge;
                               return (
@@ -618,7 +664,7 @@ function Index() {
                                   <AccordionTrigger className="px-5 py-3 hover:no-underline">
                                     <div className="flex w-full items-start gap-3 text-left">
                                       <Badge className={`mt-0.5 shrink-0 ${badgeStyle}`}>
-                                        {max ? `Nível ${max}` : "—"}
+                                        {none ? "Não tem" : max ? `Nível ${max}` : "—"}
                                       </Badge>
                                       <span className="text-sm font-medium">{it.subcategory}</span>
                                     </div>
@@ -629,7 +675,23 @@ function Index() {
                                         <span className="font-medium">Referências:</span> {it.reference}
                                       </p>
                                     )}
-                                    <div className="space-y-3">
+                                    <label
+                                      className={`mb-3 flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-colors ${
+                                        none
+                                          ? "border-destructive bg-destructive/15 ring-2 ring-destructive/40"
+                                          : "border-destructive/30 bg-destructive/5 hover:bg-destructive/10"
+                                      }`}
+                                    >
+                                      <Checkbox
+                                        checked={none}
+                                        onCheckedChange={() => toggleNone(it.subcategory)}
+                                      />
+                                      <div className="flex items-center gap-2">
+                                        <span className="h-2.5 w-2.5 rounded-full bg-destructive" />
+                                        <span className="text-sm font-semibold text-destructive">Não tem / Não aplicável</span>
+                                      </div>
+                                    </label>
+                                    <div className={`space-y-3 ${none ? "pointer-events-none opacity-40" : ""}`}>
                                       {it.levels.map((lvl) => {
                                         const s = LEVEL_STYLES[lvl.level] ?? LEVEL_STYLES["1 – Inicial"];
                                         const isChecked = !!st.checked[lvl.level];
@@ -688,8 +750,9 @@ function Index() {
           </TabsContent>
 
           <TabsContent value="dashboard" className="space-y-6">
-            <div className="grid gap-4 md:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-5">
               {[
+                { label: "Não tem", value: stats.none, cls: "bg-destructive/15 border-destructive/40 text-destructive" },
                 { label: "Sem avaliação", value: stats.levelCounts[0], cls: "bg-level-0/40" },
                 { label: "Nível 1 — Inicial", value: stats.levelCounts[1], cls: "bg-level-1/20 border-level-1/40" },
                 { label: "Nível 2 — Intermédio", value: stats.levelCounts[2], cls: "bg-level-2/20 border-level-2/40" },
@@ -719,6 +782,7 @@ function Index() {
                       }}
                     />
                     <Legend wrapperStyle={{ fontSize: 12 }} />
+                    <Bar dataKey="nNone" stackId="a" name="Não tem" fill="#ef4444" />
                     <Bar dataKey="n0" stackId="a" name="Sem avaliação" fill="var(--level-0)" />
                     <Bar dataKey="n1" stackId="a" name="Nível 1" fill="var(--level-1)" />
                     <Bar dataKey="n2" stackId="a" name="Nível 2" fill="var(--level-2)" />
@@ -792,17 +856,19 @@ function Index() {
                       <div className="mb-1 flex items-center justify-between text-sm">
                         <span className="font-medium">{o.objective}</span>
                         <span className="text-muted-foreground">
-                          {o.avg.toFixed(2)} / 3 · {o.total} subcategorias
+                          {o.avg.toFixed(2)} / 3 · {o.total} subcategorias{o.nNone ? ` · ${o.nNone} não tem` : ""}
                         </span>
                       </div>
                       <div className="flex h-3 overflow-hidden rounded-full bg-muted">
-                        {[o.n1, o.n2, o.n3].map((v, i) => (
+                        {[
+                          { v: o.nNone, c: "#ef4444" },
+                          { v: o.n1, c: "var(--level-1)" },
+                          { v: o.n2, c: "var(--level-2)" },
+                          { v: o.n3, c: "var(--level-3)" },
+                        ].map((seg, i) => (
                           <div
                             key={i}
-                            style={{
-                              width: `${(v / o.total) * 100}%`,
-                              background: LEVEL_FILL[i + 1],
-                            }}
+                            style={{ width: `${(seg.v / o.total) * 100}%`, background: seg.c }}
                           />
                         ))}
                       </div>
