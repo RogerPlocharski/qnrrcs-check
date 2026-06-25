@@ -68,7 +68,7 @@ type Item = {
   levels: Level[];
 };
 
-type State = Record<string, { checked: Record<string, boolean>; notes: string }>;
+type State = Record<string, { checked: Record<string, boolean>; notes: string; none?: boolean }>;
 
 const STORAGE_KEY = "qnrcs-checklist-v1";
 const META_KEY = "qnrcs-meta-v1";
