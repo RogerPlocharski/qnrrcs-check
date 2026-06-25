@@ -529,6 +529,9 @@ function Index() {
               </div>
               <Progress value={progress} className="mt-2" />
               <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-destructive/15 px-2.5 py-1">
+                  <span className="h-2 w-2 rounded-full bg-destructive" /> Não tem: {stats.none}
+                </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-level-1/15 px-2.5 py-1">
                   <span className="h-2 w-2 rounded-full bg-level-1" /> Nível 1: {stats.levelCounts[1]}
                 </span>
