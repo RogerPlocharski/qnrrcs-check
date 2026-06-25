@@ -493,6 +493,7 @@ function Index() {
   const progress = stats.total ? (stats.achieved / stats.total) * 100 : 0;
 
   const pieData = [
+    { name: "Não tem", value: stats.none, color: "#ef4444" },
     { name: "Sem avaliação", value: stats.levelCounts[0], color: "var(--level-0)" },
     { name: "Nível 1 — Inicial", value: stats.levelCounts[1], color: "var(--level-1)" },
     { name: "Nível 2 — Intermédio", value: stats.levelCounts[2], color: "var(--level-2)" },
