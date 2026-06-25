@@ -653,8 +653,10 @@ function Index() {
                             {visible.map((it) => {
                               const st = state[it.subcategory] ?? { checked: {}, notes: "" };
                               const max = maxReached(it, st);
-                              const badgeStyle =
-                                max === 0
+                              const none = isNone(st);
+                              const badgeStyle = none
+                                ? "bg-destructive text-destructive-foreground border-transparent"
+                                : max === 0
                                   ? "bg-level-0 text-level-0-foreground border-transparent"
                                   : LEVEL_STYLES[it.levels[max - 1].level].badge;
                               return (
@@ -662,7 +664,7 @@ function Index() {
                                   <AccordionTrigger className="px-5 py-3 hover:no-underline">
                                     <div className="flex w-full items-start gap-3 text-left">
                                       <Badge className={`mt-0.5 shrink-0 ${badgeStyle}`}>
-                                        {max ? `Nível ${max}` : "—"}
+                                        {none ? "Não tem" : max ? `Nível ${max}` : "—"}
                                       </Badge>
                                       <span className="text-sm font-medium">{it.subcategory}</span>
                                     </div>
@@ -673,7 +675,23 @@ function Index() {
                                         <span className="font-medium">Referências:</span> {it.reference}
                                       </p>
                                     )}
-                                    <div className="space-y-3">
+                                    <label
+                                      className={`mb-3 flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-colors ${
+                                        none
+                                          ? "border-destructive bg-destructive/15 ring-2 ring-destructive/40"
+                                          : "border-destructive/30 bg-destructive/5 hover:bg-destructive/10"
+                                      }`}
+                                    >
+                                      <Checkbox
+                                        checked={none}
+                                        onCheckedChange={() => toggleNone(it.subcategory)}
+                                      />
+                                      <div className="flex items-center gap-2">
+                                        <span className="h-2.5 w-2.5 rounded-full bg-destructive" />
+                                        <span className="text-sm font-semibold text-destructive">Não tem / Não aplicável</span>
+                                      </div>
+                                    </label>
+                                    <div className={`space-y-3 ${none ? "pointer-events-none opacity-40" : ""}`}>
                                       {it.levels.map((lvl) => {
                                         const s = LEVEL_STYLES[lvl.level] ?? LEVEL_STYLES["1 – Inicial"];
                                         const isChecked = !!st.checked[lvl.level];
