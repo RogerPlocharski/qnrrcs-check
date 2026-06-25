@@ -347,13 +347,20 @@ function Index() {
     const LEVEL_COLORS = ["#e5e7eb", "#f59e0b", "#3b82f6", "#10b981"];
     const pct = stats.total ? (stats.achieved / stats.total) * 100 : 0;
 
+    const NONE_COLOR = "#ef4444";
+
     const objBlocks = objectiveStats.map((o) => {
-      const segs = [o.n1, o.n2, o.n3]
-        .map((v, i) => v ? `<div style="width:${(v / o.total) * 100}%;background:${LEVEL_COLORS[i + 1]}"></div>` : "")
+      const segs = [
+        { v: o.nNone, c: NONE_COLOR },
+        { v: o.n1, c: LEVEL_COLORS[1] },
+        { v: o.n2, c: LEVEL_COLORS[2] },
+        { v: o.n3, c: LEVEL_COLORS[3] },
+      ]
+        .map((s) => (s.v ? `<div style="width:${(s.v / o.total) * 100}%;background:${s.c}"></div>` : ""))
         .join("");
       return `
         <div class="obj-row">
-          <div class="obj-head"><strong>${o.objective}</strong><span>${o.avg.toFixed(2)} / 3 · ${o.total} subcategorias</span></div>
+          <div class="obj-head"><strong>${o.objective}</strong><span>${o.avg.toFixed(2)} / 3 · ${o.total} subcategorias${o.nNone ? ` · ${o.nNone} não tem` : ""}</span></div>
           <div class="bar">${segs}</div>
         </div>`;
     }).join("");
@@ -362,6 +369,7 @@ function Index() {
     const totalPie = stats.total;
     let cum = 0;
     const pieSegs = [
+      { v: stats.none, c: NONE_COLOR, l: "Não tem" },
       { v: stats.levelCounts[0], c: LEVEL_COLORS[0], l: "Sem avaliação" },
       { v: stats.levelCounts[1], c: LEVEL_COLORS[1], l: "Nível 1" },
       { v: stats.levelCounts[2], c: LEVEL_COLORS[2], l: "Nível 2" },
