@@ -238,13 +238,14 @@ function Index() {
   };
 
   const exportCsv = () => {
-    const rows = [["Objetivo", "Categoria", "Subcategoria", "Nível 1", "Nível 2", "Nível 3", "Observações"]];
+    const rows = [["Objetivo", "Categoria", "Subcategoria", "Não tem", "Nível 1", "Nível 2", "Nível 3", "Observações"]];
     for (const it of items) {
       const st = state[it.subcategory] ?? { checked: {}, notes: "" };
       rows.push([
         it.objective,
         it.category,
         it.subcategory,
+        st.none ? "Sim" : "",
         st.checked["1 – Inicial"] ? "Sim" : "",
         st.checked["2 – Intermédio"] ? "Sim" : "",
         st.checked["3 – Avançado"] ? "Sim" : "",
