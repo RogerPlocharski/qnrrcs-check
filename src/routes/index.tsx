@@ -103,7 +103,7 @@ const LEVEL_STYLES: Record<string, { card: string; badge: string; dot: string }>
   },
 };
 
-const LEVEL_FILL = ["var(--level-0)", "var(--level-1)", "var(--level-2)", "var(--level-3)"];
+
 
 function maxReached(item: Item, st: { checked: Record<string, boolean>; none?: boolean } | undefined) {
   if (!st || st.none) return 0;
