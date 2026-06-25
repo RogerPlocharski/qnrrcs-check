@@ -214,7 +214,17 @@ function Index() {
   const toggle = (sub: string, level: string) =>
     setState((s) => {
       const cur = s[sub] ?? { checked: {}, notes: "" };
-      return { ...s, [sub]: { ...cur, checked: { ...cur.checked, [level]: !cur.checked[level] } } };
+      return {
+        ...s,
+        [sub]: { ...cur, none: false, checked: { ...cur.checked, [level]: !cur.checked[level] } },
+      };
+    });
+
+  const toggleNone = (sub: string) =>
+    setState((s) => {
+      const cur = s[sub] ?? { checked: {}, notes: "" };
+      const next = !cur.none;
+      return { ...s, [sub]: { ...cur, none: next, checked: next ? {} : cur.checked } };
     });
 
   const setNote = (sub: string, notes: string) =>
