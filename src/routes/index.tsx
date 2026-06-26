@@ -238,7 +238,7 @@ function Index() {
   };
 
   const exportCsv = () => {
-    const rows = [["Objetivo", "Categoria", "Subcategoria", "Não tem", "Nível 1", "Nível 2", "Nível 3", "Observações"]];
+    const rows = [["Objetivo", "Categoria", "Subcategoria", "Não existe", "Nível 1", "Nível 2", "Nível 3", "Observações"]];
     for (const it of items) {
       const st = state[it.subcategory] ?? { checked: {}, notes: "" };
       rows.push([
@@ -360,7 +360,7 @@ function Index() {
         .join("");
       return `
         <div class="obj-row">
-          <div class="obj-head"><strong>${o.objective}</strong><span>${o.avg.toFixed(2)} / 3 · ${o.total} subcategorias${o.nNone ? ` · ${o.nNone} não tem` : ""}</span></div>
+          <div class="obj-head"><strong>${o.objective}</strong><span>${o.avg.toFixed(2)} / 3 · ${o.total} subcategorias${o.nNone ? ` · ${o.nNone} não existe` : ""}</span></div>
           <div class="bar">${segs}</div>
         </div>`;
     }).join("");
@@ -369,7 +369,7 @@ function Index() {
     const totalPie = stats.total;
     let cum = 0;
     const pieSegs = [
-      { v: stats.none, c: NONE_COLOR, l: "Não tem" },
+      { v: stats.none, c: NONE_COLOR, l: "Não existe" },
       { v: stats.levelCounts[0], c: LEVEL_COLORS[0], l: "Sem avaliação" },
       { v: stats.levelCounts[1], c: LEVEL_COLORS[1], l: "Nível 1" },
       { v: stats.levelCounts[2], c: LEVEL_COLORS[2], l: "Nível 2" },
@@ -447,7 +447,7 @@ function Index() {
         ${objBlocks}
         <h2>Síntese</h2>
         <table>
-          <thead><tr><th>Objetivo</th><th>Total</th><th>Não tem</th><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Sem aval.</th><th>Maturidade</th></tr></thead>
+          <thead><tr><th>Objetivo</th><th>Total</th><th>Não existe</th><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Sem aval.</th><th>Maturidade</th></tr></thead>
           <tbody>
             ${objectiveStats.map(o => `<tr><td><strong>${o.objective}</strong></td><td>${o.total}</td><td style="color:#ef4444;font-weight:600">${o.nNone}</td><td>${o.n1}</td><td>${o.n2}</td><td>${o.n3}</td><td>${o.n0}</td><td>${o.avg.toFixed(2)} / 3</td></tr>`).join("")}
           </tbody>
@@ -462,7 +462,7 @@ function Index() {
             const st = state[it.subcategory] ?? { checked: {}, notes: "" };
             const max = maxReached(it, st);
             const badge = st.none
-              ? `<span class="badge" style="background:#ef4444">Não tem</span>`
+              ? `<span class="badge" style="background:#ef4444">Não existe</span>`
               : max
                 ? `<span class="badge" style="background:${LEVEL_COLORS[max]}">Nível ${max}</span>`
                 : `<span class="badge" style="background:#9ca3af">Não avaliado</span>`;
@@ -493,7 +493,7 @@ function Index() {
   const progress = stats.total ? (stats.achieved / stats.total) * 100 : 0;
 
   const pieData = [
-    { name: "Não tem", value: stats.none, color: "#ef4444" },
+    { name: "Não existe", value: stats.none, color: "#ef4444" },
     { name: "Sem avaliação", value: stats.levelCounts[0], color: "var(--level-0)" },
     { name: "Nível 1 — Inicial", value: stats.levelCounts[1], color: "var(--level-1)" },
     { name: "Nível 2 — Intermédio", value: stats.levelCounts[2], color: "var(--level-2)" },
@@ -530,7 +530,7 @@ function Index() {
               <Progress value={progress} className="mt-2" />
               <div className="mt-3 flex flex-wrap gap-2 text-xs">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-destructive/15 px-2.5 py-1">
-                  <span className="h-2 w-2 rounded-full bg-destructive" /> Não tem: {stats.none}
+                  <span className="h-2 w-2 rounded-full bg-destructive" /> Não existe: {stats.none}
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-level-1/15 px-2.5 py-1">
                   <span className="h-2 w-2 rounded-full bg-level-1" /> Nível 1: {stats.levelCounts[1]}
@@ -664,7 +664,7 @@ function Index() {
                                   <AccordionTrigger className="px-5 py-3 hover:no-underline">
                                     <div className="flex w-full items-start gap-3 text-left">
                                       <Badge className={`mt-0.5 shrink-0 ${badgeStyle}`}>
-                                        {none ? "Não tem" : max ? `Nível ${max}` : "—"}
+                                        {none ? "Não existe" : max ? `Nível ${max}` : "—"}
                                       </Badge>
                                       <span className="text-sm font-medium">{it.subcategory}</span>
                                     </div>
@@ -688,7 +688,7 @@ function Index() {
                                       />
                                       <div className="flex items-center gap-2">
                                         <span className="h-2.5 w-2.5 rounded-full bg-destructive" />
-                                        <span className="text-sm font-semibold text-destructive">Não tem / Não aplicável</span>
+                                        <span className="text-sm font-semibold text-destructive">Não existe / Não aplicável</span>
                                       </div>
                                     </label>
                                     <div className={`space-y-3 ${none ? "pointer-events-none opacity-40" : ""}`}>
@@ -752,7 +752,7 @@ function Index() {
           <TabsContent value="dashboard" className="space-y-6">
             <div className="grid gap-4 md:grid-cols-5">
               {[
-                { label: "Não tem", value: stats.none, cls: "bg-destructive/15 border-destructive/40 text-destructive" },
+                { label: "Não existe", value: stats.none, cls: "bg-destructive/15 border-destructive/40 text-destructive" },
                 { label: "Sem avaliação", value: stats.levelCounts[0], cls: "bg-level-0/40" },
                 { label: "Nível 1 — Inicial", value: stats.levelCounts[1], cls: "bg-level-1/20 border-level-1/40" },
                 { label: "Nível 2 — Intermédio", value: stats.levelCounts[2], cls: "bg-level-2/20 border-level-2/40" },
@@ -782,7 +782,7 @@ function Index() {
                       }}
                     />
                     <Legend wrapperStyle={{ fontSize: 12 }} />
-                    <Bar dataKey="nNone" stackId="a" name="Não tem" fill="#ef4444" />
+                    <Bar dataKey="nNone" stackId="a" name="Não existe" fill="#ef4444" />
                     <Bar dataKey="n0" stackId="a" name="Sem avaliação" fill="var(--level-0)" />
                     <Bar dataKey="n1" stackId="a" name="Nível 1" fill="var(--level-1)" />
                     <Bar dataKey="n2" stackId="a" name="Nível 2" fill="var(--level-2)" />
@@ -856,7 +856,7 @@ function Index() {
                       <div className="mb-1 flex items-center justify-between text-sm">
                         <span className="font-medium">{o.objective}</span>
                         <span className="text-muted-foreground">
-                          {o.avg.toFixed(2)} / 3 · {o.total} subcategorias{o.nNone ? ` · ${o.nNone} não tem` : ""}
+                          {o.avg.toFixed(2)} / 3 · {o.total} subcategorias{o.nNone ? ` · ${o.nNone} não existe` : ""}
                         </span>
                       </div>
                       <div className="flex h-3 overflow-hidden rounded-full bg-muted">
