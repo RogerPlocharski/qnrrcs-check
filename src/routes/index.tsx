@@ -447,9 +447,9 @@ function Index() {
         ${objBlocks}
         <h2>Síntese</h2>
         <table>
-          <thead><tr><th>Objetivo</th><th>Total</th><th>Não existe</th><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Sem aval.</th><th>Maturidade</th></tr></thead>
+          <thead><tr><th>Objetivo</th><th>Total</th><th>Sem aval.</th><th>Não existe</th><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Maturidade</th></tr></thead>
           <tbody>
-            ${objectiveStats.map(o => `<tr><td><strong>${o.objective}</strong></td><td>${o.total}</td><td style="color:#ef4444;font-weight:600">${o.nNone}</td><td>${o.n1}</td><td>${o.n2}</td><td>${o.n3}</td><td>${o.n0}</td><td>${o.avg.toFixed(2)} / 3</td></tr>`).join("")}
+            ${objectiveStats.map(o => `<tr><td><strong>${o.objective}</strong></td><td>${o.total}</td><td>${o.n0}</td><td style="color:#ef4444;font-weight:600">${o.nNone}</td><td>${o.n1}</td><td>${o.n2}</td><td>${o.n3}</td><td>${o.avg.toFixed(2)} / 3</td></tr>`).join("")}
           </tbody>
         </table>
       `;
