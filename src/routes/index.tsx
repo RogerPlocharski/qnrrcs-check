@@ -782,8 +782,8 @@ function Index() {
                       }}
                     />
                     <Legend wrapperStyle={{ fontSize: 12 }} />
-                    <Bar dataKey="nNone" stackId="a" name="Não existe" fill="#ef4444" />
                     <Bar dataKey="n0" stackId="a" name="Sem avaliação" fill="var(--level-0)" />
+                    <Bar dataKey="nNone" stackId="a" name="Não existe" fill="#ef4444" />
                     <Bar dataKey="n1" stackId="a" name="Nível 1" fill="var(--level-1)" />
                     <Bar dataKey="n2" stackId="a" name="Nível 2" fill="var(--level-2)" />
                     <Bar dataKey="n3" stackId="a" name="Nível 3" stroke="var(--level-3)" fill="var(--level-3)" radius={[6, 6, 0, 0]} />
