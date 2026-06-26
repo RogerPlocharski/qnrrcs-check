@@ -752,8 +752,8 @@ function Index() {
           <TabsContent value="dashboard" className="space-y-6">
             <div className="grid gap-4 md:grid-cols-5">
               {[
-                { label: "Não existe", value: stats.none, cls: "bg-destructive/15 border-destructive/40 text-destructive" },
                 { label: "Sem avaliação", value: stats.levelCounts[0], cls: "bg-level-0/40" },
+                { label: "Não existe", value: stats.none, cls: "bg-destructive/15 border-destructive/40 text-destructive" },
                 { label: "Nível 1 — Inicial", value: stats.levelCounts[1], cls: "bg-level-1/20 border-level-1/40" },
                 { label: "Nível 2 — Intermédio", value: stats.levelCounts[2], cls: "bg-level-2/20 border-level-2/40" },
                 { label: "Nível 3 — Avançado", value: stats.levelCounts[3], cls: "bg-level-3/20 border-level-3/40" },
