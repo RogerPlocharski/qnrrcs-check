@@ -369,8 +369,8 @@ function Index() {
     const totalPie = stats.total;
     let cum = 0;
     const pieSegs = [
-      { v: stats.none, c: NONE_COLOR, l: "Não existe" },
       { v: stats.levelCounts[0], c: LEVEL_COLORS[0], l: "Sem avaliação" },
+      { v: stats.none, c: NONE_COLOR, l: "Não existe" },
       { v: stats.levelCounts[1], c: LEVEL_COLORS[1], l: "Nível 1" },
       { v: stats.levelCounts[2], c: LEVEL_COLORS[2], l: "Nível 2" },
       { v: stats.levelCounts[3], c: LEVEL_COLORS[3], l: "Nível 3" },
