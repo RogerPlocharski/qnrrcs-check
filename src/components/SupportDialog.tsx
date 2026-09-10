@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Heart, Copy, Check, ExternalLink } from "lucide-react";
+import { Heart, ScanLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,77 +8,104 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import paypalQr from "@/assets/paypal-qr.png";
 
-const MBWAY = "+351 900 000 000";
-const IBAN = "PT50 0000 0000 0000 0000 0000 0";
-const PAYPAL = "https://www.paypal.com/paypalme/seuuser";
+/**
+ * Métodos de doação.
+ *
+ * Cada método é apenas um QR code — nunca um número de telefone, IBAN ou email,
+ * para não expor dados pessoais do autor nem depender de serviços externos de
+ * geração de QR (a imagem é servida pelo próprio site e funciona offline).
+ *
+ * Para acrescentar o MB WAY:
+ *   1. Na app MB WAY, gere o QR de recebimento (idealmente de valor aberto; se
+ *      obrigar a fixar um montante, use um valor simbólico como 5 €).
+ *   2. Guarde a imagem em `src/assets/mbway-qr.png`.
+ *   3. Descomente o import e a entrada correspondente abaixo.
+ */
+// import mbwayQr from "@/assets/mbway-qr.png";
 
-function CopyField({ label, value }: { label: string; value: string }) {
-  const [copied, setCopied] = useState(false);
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {}
-  };
+type DonationMethod = {
+  id: string;
+  name: string;
+  /** Etiqueta do montante, quando o QR tem valor fixo. */
+  amount?: string;
+  hint: string;
+  qr: string;
+};
+
+const METHODS: DonationMethod[] = [
+  {
+    id: "paypal",
+    name: "PayPal",
+    hint: "Leia o código com a câmara do telemóvel ou com a app PayPal.",
+    qr: paypalQr,
+  },
+  // {
+  //   id: "mbway",
+  //   name: "MB WAY",
+  //   amount: "5 €",
+  //   hint: "Leia o código na app MB WAY.",
+  //   qr: mbwayQr,
+  // },
+];
+
+function MethodCard({ method }: { method: DonationMethod }) {
   return (
-    <div className="rounded-lg border bg-muted/30 p-3">
-      <div className="text-xs font-medium text-muted-foreground">{label}</div>
-      <div className="mt-1 flex items-center gap-2">
-        <code className="flex-1 break-all rounded bg-background px-2 py-1.5 text-sm">{value}</code>
-        <Button size="sm" variant="outline" onClick={copy}>
-          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-          {copied ? "Copiado" : "Copiar"}
-        </Button>
+    <div className="rounded-xl border bg-muted/30 p-4">
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <span className="text-sm font-semibold">{method.name}</span>
+        {method.amount && (
+          <span className="rounded-full border bg-background px-2.5 py-0.5 text-xs font-medium">
+            {method.amount}
+          </span>
+        )}
       </div>
+      <div className="flex justify-center rounded-lg bg-white p-3">
+        <img
+          src={method.qr}
+          alt={`Código QR para doação via ${method.name}`}
+          width={200}
+          height={200}
+          className="h-[200px] w-[200px] object-contain"
+        />
+      </div>
+      <p className="mt-3 flex items-start gap-2 text-xs text-muted-foreground">
+        <ScanLine className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+        {method.hint}
+      </p>
     </div>
   );
 }
 
 export function SupportDialog() {
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(
-    `MBWAY:${MBWAY}`,
-  )}`;
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="border-pink-500/40 text-pink-600 hover:bg-pink-500/10 hover:text-pink-700">
-          <Heart className="mr-2 h-4 w-4 fill-current" /> Apoiar o Projeto
+        <Button variant="outline" size="sm">
+          <Heart className="mr-2 h-4 w-4" aria-hidden="true" /> Apoiar o Projeto
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-h-[85vh] max-w-md overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <Heart className="h-5 w-5 fill-pink-500 text-pink-500" /> Apoiar o Projeto
+            <Heart className="h-5 w-5 text-primary" aria-hidden="true" /> Apoiar o Projeto
           </DialogTitle>
           <DialogDescription>
-            Esta plataforma é disponibilizada gratuitamente. Se considera este projeto útil, pode
-            contribuir para o seu desenvolvimento e manutenção através de uma doação voluntária.
+            Esta ferramenta é gratuita, sem registo e sem publicidade. Se lhe foi útil, um
+            contributo voluntário ajuda a mantê-la disponível e atualizada.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-3">
-          <CopyField label="MB WAY" value={MBWAY} />
-          <div className="flex justify-center rounded-lg border bg-white p-3">
-            <img src={qrUrl} alt="QR Code MB WAY" width={180} height={180} />
-          </div>
-          <CopyField label="IBAN" value={IBAN} />
-          <a
-            href={PAYPAL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between rounded-lg border bg-muted/30 p-3 hover:bg-muted/60"
-          >
-            <div>
-              <div className="text-xs font-medium text-muted-foreground">PayPal</div>
-              <div className="text-sm">{PAYPAL.replace(/^https?:\/\//, "")}</div>
-            </div>
-            <ExternalLink className="h-4 w-4 text-muted-foreground" />
-          </a>
+          {METHODS.map((m) => (
+            <MethodCard key={m.id} method={m} />
+          ))}
         </div>
 
-        <p className="text-center text-xs text-muted-foreground">Obrigado pelo seu apoio! 💙</p>
+        <p className="text-center text-xs text-muted-foreground">
+          Contribuir é inteiramente opcional — a checklist continua completa e sem limitações.
+        </p>
       </DialogContent>
     </Dialog>
   );
