@@ -80,10 +80,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 /**
  * URL pública do site, usada para construir URLs absolutos nas metatags
- * Open Graph / Twitter (que não aceitam caminhos relativos).
- * Alterar aqui se o domínio mudar.
+ * Open Graph / Twitter, que não aceitam caminhos relativos.
+ *
+ * Definir `VITE_SITE_URL` no ambiente de build para sobrepor — útil para
+ * ambientes de pré-visualização, onde as pré-visualizações de partilha devem
+ * apontar para o próprio ambiente e não para produção.
  */
-const SITE_URL = "https://qnrrcs-check.lovable.app";
+const SITE_URL = (import.meta.env.VITE_SITE_URL ?? "https://itcomply.pt").replace(/\/+$/, "");
 
 const SITE_TITLE = "Checklist QNRCS — Avaliação de Capacidades de Cibersegurança";
 const SITE_DESCRIPTION =
