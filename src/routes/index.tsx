@@ -216,10 +216,49 @@ function escapeMultiline(value: unknown) {
   return escapeHtml(value).replace(/\n/g, "<br>");
 }
 
+/**
+ * Relação entre níveis.
+ *
+ * O Nível 2 substitui o 1: no ID.GA-1, o registo "sistemático" do Nível 2
+ * sucede ao registo "isolado e pouco sistémico" do Nível 1. Por isso marcar o 2
+ * marca o 1. O Nível 3 não repete o 2 — acrescenta-lhe práticas (monitorizar,
+ * rever, melhorar) — por isso não o marca, mas só pode ser marcado com o 2
+ * cumprido: sem inventário sistemático não há inventário para rever.
+ *
+ * Nível atingido: o mais alto com todos os anteriores cumpridos. Antes contava
+ * o nível mais alto marcado, pelo que marcar só o Nível 3 dava pontuação 3.
+ */
 function maxReached(item: Item, st: ItemState | undefined) {
   if (!st || st.status) return 0;
-  const reached = item.levels.map((l, i) => (st.checked[l.level] ? i + 1 : 0)).filter(Boolean);
-  return reached.length ? Math.max(...reached) : 0;
+  let reached = 0;
+  for (const l of item.levels) {
+    if (!st.checked[l.level]) break;
+    reached++;
+  }
+  return reached;
+}
+
+/** Último nível (o 3), que não marca os anteriores. */
+function topLevel(item: Item) {
+  return item.levels[item.levels.length - 1]?.level;
+}
+
+/** O Nível 3 só pode ser marcado com todos os anteriores cumpridos. */
+function canCheckTop(item: Item, st: ItemState | undefined) {
+  return !!st && maxReached(item, { ...st, status: undefined }) >= item.levels.length - 1;
+}
+
+/**
+ * Normaliza as marcações: ficam só os níveis consecutivos a partir do 1, como
+ * booleanos. É o único estado que a interface permite construir.
+ */
+function normalizeChecked(item: Item, checked: Record<string, unknown>) {
+  const out: Record<string, boolean> = {};
+  for (const l of item.levels) {
+    if (!checked[l.level]) break;
+    out[l.level] = true;
+  }
+  return out;
 }
 
 function isAbsent(st: ItemState | undefined) {
@@ -264,29 +303,43 @@ function itemTitle(it: Item) {
  * converte `none: true` em `status: "absent"` — a leitura mais fiel, já que o
  * rótulo original começava por "Não existe". Quem tiver usado a opção com o
  * sentido de "não aplicável" pode reclassificar esses itens na interface.
+ *
+ * As marcações passam por `normalizeChecked`. `adjusted` conta as
+ * subcategorias avaliadas que tinham níveis não consecutivos — o Nível 2 sem o
+ * 1, ou o 3 sem o 2 — e cujos níveis seguintes foram descartados.
  */
-function migrateResponses(raw: Record<string, unknown>, items: Item[]): State {
+function migrateResponses(
+  raw: Record<string, unknown>,
+  items: Item[],
+): { state: State; adjusted: number } {
   const byText = new Map(items.map((it) => [it.subcategory, itemCode(it)]));
-  const validCodes = new Set(items.map(itemCode));
+  const byCode = new Map(items.map((it) => [itemCode(it), it]));
   const out: State = {};
+  let adjusted = 0;
   for (const [key, value] of Object.entries(raw)) {
     if (!value || typeof value !== "object") continue;
     const legacy = value as LegacyItemState & { status?: ItemStatus };
-    const code = validCodes.has(key) ? key : (byText.get(key) ?? CODE_RE.exec(key)?.[1]);
-    if (!code || !validCodes.has(code)) continue; // descarta entradas órfãs
+    const code = byCode.has(key) ? key : (byText.get(key) ?? CODE_RE.exec(key)?.[1]);
+    const item = code ? byCode.get(code) : undefined;
+    if (!code || !item) continue; // descarta entradas órfãs
     const status: ItemStatus | undefined =
       legacy.status === "absent" || legacy.status === "na"
         ? legacy.status
         : legacy.none
           ? "absent"
           : undefined;
+    const rawChecked: Record<string, unknown> =
+      typeof legacy.checked === "object" && legacy.checked ? legacy.checked : {};
+    const checked = normalizeChecked(item, rawChecked);
+    const marked = item.levels.filter((l) => rawChecked[l.level]).length;
+    if (!status && marked > Object.keys(checked).length) adjusted++;
     out[code] = {
-      checked: typeof legacy.checked === "object" && legacy.checked ? legacy.checked : {},
+      checked,
       notes: typeof legacy.notes === "string" ? legacy.notes : "",
       ...(status ? { status } : {}),
     };
   }
-  return out;
+  return { state: out, adjusted };
 }
 
 type StatusFilter = "all" | "unassessed" | "absent" | "na" | "1" | "2" | "3";
@@ -330,7 +383,7 @@ function Index() {
       if (raw) {
         const parsed = JSON.parse(raw);
         if (parsed && typeof parsed === "object") {
-          setState(migrateResponses(parsed as Record<string, unknown>, items));
+          setState(migrateResponses(parsed as Record<string, unknown>, items).state);
         }
       }
       const meta = localStorage.getItem(META_KEY);
@@ -536,14 +589,29 @@ function Index() {
     return scored ? sum / scored : 0;
   }, [objectiveStats]);
 
+  const itemsByCode = useMemo(() => new Map(items.map((it) => [itemCode(it), it])), [items]);
+
+  /**
+   * Marcar o Nível 2 marca também o 1; desmarcar um nível desmarca os
+   * seguintes. O Nível 3 não marca os anteriores e só pode ser marcado com o 2
+   * cumprido (ver `maxReached` para a relação entre níveis).
+   */
   const toggle = (code: string, level: string) =>
     setState((s) => {
+      const item = itemsByCode.get(code);
+      const idx = item ? item.levels.findIndex((l) => l.level === level) : -1;
+      if (!item || idx < 0) return s;
       const cur = s[code] ?? { checked: {}, notes: "" };
+      const isTop = level === topLevel(item);
+      if (isTop && !cur.checked[level] && !canCheckTop(item, cur)) return s;
       const { status: _dropped, ...rest } = cur;
+      // Marcar o nível N atinge N; desmarcá-lo deixa atingido N-1.
+      const reached = cur.checked[level] ? idx : idx + 1;
+      const checked = Object.fromEntries(item.levels.slice(0, reached).map((l) => [l.level, true]));
       return {
         ...s,
         // Atribuir um nível anula qualquer estado de "não existe"/"não aplicável".
-        [code]: { ...rest, checked: { ...cur.checked, [level]: !cur.checked[level] } },
+        [code]: { ...rest, checked },
       };
     });
 
@@ -701,7 +769,7 @@ function Index() {
 
       const imported = Object.keys(raw).length;
       // Aceita projetos v1 (chaves por texto, `none`) e v2 (chaves por código).
-      const responses = migrateResponses(raw, items);
+      const { state: responses, adjusted } = migrateResponses(raw, items);
       const kept = Object.keys(responses).length;
       if (!kept) {
         throw new Error("Nenhuma resposta do ficheiro corresponde a subcategorias conhecidas.");
@@ -712,10 +780,17 @@ function Index() {
       if (typeof data.assessmentDate === "string") setAssessmentDate(data.assessmentDate);
 
       const dropped = imported - kept;
-      toast.success(`Projeto importado (versão ${data.version}).`, {
-        description: dropped
+      const details = [
+        dropped
           ? `${kept} respostas carregadas; ${dropped} não correspondem a subcategorias atuais e foram ignoradas.`
           : `${kept} respostas carregadas.`,
+        adjusted
+          ? `${adjusted} ${adjusted === 1 ? "subcategoria tinha" : "subcategorias tinham"} níveis não consecutivos (por exemplo, o Nível 3 sem o Nível 2) e ${adjusted === 1 ? "foi recalculada" : "foram recalculadas"}.`
+          : "",
+      ];
+      toast.success(`Projeto importado (versão ${data.version}).`, {
+        description: details.filter(Boolean).join(" "),
+        duration: adjusted ? 10000 : undefined,
       });
     } catch (err) {
       console.error(err);
@@ -1055,7 +1130,7 @@ function Index() {
                 </DropdownMenuContent>
               </DropdownMenu>
               <Button variant="outline" size="sm" onClick={importJson}>
-                <Upload className="mr-2 h-4 w-4" /> Importar Projeto
+                <Upload className="mr-2 h-4 w-4" /> Importar Projeto JSON
               </Button>
               <input
                 ref={fileInputRef}
@@ -1298,14 +1373,29 @@ function Index() {
                                     <div
                                       className={`space-y-3 ${st.status ? "pointer-events-none opacity-40" : ""}`}
                                     >
+                                      <p className="text-xs text-muted-foreground">
+                                        Marcar o Nível 2 marca também o Nível 1. O Nível 3 só pode
+                                        ser marcado com o Nível 2 cumprido.
+                                      </p>
                                       {it.levels.map((lvl) => {
                                         const s =
                                           LEVEL_STYLES[lvl.level] ?? LEVEL_STYLES["1 – Inicial"];
                                         const isChecked = !!st.checked[lvl.level];
+                                        const locked =
+                                          lvl.level === topLevel(it) &&
+                                          !isChecked &&
+                                          !canCheckTop(it, st);
                                         return (
                                           <label
                                             key={lvl.level}
-                                            className={`flex cursor-pointer gap-3 rounded-lg border p-3 transition-colors ${s.card} ${
+                                            title={
+                                              locked ? "Marque primeiro o Nível 2." : undefined
+                                            }
+                                            className={`flex gap-3 rounded-lg border p-3 transition-colors ${s.card} ${
+                                              locked
+                                                ? "cursor-not-allowed opacity-50"
+                                                : "cursor-pointer"
+                                            } ${
                                               isChecked
                                                 ? `ring-2 ring-offset-1 ring-offset-background ${s.ring}`
                                                 : ""
@@ -1313,6 +1403,7 @@ function Index() {
                                           >
                                             <Checkbox
                                               checked={isChecked}
+                                              disabled={locked}
                                               onCheckedChange={() => toggle(code, lvl.level)}
                                               className="mt-0.5"
                                             />

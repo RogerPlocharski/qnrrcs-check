@@ -39,6 +39,21 @@ Esta distinção existe para que uma organização não seja penalizada por
 subcategorias que legitimamente não lhe dizem respeito, nem premiada por
 capacidades que devia ter e não tem.
 
+Relação entre níveis:
+
+- O **Nível 2 substitui o 1** (por exemplo, o registo de ativos passa de
+  isolado a sistemático). Marcar o 2 marca também o 1; desmarcar o 1 desmarca
+  também o 2.
+- O **Nível 3 complementa o 2** — acrescenta práticas como monitorizar e rever,
+  sem repetir o 2 — por isso não marca os anteriores. Só pode, porém, ser
+  marcado com o Nível 2 cumprido: até lá, a opção fica desativada. Desmarcar o
+  1 ou o 2 desmarca também o 3.
+
+O nível atingido é o mais alto com todos os anteriores cumpridos. Projetos
+importados com níveis não consecutivos (o 2 sem o 1, ou o 3 sem o 2) ficam só
+com os níveis consecutivos a partir do 1, e a mensagem de importação indica
+quantas subcategorias foram recalculadas.
+
 ## Desenvolvimento
 
 Requer [Node.js](https://nodejs.org). O projeto usa [Bun](https://bun.sh) como
