@@ -95,12 +95,16 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --level-1: oklch(0.78 0.16 70);
-  --level-1-foreground: oklch(0.25 0.08 70);
-  --level-2: oklch(0.65 0.17 250);
-  --level-2-foreground: oklch(0.98 0.01 250);
-  --level-3: oklch(0.62 0.18 150);
-  --level-3-foreground: oklch(0.98 0.01 150);
+  /* Níveis de maturidade.
+     Os tons são escolhidos para que o texto do respetivo -foreground atinja
+     pelo menos 4.5:1 (WCAG AA) sobre o fundo do nível:
+       nível 1 → 5.07:1   nível 2 → 6.16:1   nível 3 → 6.06:1   nível 0 → 5.86:1 */
+  --level-1: oklch(0.55 0.13 55);
+  --level-1-foreground: oklch(0.99 0 0);
+  --level-2: oklch(0.5 0.2 258);
+  --level-2-foreground: oklch(0.99 0 0);
+  --level-3: oklch(0.48 0.13 155);
+  --level-3-foreground: oklch(0.99 0 0);
   --level-0: oklch(0.92 0.005 250);
   --level-0-foreground: oklch(0.45 0.02 250);
   --sidebar: oklch(0.984 0.003 247.858);
@@ -146,6 +150,22 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+
+  /* Versões claras dos níveis, para permanecerem legíveis sobre fundo escuro.
+     Sem estas, o tema escuro herdava os tons do tema claro. */
+  --level-1: oklch(0.8 0.15 70);
+  --level-1-foreground: oklch(0.22 0.06 70);
+  --level-2: oklch(0.7 0.15 255);
+  --level-2-foreground: oklch(0.19 0.06 255);
+  --level-3: oklch(0.72 0.15 155);
+  --level-3-foreground: oklch(0.19 0.05 155);
+  /* --level-0 serve ao mesmo tempo de fundo de badge e de ponto marcador.
+     Em oklch(0.32) era quase indistinguível do card (0.208) e do muted
+     (0.279) — 1.41:1 e 1.16:1 — pelo que os pontos desapareciam. A 0.55
+     contrasta 3.68:1 com o card e 3.02:1 com o muted, e aceita texto branco
+     a 4.71:1. */
+  --level-0: oklch(0.55 0.02 255);
+  --level-0-foreground: oklch(0.99 0 0);
 }
 
 @layer base {
