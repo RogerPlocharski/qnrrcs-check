@@ -16,7 +16,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ShieldCheck, Download, Search, RotateCcw, ListChecks, BarChart3, FileText, Presentation, Upload, FileJson, FileSpreadsheet, ChevronDown } from "lucide-react";
-import { SupportDialog } from "@/components/SupportDialog";
 import { Label } from "@/components/ui/label";
 import {
   DropdownMenu,
@@ -516,7 +515,6 @@ function Index() {
                 Quadro Nacional de Referência para a Cibersegurança · Centro Nacional de Cibersegurança
               </p>
             </div>
-            <SupportDialog />
           </div>
 
           <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto]">
